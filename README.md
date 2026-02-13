@@ -1,46 +1,13 @@
-# Wargames
+# Astro with Tailwind
 
-The wargames offered by the OverTheWire community can help you to learn and practice security concepts in the form of fun-filled games.
-
-If you have a problem, a question or a suggestion, you can join us via [chat](http://overthewire.org/information/chat.html).
-
-**!!! Do not file issues for game-related questions. This repository is for the website only !!!**
-
-## Contributing to this website
-
-You can clone the repository and make changes to the website by issuing pull requests.
-To verify that your edits are looking like they should, you can host a local copy of this
-website using [jekyll][].
-
-After installing jekyll, use the following command in the same directory as this README file,
-to start a local webserver:
-
-```
-jekyll serve
+```sh
+npm create astro@latest -- --template with-tailwindcss
 ```
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/with-tailwindcss)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/with-tailwindcss)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/with-tailwindcss/devcontainer.json)
 
+Astro comes with [Tailwind](https://tailwindcss.com) support out of the box. This example showcases how to style your Astro project with Tailwind.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[jekyll]: https://jekyllrb.com/
+For complete setup instructions, please see our [Tailwind Styling Guide](https://docs.astro.build/en/guides/styling/#tailwind).
