@@ -7,11 +7,15 @@ import react from '@astrojs/react';
 
 import icon from 'astro-icon';
 
+const isProd = process.env.NODE_ENV === 'production' || import.meta.env?.PROD;
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://drLacheheb.github.io',
+  base: isProd ? '/OverTheWire-website' : '/',
   vite: {
-      plugins: [tailwindcss()],
-    },
+    plugins: [tailwindcss()],
+  },
 
   integrations: [react(), icon()],
 });
