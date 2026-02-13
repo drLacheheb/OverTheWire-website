@@ -24,66 +24,57 @@ const releasedGames = [
 ];
 
 const { pathname } = Astro.url;
+
+const categories = [
+    {
+        title: "Online",
+        icon: "●",
+        color: "text-emerald-400",
+        games: onlineGames,
+    },
+    {
+        title: "Offline",
+        icon: "○",
+        color: "text-amber-400",
+        games: offlineGames,
+    },
+    {
+        title: "Released",
+        icon: "◆",
+        color: "text-cyan-400",
+        games: releasedGames,
+    },
+];
 ---
 
-<div id="sidemenu" class="m-0 left-0 float-left w-[200px] absolute top-[110px]">
-    <ul class="m-0 list-none no-underline">
-        <li>
-            <span
-                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
-                >Online</span>
-        </li>
-        {
-            onlineGames.map((game) => (
-                <li>
-                    <a
-                        href={game.link}
-                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
-                    >
-                        {game.name}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
-    <br />
-    <ul class="m-0 list-none no-underline">
-        <li>
-            <span
-                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
-                >Offline</span>
-        </li>
-        {
-            offlineGames.map((game) => (
-                <li>
-                    <a
-                        href={game.link}
-                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
-                    >
-                        {game.name}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
-    <br />
-    <ul class="m-0 list-none no-underline">
-        <li>
-            <span
-                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
-                >Released</span>
-        </li>
-        {
-            releasedGames.map((game) => (
-                <li>
-                    <a
-                        href={game.link}
-                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
-                    >
-                        {game.name}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
-</div>
+<aside class="w-full shrink-0 md:w-56 lg:w-64">
+    {
+        categories.map((cat, idx) => (
+            <nav class={idx > 0 ? "mt-4" : ""}>
+                <div class="mb-2 flex items-center gap-2 px-3">
+                    <span class={`text-xs ${cat.color}`}>{cat.icon}</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-neutral-500">
+                        {cat.title}
+                    </span>
+                </div>
+                <div class="rounded-lg border border-white/10 bg-white/5 p-2 space-y-0.5">
+                    {cat.games.map((game) => {
+                        const isActive = pathname.startsWith(game.link);
+                        return (
+                            <a
+                                href={game.link}
+                                class={`block rounded-md px-3 py-1.5 text-sm no-underline transition-colors ${
+                                    isActive
+                                        ? "bg-white/10 text-white"
+                                        : "text-neutral-400 hover:bg-white/5 hover:text-white"
+                                }`}
+                            >
+                                {game.name}
+                            </a>
+                        );
+                    })}
+                </div>
+            </nav>
+        ))
+    }
+</aside>

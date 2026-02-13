@@ -23,25 +23,31 @@ if (level !== undefined) {
             if (level === 0) {
                 levelTitle = `${displayName} Level ${level}`;
             } else {
-                levelTitle = `${displayName} Level ${level - 1} \u2192 Level ${level}`;
+                levelTitle = `${displayName} Level ${level - 1} → Level ${level}`;
             }
         } else {
-            levelTitle = `${displayName} Level ${level} \u2192 Level ${level + 1}`;
+            levelTitle = `${displayName} Level ${level} → Level ${level + 1}`;
         }
     }
 }
 ---
 
 <BaseLayout title={title}>
-    <LevelSidebar gameName={gameName} />
+    <div class="flex flex-col gap-8 md:flex-row">
+        <LevelSidebar gameName={gameName} />
 
-    {
-        levelTitle && (
-            <div id="title" class="mb-4">
-                <h1 class="text-[22pt] font-normal">{levelTitle}</h1>
-            </div>
-        )
-    }
+        <div class="min-w-0 flex-1">
+            {
+                levelTitle && (
+                    <div class="mb-6">
+                        <h1 class="text-2xl font-light text-neutral-200">
+                            {levelTitle}
+                        </h1>
+                    </div>
+                )
+            }
 
-    <slot />
+            <slot />
+        </div>
+    </div>
 </BaseLayout>
