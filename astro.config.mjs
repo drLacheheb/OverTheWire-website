@@ -12,7 +12,7 @@ const isProd = process.env.NODE_ENV === 'production' || import.meta.env?.PROD;
 // https://astro.build/config
 export default defineConfig({
   site: 'https://drLacheheb.github.io',
-  base: isProd ? '/OverTheWire-website' : '/',
+  base: isProd ? '/OverTheWire-website/wargames/' : '/',
   vite: {
     plugins: [tailwindcss()],
   },
