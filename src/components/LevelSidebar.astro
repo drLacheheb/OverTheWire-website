@@ -16,83 +16,228 @@ if (!gameData) {
 
 const levels = [];
 for (let i = 0; i <= gameData.lastlevel; i++) {
-    let urlName = "";
-    if (!gameData.specialNumbering) {
-        if (i === 0) {
-            urlName = `Level ${i}`;
-        } else {
-            urlName = `Level ${i - 1} \u2192 Level ${i}`;
-        }
-    } else {
-        urlName = `Level ${i} \u2192 Level ${i + 1}`;
-    }
+    const urlName = `Level ${i}`;
 
-    // Construct URL. Legacy used .html but we use clean URLs.
-    // Note: For Level 0, legacy URL was often /wargames/bandit/bandit0.html
-    // Ideally we map this to /wargames/bandit/bandit0
     const slug = `${gameName}${i}`;
     const url = `/wargames/${gameName}/${slug}`;
 
     levels.push({
         name: urlName,
         url: url,
-        active: pathname === url || pathname === url + "/", // Simple active check
+        active: pathname === url || pathname === url + "/",
     });
 }
 
-// Check for game landing page active state
 const isLandingActive =
     pathname === `/wargames/${gameName}` ||
     pathname === `/wargames/${gameName}/`;
 
-// Capitalize first letter helper
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const displayName = capitalize(gameName);
 ---
 
-<div id="sidemenu" class="m-0 left-0 float-left w-[200px] absolute top-[110px]">
+<aside class="w-full shrink-0 md:w-56 lg:w-64">
+    {/* SSH Info Card */}
     {
         gameData.host && gameData.port && (
-            <div
-                id="sshinfo"
-                class="text-white bg-black text-[9pt] ml-[5px] p-[4px] border border-[#00ff00] mb-4"
-            >
-                <>
-                    <span class="text-[#00ff00] text-[12pt]">
-                        SSH Information
-                    </span>
-                    <br />
-                </>
-                Host: {gameData.host}
-                <br />
-                Port: {gameData.port}
+            <div class="mb-4 rounded-lg border border-emerald-500/30 bg-emerald-950/30 p-4">
+                <div class="mb-2 flex items-center gap-2 text-sm font-semibold text-emerald-400">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="m10 15 5-3-5-3z" />
+                    </svg>
+                    SSH Connection
+                </div>
+                <div class="space-y-2 font-mono text-xs">
+                    <button
+                        class="ssh-copy group w-full cursor-pointer rounded px-2 py-1.5 text-left transition-colors hover:bg-white/5"
+                        data-copy={gameData.host}
+                        title="Click to copy"
+                    >
+                        <div class="text-neutral-500 text-[10px] mb-0.5">
+                            Host
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300 break-all">
+                                {gameData.host}
+                            </span>
+                            <svg
+                                class="ml-2 h-3 w-3 shrink-0 text-neutral-600 opacity-0 transition-opacity group-hover:opacity-100"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <>
+                                    <rect
+                                        width="14"
+                                        height="14"
+                                        x="8"
+                                        y="8"
+                                        rx="2"
+                                    />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </>
+                            </svg>
+                        </div>
+                    </button>
+                    <button
+                        class="ssh-copy group w-full cursor-pointer rounded px-2 py-1.5 text-left transition-colors hover:bg-white/5"
+                        data-copy={String(gameData.port)}
+                        title="Click to copy"
+                    >
+                        <div class="text-neutral-500 text-[10px] mb-0.5">
+                            Port
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300">
+                                {gameData.port}
+                            </span>
+                            <svg
+                                class="ml-2 h-3 w-3 shrink-0 text-neutral-600 opacity-0 transition-opacity group-hover:opacity-100"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <>
+                                    <rect
+                                        width="14"
+                                        height="14"
+                                        x="8"
+                                        y="8"
+                                        rx="2"
+                                    />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </>
+                            </svg>
+                        </div>
+                    </button>
+                    <button
+                        class="ssh-copy group w-full cursor-pointer rounded px-2 py-1.5 text-left transition-colors hover:bg-white/5"
+                        data-copy={`ssh ${gameName}0@${gameData.host} -p ${gameData.port}`}
+                        title="Click to copy full SSH command"
+                    >
+                        <div class="text-neutral-500 text-[10px] mb-0.5">
+                            SSH Command
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300 break-all">
+                                ssh {gameName}0@{gameData.host} -p{" "}
+                                {gameData.port}
+                            </span>
+                            <svg
+                                class="ml-2 h-3 w-3 shrink-0 text-neutral-600 opacity-0 transition-opacity group-hover:opacity-100"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <>
+                                    <rect
+                                        width="14"
+                                        height="14"
+                                        x="8"
+                                        y="8"
+                                        rx="2"
+                                    />
+                                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                                </>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
             </div>
         )
     }
 
-    <ul class="m-0 list-none no-underline">
-        <li>
-            <a
-                href={`/wargames/${gameName}`}
-                class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${isLandingActive ? "text-[#CCC]" : ""}`}
-            >
-                <span
-                    class="font-['origins','Helvetica','Arial',sans-serif] text-[16pt] leading-[42px] text-[#999]"
-                    >{displayName}</span
-                >
-            </a>
-        </li>
-        {
-            levels.map((level) => (
-                <li>
+    {/* Level Navigation */}
+    <nav class="rounded-lg border border-white/10 bg-white/5 p-3">
+        <a
+            href={`/wargames/${gameName}`}
+            class={`mb-2 block rounded-md px-3 py-2 text-sm font-semibold no-underline transition-colors ${
+                isLandingActive
+                    ? "bg-white/10 text-white"
+                    : "text-neutral-400 hover:bg-white/5 hover:text-white"
+            }`}
+        >
+            {displayName}
+        </a>
+
+        <div class="max-h-[280px] space-y-0.5 overflow-y-auto scrollbar-thin">
+            {
+                levels.map((level) => (
                     <a
                         href={level.url}
-                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${level.active ? "text-[#CCC]" : ""}`}
+                        class={`block rounded-md px-3 py-1.5 text-xs no-underline transition-colors ${
+                            level.active
+                                ? "bg-white/10 text-white"
+                                : "text-neutral-500 hover:bg-white/5 hover:text-neutral-300"
+                        }`}
                     >
                         {level.name}
                     </a>
-                </li>
-            ))
-        }
-    </ul>
-</div>
+                ))
+            }
+        </div>
+    </nav>
+</aside>
+
+<style>
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 4px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 9999px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+</style>
+
+<script>
+    document.querySelectorAll(".ssh-copy").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+            const text = (btn as HTMLElement).dataset.copy;
+            if (!text) return;
+            try {
+                await navigator.clipboard.writeText(text);
+                const original = btn.getAttribute("title");
+                btn.setAttribute("title", "Copied!");
+                btn.classList.add("ring-1", "ring-emerald-500/30");
+                setTimeout(() => {
+                    btn.setAttribute("title", original || "Click to copy");
+                    btn.classList.remove("ring-1", "ring-emerald-500/30");
+                }, 1500);
+            } catch (err) {
+                console.error("Failed to copy:", err);
+            }
+        });
+    });
+</script>
