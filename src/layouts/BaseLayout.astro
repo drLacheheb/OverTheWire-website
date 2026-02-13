@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
 
 interface Props {
     title?: string;
@@ -39,29 +38,15 @@ const { title = "OverTheWire" } = Astro.props;
         <title>{title}</title>
     </head>
     <body
-        class="bg-white text-black font-['Pontano_Sans','Maven_Pro','Helvetica','Arial',sans-serif] text-[12pt] m-0 p-0 dark:bg-black dark:text-white"
+        class="min-h-screen bg-neutral-950 text-neutral-100 font-['Pontano_Sans','Maven_Pro','Helvetica','Arial',sans-serif] text-[12pt] m-0 p-0"
     >
-        <div
-            id="sitename"
-            class="absolute top-0 right-[36px] z-10 font-['origins','Helvetica','Arial',sans-serif] text-[40pt] leading-[64px] text-black dark:text-white"
-        >
-            <a href="/" class="no-underline font-normal text-inherit"
-                >OverTheWire</a
-            >
-        </div>
-        <div
-            id="siteslogan"
-            class="absolute top-[51px] right-[36px] z-10 text-[7.5pt] text-[#CCC]"
-        >
-            We're hackers, and we are good-looking. We are the 1%.
-        </div>
-
         <Navbar />
 
-        <main id="content" class="mt-[110px] mr-[36px] mb-[20px] ml-[236px]">
+        <main
+            id="content"
+            class="mx-auto max-w-7xl px-4 pt-24 pb-8 sm:px-6 lg:px-8"
+        >
             <slot />
         </main>
-
-        <Footer />
     </body>
 </html>
