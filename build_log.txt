@@ -1,0 +1,19 @@
+[2m15:11:59[22m [34m[content][39m Syncing content
+[2m15:11:59[22m [34m[content][39m Synced content
+[2m15:11:59[22m [34m[types][39m Generated [2m67ms[22m
+[2m15:11:59[22m [34m[build][39m output: [34m"static"[39m
+[2m15:11:59[22m [34m[build][39m mode: [34m"static"[39m
+[2m15:11:59[22m [34m[build][39m directory: [34mC:\Users\yacin\PycharmProjects\OverTheWire-website\dist\[39m
+[2m15:11:59[22m [34m[build][39m Collecting build info...
+[2m15:11:59[22m [34m[build][39m [32m✓ Completed in 175ms.[39m
+[2m15:11:59[22m [34m[build][39m Building static entrypoints...
+15:12:00 [ERROR] [vite] ✗ Build failed in 1.35s
+Expected "}" but found "y0"
+  Location:
+    C:/Users/yacin/PycharmProjects/OverTheWire-website/src/pages/wargames/blacksun/blacksun0.astro:49:5
+  Stack trace:
+    at failureErrorWithLog (C:\Users\yacin\PycharmProjects\OverTheWire-website\node_modules\vite\node_modules\esbuild\lib\main.js:1467:15)
+    at responseCallbacks.<computed> (C:\Users\yacin\PycharmProjects\OverTheWire-website\node_modules\vite\node_modules\esbuild\lib\main.js:603:9)
+    at Socket.readFromStdout (C:\Users\yacin\PycharmProjects\OverTheWire-website\node_modules\vite\node_modules\esbuild\lib\main.js:581:7)
+    at addChunk (node:internal/streams/readable:561:12)
+    at Readable.push (node:internal/streams/readable:392:5)
