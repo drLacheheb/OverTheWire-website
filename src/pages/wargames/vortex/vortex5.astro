@@ -63,25 +63,25 @@ Average of 2250932.1 hashes/sec.</pre>
 #  define uint32 unsigned int
 #endif
 
-struct Context {
+struct Context &#123;
   uint32 buf[4];
   uint32 bits[2];
   unsigned char in[64];
-};
+&#125;;
 typedef char MD5Context[88];
 
 /*
  * Note: this code is harmless on little-endian machines.
  */
-static void byteReverse (unsigned char *buf, unsigned longs){
+static void byteReverse (unsigned char *buf, unsigned longs)&#123;
         uint32 t;
-        do {
+        do &#123;
                 t = (uint32)((unsigned)buf[3]&lt;&lt;8 | buf[2]) &lt;&lt; 16 |
                             ((unsigned)buf[1]&lt;&lt;8 | buf[0]);
                 *(uint32 *)buf = t;
                 buf += 4;
-        } while (--longs);
-}
+        &#125; while (--longs);
+&#125;
 /* The four core functions - F1 is optimized somewhat */
 
 /* #define F1(x, y, z) (x & y | ~x & z) */
@@ -99,7 +99,7 @@ static void byteReverse (unsigned char *buf, unsigned longs){
  * reflect the addition of 16 longwords of new data.  MD5Update blocks
  * the data and converts bytes into longwords for this routine.
  */
-static void MD5Transform(uint32 buf[4], const uint32 in[16]){
+static void MD5Transform(uint32 buf[4], const uint32 in[16])&#123;
         register uint32 a, b, c, d;
 
         a = buf[0];
@@ -179,13 +179,13 @@ static void MD5Transform(uint32 buf[4], const uint32 in[16]){
         buf[1] += b;
         buf[2] += c;
         buf[3] += d;
-}
+&#125;
 
 /*
  * Start MD5 accumulation.  Set bit count to 0 and buffer to mysterious
  * initialization constants.
  */
-static void MD5Init(MD5Context *pCtx){
+static void MD5Init(MD5Context *pCtx)&#123;
         struct Context *ctx = (struct Context *)pCtx;
         ctx-&gt;buf[0] = 0x67452301;
         ctx-&gt;buf[1] = 0xefcdab89;
@@ -193,14 +193,14 @@ static void MD5Init(MD5Context *pCtx){
         ctx-&gt;buf[3] = 0x10325476;
         ctx-&gt;bits[0] = 0;
         ctx-&gt;bits[1] = 0;
-}
+&#125;
 
 /*
  * Update context to reflect the concatenation of another buffer full
  * of bytes.
  */
 static 
-void MD5Update(MD5Context *pCtx, const unsigned char *buf, unsigned int len){
+void MD5Update(MD5Context *pCtx, const unsigned char *buf, unsigned int len)&#123;
         struct Context *ctx = (struct Context *)pCtx;
         uint32 t;
 
@@ -211,51 +211,51 @@ void MD5Update(MD5Context *pCtx, const unsigned char *buf, unsigned int len){
                 ctx-&gt;bits[1]++; /* Carry from low to high */
         ctx-&gt;bits[1] += len &gt;&gt; 29;
 
-        t = (t &gt;&gt; 3) & 0x3f;    /* Bytes already in shsInfo-&gt;data */
+        t = (t &gt;&gt; 3) &amp; 0x3f;    /* Bytes already in shsInfo-&gt;data */
 
         /* Handle any leading odd-sized chunks */
 
-        if ( t ) {
+        if ( t ) &#123;
                 unsigned char *p = (unsigned char *)ctx-&gt;in + t;
 
                 t = 64-t;
-                if (len &lt; t) {
+                if (len &lt; t) &#123;
                         memcpy(p, buf, len);
                         return;
-                }
+                &#125;
                 memcpy(p, buf, t);
                 byteReverse(ctx-&gt;in, 16);
                 MD5Transform(ctx-&gt;buf, (uint32 *)ctx-&gt;in);
                 buf += t;
                 len -= t;
-        }
+        &#125;
 
         /* Process data in 64-byte chunks */
 
-        while (len &gt;= 64) {
+        while (len &gt;= 64) &#123;
                 memcpy(ctx-&gt;in, buf, 64);
                 byteReverse(ctx-&gt;in, 16);
                 MD5Transform(ctx-&gt;buf, (uint32 *)ctx-&gt;in);
                 buf += 64;
                 len -= 64;
-        }
+        &#125;
 
         /* Handle any remaining bytes of data. */
 
         memcpy(ctx-&gt;in, buf, len);
-}
+&#125;
 
 /*
  * Final wrapup - pad to 64-byte boundary with the bit pattern 
  * 1 0* (64-bit count of bits processed, MSB-first)
  */
-static void MD5Final(unsigned char digest[16], MD5Context *pCtx){
+static void MD5Final(unsigned char digest[16], MD5Context *pCtx)&#123;
         struct Context *ctx = (struct Context *)pCtx;
         unsigned count;
         unsigned char *p;
 
         /* Compute number of bytes mod 64 */
-        count = (ctx-&gt;bits[0] &gt;&gt; 3) & 0x3F;
+        count = (ctx-&gt;bits[0] &gt;&gt; 3) &amp; 0x3F;
 
         /* Set the first char of padding to 0x80.  This is safe since there is
            always at least one byte free */
@@ -266,7 +266,7 @@ static void MD5Final(unsigned char digest[16], MD5Context *pCtx){
         count = 64 - 1 - count;
 
         /* Pad out to 56 mod 64 */
-        if (count &lt; 8) {
+        if (count &lt; 8) &#123;
                 /* Two lots of padding:  Pad the first block to 64 bytes */
                 memset(p, 0, count);
                 byteReverse(ctx-&gt;in, 16);
@@ -274,10 +274,10 @@ static void MD5Final(unsigned char digest[16], MD5Context *pCtx){
 
                 /* Now fill the next block with 56 bytes */
                 memset(ctx-&gt;in, 0, 56);
-        } else {
+        &#125; else &#123;
                 /* Pad block to 56 bytes */
                 memset(p, 0, count-8);
-        }
+        &#125;
         byteReverse(ctx-&gt;in, 14);
 
         /* Append length in bits and transform */
@@ -288,7 +288,7 @@ static void MD5Final(unsigned char digest[16], MD5Context *pCtx){
         byteReverse((unsigned char *)ctx-&gt;buf, 4);
         memcpy(digest, ctx-&gt;buf, 16);
         memset(ctx, 0, sizeof(ctx));    /* In case it's sensitive */
-}
+&#125;
 
 /*
 ** Convert a digest into base-16.  digest should be declared as
@@ -296,40 +296,40 @@ static void MD5Final(unsigned char digest[16], MD5Context *pCtx){
 ** digest is stored in the first 16 bytes.  zBuf should
 ** be "char zBuf[33]".
 */
-static void DigestToBase16(unsigned char *digest, char *zBuf){
+static void DigestToBase16(unsigned char *digest, char *zBuf)&#123;
   static char const zEncode[] = "0123456789abcdef";
   int i, j;
 
-  for(j=i=0; i&lt;16; i++){
+  for(j=i=0; i&lt;16; i++)&#123;
     int a = digest[i];
-    zBuf[j++] = zEncode[(a&gt;&gt;4)&0xf];
-    zBuf[j++] = zEncode[a & 0xf];
-  }
+    zBuf[j++] = zEncode[(a&gt;&gt;4)&amp;0xf];
+    zBuf[j++] = zEncode[a &amp; 0xf];
+  &#125;
   zBuf[j] = 0;
-}
+&#125;
 
 int main(int argc, char **argv)
-{
+&#123;
         unsigned char buf[16];
         MD5Context a;
 
         char *x;
         x = getpass("Password: ");
         printf("%c:%02x\n", x[strlen(x)-1], x[strlen(x) -1]);
-        MD5Init(&a);
-        MD5Update(&a, x, strlen(x));
-        MD5Final(buf, &a);
+        MD5Init(&amp;a);
+        MD5Update(&amp;a, x, strlen(x));
+        MD5Final(buf, &amp;a);
 
-        if(memcmp(buf, "\x15\x5f\xb9\x5d\x04\x28\x7b\x75\x7c\x99\x6d\x77\xb5\xea\x51\xf7", 16) == 0){
+        if(memcmp(buf, "\x15\x5f\xb9\x5d\x04\x28\x7b\x75\x7c\x99\x6d\x77\xb5\xea\x51\xf7", 16) == 0)&#123;
                 printf("You got the right password, congrats!\n");
                 setresgid(getegid(), getegid(), getegid());
                 setresuid(geteuid(), geteuid(), geteuid());
                 system("/bin/sh");
-        } else {
+        &#125; else &#123;
                 usleep(500);
                 printf("Incorrect password\n");
-        }
+        &#125;
         exit(0);
-}</pre>
+&#125;</pre>
 
 </GameLayout>

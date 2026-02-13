@@ -32,7 +32,7 @@ import GameLayout from '../../../layouts/GameLayout.astro';
 
 void
 seedrand(char *seed)
-{
+&#123;
     char buf[RANDLEN];
     int fd, i;
 
@@ -45,27 +45,27 @@ seedrand(char *seed)
     close(fd);
 
     /* make sure it doesnt use the terminator */
-    for(i = 0; i &lt; RANDLEN - 1; i++) {
+    for(i = 0; i &lt; RANDLEN - 1; i++) &#123;
         if(buf[i] == TERMINATE1 
            || buf[i] == TERMINATE2 
            || buf[i] == TERMINATE3
            || buf[i] == TERMINATE4
            || buf[i] == '\0')
             buf[i] = ' ';
-    }
+    &#125;
     buf[i] = 0;
 
     /* return it */
     strcpy(seed, buf);
-}
+&#125;
 
 int
 guess(char *seed)
-{
+&#123;
     char buf[BUFLEN];
     int i;
 
-    for(i = 0; i &lt; BUFLEN - 1; i++) {
+    for(i = 0; i &lt; BUFLEN - 1; i++) &#123;
         if(read(0, buf + i, 1) != 1)
             exit(1);
         if(buf[i] == TERMINATE1 
@@ -73,7 +73,7 @@ guess(char *seed)
            || buf[i] == TERMINATE3
            || buf[i] == TERMINATE4)
             break;
-    }
+    &#125;
     buf[i] = 0;
     
     if(strcmp(buf, seed) == 0)
@@ -82,27 +82,30 @@ guess(char *seed)
     printf("\n");
     fflush(stdout);
     return 0;
-}
+&#125;
 
 int
 main(int argc, char **argv)
-{
+&#123;
     char seed[RANDLEN];
     int i;
 
     seedrand(seed);
-    for(i = 0; i &lt; 10; i++) {
-        if(guess(seed)) {
+    for(i = 0; i &lt; 10; i++) &#123;
+        if(guess(seed)) &#123;
             i = geteuid();
             setresuid(i, i, i);
             write(1, "YAY!\n", 5);
             execlp("/bin/sh", "sh", 0);
             exit(0);
-        }
-    }
+        &#125;
+    &#125;
 
     printf("sorry.\n");
     return 0;
-}</pre>
+&#125;</pre>
 
 </GameLayout>
+
+
+

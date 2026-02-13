@@ -252,47 +252,47 @@ int daemonize()
 int daemonize();
 
 void list_dir(int fd)
-{
+&#123;
         DIR             *dirp;
         struct dirent   *dp;
                 
         if((dirp = opendir(PATH)) == NULL)
                         return;
-        while((dp = readdir(dirp)) != NULL) {
+        while((dp = readdir(dirp)) != NULL) &#123;
                 send(fd, dp-&gt;d_name, strlen(dp-&gt;d_name), 0);
-        }
+        &#125;
         return;
-}
+&#125;
 
 void filedump(const char *name, int fd)
-{
+&#123;
         FILE            *filp;
         char            buf[2048];
         int             ret;
         
         chdir(PATH);
-        if((filp = fopen(name, "rb")) == NULL) {
+        if((filp = fopen(name, "rb")) == NULL) &#123;
                 strcpy(buf, "File not found.");
                 send(fd, buf, strlen(buf), 0);
                 return;
-        }
-        do {
+        &#125;
+        do &#123;
                 ret = fread(buf, 1, 2048, filp);
                 if(ret &gt; 0)
                         send(fd, buf, ret, 0);
                         send(fd, "\n", 1, 0);
-        } while(ret &gt;= 2048);
-}
+        &#125; while(ret &gt;= 2048);
+&#125;
 
 int main(int argc, char **argv)
-{
+&#123;
 
-        if(argc &gt; 1) {
-                if(argv[1][0] == 'D') {
+        if(argc &gt; 1) &#123;
+                if(argv[1][0] == 'D') &#123;
                         if(daemonize())
                                 exit(EXIT_SUCCESS);
-                }
-        }
+                &#125;
+        &#125;
         
         int                     sockfd, connfd;
         unsigned int            sin_size;
@@ -307,60 +307,60 @@ int main(int argc, char **argv)
 
         /*Set up the shared memory authorization array */
 
-        if((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) == -1) {
+        if((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) == -1) &#123;
                 perror("Shared");
                 exit(1);
-        }
+        &#125;
 
-        if((auth_array = shmat(shmid, NULL, 0)) == (void *)-1) {
+        if((auth_array = shmat(shmid, NULL, 0)) == (void *)-1) &#123;
                 perror("Share attach");
                 exit(1);
-        }
+        &#125;
 
         /* Lets set up the listening socket */
 
-        memset(&reap_zombies, 0, sizeof(reap_zombies));
+        memset(&amp;reap_zombies, 0, sizeof(reap_zombies));
         reap_zombies.sa_flags = SA_NOCLDWAIT;
 
-        if((sigaction(SIGCHLD, &reap_zombies, 0)) == -1) {
+        if((sigaction(SIGCHLD, &amp;reap_zombies, 0)) == -1) &#123;
                 perror("Sighandler");
                 exit(1);
-        }
+        &#125;
 
-        if((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) {
+        if((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) &#123;
                 perror("Socket");
                 exit(1);
-        }
+        &#125;
         my_addr.sin_family = AF_INET;
         my_addr.sin_port = htons(AUTH_PORT);
         my_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-        memset(&(my_addr.sin_zero), '\0', 8);
+        memset(&amp;(my_addr.sin_zero), '\0', 8);
 
-        if((bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr))) == -1) {
+        if((bind(sockfd, (struct sockaddr *)&amp;my_addr, sizeof(struct sockaddr))) == -1) &#123;
                 perror("Bind");
                 exit(1);
-        }
+        &#125;
 
         listen(sockfd, 5);      /* Error checks... nah! */
         
-        while(1) {
+        while(1) &#123;
 
                 int i, len, pid, found = 0;
 
                 sin_size = sizeof(struct sockaddr_in);
-                if((connfd = accept(sockfd, (struct sockaddr*)&remote_addr, &sin_size)) == -1) {
+                if((connfd = accept(sockfd, (struct sockaddr*)&amp;remote_addr, &amp;sin_size)) == -1) &#123;
                         perror("Accept");
                         exit(1);
-                }
+                &#125;
                 
-                if((pid = fork()) &lt; 0) {
+                if((pid = fork()) &lt; 0) &#123;
                         perror("fork");
                         exit(EXIT_FAILURE);
-                }
-                if(pid) {
+                &#125;
+                if(pid) &#123;
                         close(connfd);
                         continue;
-                }
+                &#125;
                 
                 strcpy(sendbuf, "File Transfer: Enter 'l' for list or type a filename:");
                 send(connfd, sendbuf, strlen(sendbuf), 0);
@@ -372,26 +372,26 @@ int main(int argc, char **argv)
                 strncpy(filename, recvbuf, len &lt; BUFSIZE ? len : BUFSIZE);
                 filename[BUFSIZE - 1] = '\0';
 
-                down(&auth_array-&gt;sem); /* Take semaphore for reading auth list */
-                for(i = 0; i &lt; 32; i++) {
-                        if(auth_array-&gt;list[i].token == remote_addr.sin_addr.s_addr) {
+                down(&amp;auth_array-&gt;sem); /* Take semaphore for reading auth list */
+                for(i = 0; i &lt; 32; i++) &#123;
+                        if(auth_array-&gt;list[i].token == remote_addr.sin_addr.s_addr) &#123;
                                 found++;
                                 break;
-                        }
-                }
-                up(&auth_array-&gt;sem); /* Release semaphore to wait on user replies next... avoid deadlock */
+                        &#125;
+                &#125;
+                up(&amp;auth_array-&gt;sem); /* Release semaphore to wait on user replies next... avoid deadlock */
 
-                if(!found) {
+                if(!found) &#123;
                         strcpy(sendbuf, "Not recognized, use authd first.");
                         send(connfd, sendbuf, strlen(sendbuf), 0);
                         close(connfd);
                         continue;
-                }
+                &#125;
                 
-                if(filename[0] == 'l') {
+                if(filename[0] == 'l') &#123;
                         list_dir(connfd);
-                }
-                else {
+                &#125;
+                else &#123;
                         strcpy(sendbuf, "Display file? (y/n)");
                         /*check perm and display file*/
                         
@@ -399,24 +399,24 @@ int main(int argc, char **argv)
                         recv(connfd, recvbuf, BUFSIZE - 1, 0);
                         recvbuf[BUFSIZE - 1] = '\0';
                         
-                        if(recvbuf[0] == 'y') {
-                                down(&auth_array-&gt;sem);
-                                if(auth_array-&gt;list[i].perms == 0) {/* 0 is superuser, 1 is user */
+                        if(recvbuf[0] == 'y') &#123;
+                                down(&amp;auth_array-&gt;sem);
+                                if(auth_array-&gt;list[i].perms == 0) &#123;/* 0 is superuser, 1 is user */
                                         filedump(filename, connfd);
-                                }
-                                else {
+                                &#125;
+                                else &#123;
                                         strcpy(sendbuf, "Not Authorized");
                                         send(connfd, sendbuf, strlen(sendbuf), 0);
-                                }
-                                up(&auth_array-&gt;sem);
-                        }
+                                &#125;
+                                up(&amp;auth_array-&gt;sem);
+                        &#125;
 
-                }
+                &#125;
                 close(connfd);
                 exit(EXIT_SUCCESS);
-        }
+        &#125;
         return 0;
-}</pre>
+&#125;</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.sem.c</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#include &lt;unistd.h&gt;
@@ -425,38 +425,38 @@ int main(int argc, char **argv)
 /* Get the semaphore and busy wait if held already */
 
 void down(int *sem)
-{
+&#123;
 retry:
         while(*sem)
                 sleep(5);
         (*sem)++;
-        if(*sem &gt; 1) {
+        if(*sem &gt; 1) &#123;
                 (*sem)--;
                 goto retry;
-        }
+        &#125;
         return;
-}
+&#125;
 
 /* Try and get the semaphore, but return 0 if held */
 
 int try_down(int *sem)
-{
+&#123;
         if(*sem)
                 return 0;
         (*sem)++;
-        if(*sem &gt; 1) {
+        if(*sem &gt; 1) &#123;
                 (*sem)--;
                 return 0;
-        }
+        &#125;
         return *sem;
-}
+&#125;
 
 /* Release the semaphore */
 
 void up(int *sem)
-{
+&#123;
         *sem = 0;
-}</pre>
+&#125;</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.sem.h</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">int down(int *sem);
@@ -464,17 +464,17 @@ int try_down(int *sem);
 void up(int *sem);</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.server.h</h3>
-  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">struct auth {
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">struct auth &#123;
         unsigned int    token;
         unsigned int    perms;
         unsigned int    timestamp;
-};
+&#125;;
 
 
-struct sharea {
+struct sharea &#123;
         int             sem;
         unsigned int    bitmap;
         struct auth     list[32];
-};</pre>
+&#125;;</pre>
 
 </GameLayout>
