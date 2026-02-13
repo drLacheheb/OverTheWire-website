@@ -1,26 +1,28 @@
 ---
+import { formatPath } from "@/lib/utils";
+
 const onlineGames = [
-    { name: "Bandit", link: "/wargames/bandit" },
-    { name: "Natas", link: "/wargames/natas" },
-    { name: "Leviathan", link: "/wargames/leviathan" },
-    { name: "Krypton", link: "/wargames/krypton" },
-    { name: "Narnia", link: "/wargames/narnia" },
-    { name: "Behemoth", link: "/wargames/behemoth" },
-    { name: "Utumno", link: "/wargames/utumno" },
-    { name: "Maze", link: "/wargames/maze" },
-    { name: "Vortex", link: "/wargames/vortex" },
-    { name: "Manpage", link: "/wargames/manpage" },
-    { name: "Drifter", link: "/wargames/drifter" },
-    { name: "FormulaOne", link: "/wargames/formulaone" },
+    { name: "Bandit", link: formatPath("/wargames/bandit") },
+    { name: "Natas", link: formatPath("/wargames/natas") },
+    { name: "Leviathan", link: formatPath("/wargames/leviathan") },
+    { name: "Krypton", link: formatPath("/wargames/krypton") },
+    { name: "Narnia", link: formatPath("/wargames/narnia") },
+    { name: "Behemoth", link: formatPath("/wargames/behemoth") },
+    { name: "Utumno", link: formatPath("/wargames/utumno") },
+    { name: "Maze", link: formatPath("/wargames/maze") },
+    { name: "Vortex", link: formatPath("/wargames/vortex") },
+    { name: "Manpage", link: formatPath("/wargames/manpage") },
+    { name: "Drifter", link: formatPath("/wargames/drifter") },
+    { name: "FormulaOne", link: formatPath("/wargames/formulaone") },
 ];
 
-const offlineGames = [{ name: "Semtex", link: "/wargames/semtex" }];
+const offlineGames = [{ name: "Semtex", link: formatPath("/wargames/semtex") }];
 
 const releasedGames = [
-    { name: "HES2010", link: "/wargames/hes2010" },
-    { name: "Abraxas", link: "/wargames/abraxas" },
-    { name: "Monxla", link: "/wargames/monxla" },
-    { name: "Kishi", link: "/wargames/kishi" },
+    { name: "HES2010", link: formatPath("/wargames/hes2010") },
+    { name: "Abraxas", link: formatPath("/wargames/abraxas") },
+    { name: "Monxla", link: formatPath("/wargames/monxla") },
+    { name: "Kishi", link: formatPath("/wargames/kishi") },
 ];
 
 const { pathname } = Astro.url;

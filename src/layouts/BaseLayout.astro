@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
+import { formatPath } from "@/lib/utils";
 
 interface Props {
     title?: string;
@@ -16,18 +17,22 @@ const { title = "OverTheWire" } = Astro.props;
         <link
             rel="icon"
             type="image/png"
-            href="/favicon-96x96.png"
+            href={formatPath("/favicon-96x96.png")}
             sizes="96x96"
         />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href={formatPath("/favicon.svg")}
+        />
+        <link rel="shortcut icon" href={formatPath("/favicon.ico")} />
         <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href="/apple-touch-icon.png"
+            href={formatPath("/apple-touch-icon.png")}
         />
         <meta name="apple-mobile-web-app-title" content="OverTheWire" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href={formatPath("/site.webmanifest")} />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link

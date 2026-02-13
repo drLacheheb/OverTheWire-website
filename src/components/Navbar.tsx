@@ -10,11 +10,11 @@ import {
     SheetClose,
 } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { cn } from "@/lib/utils"
+import { cn, formatPath } from "@/lib/utils"
 
 const navItems = [
-    { name: "Wargames", href: "/wargames/" },
-    { name: "Rules", href: "/rules/" },
+    { name: "Wargames", href: formatPath("/wargames/") },
+    { name: "Rules", href: formatPath("/rules/") },
 ]
 
 interface NavbarProps {
@@ -27,8 +27,8 @@ export default function Navbar({ pathname }: NavbarProps) {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-950/60">
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                <a href="/" className="group flex items-center gap-3 no-underline">
-                    <img src="/favicon.svg" alt="OverTheWire" className="w-9" />
+                <a href={formatPath("/")} className="group flex items-center gap-3 no-underline">
+                    <img src={formatPath("/favicon.svg")} alt="OverTheWire" className="w-9" />
                     <div className="flex flex-col">
                         <span className="text-base font-semibold tracking-tight text-white">
                             OverTheWire
@@ -64,14 +64,14 @@ export default function Navbar({ pathname }: NavbarProps) {
 
                 <div className="hidden items-center gap-1 md:flex">
                     <a
-                        href="/information/donate"
+                        href={formatPath("/information/donate")}
                         className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-neutral-400 no-underline transition-all duration-200 hover:bg-white/5 hover:text-emerald-400"
                     >
                         <Heart className="h-3.5 w-3.5" />
                         Donate
                     </a>
                     <a
-                        href="/information/chat"
+                        href={formatPath("/information/chat")}
                         className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-neutral-400 no-underline transition-all duration-200 hover:bg-white/5 hover:text-cyan-400"
                     >
                         <MessageCircle className="h-3.5 w-3.5" />
@@ -98,11 +98,11 @@ export default function Navbar({ pathname }: NavbarProps) {
                             <SheetHeader className="border-b border-white/10 px-6 py-5">
                                 <SheetTitle>
                                     <a
-                                        href="/"
+                                        href={formatPath("/")}
                                         className="flex items-center gap-3 no-underline"
                                         onClick={() => setOpen(false)}
                                     >
-                                        <img src="/favicon.svg" alt="OverTheWire" className="h-8 w-8 rounded-lg" />
+                                        <img src={formatPath("/favicon.svg")} alt="OverTheWire" className="h-8 w-8 rounded-lg" />
                                         <span className="text-base font-semibold text-white">
                                             OverTheWire
                                         </span>
@@ -138,7 +138,7 @@ export default function Navbar({ pathname }: NavbarProps) {
 
                             <div className="flex flex-col gap-1 px-3 py-4">
                                 <a
-                                    href="/information/donate"
+                                    href={formatPath("/information/donate")}
                                     onClick={() => setOpen(false)}
                                     className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-neutral-400 no-underline transition-all duration-200 hover:bg-white/5 hover:text-emerald-400"
                                 >
@@ -146,7 +146,7 @@ export default function Navbar({ pathname }: NavbarProps) {
                                     Donate
                                 </a>
                                 <a
-                                    href="/information/chat"
+                                    href={formatPath("/information/chat")}
                                     onClick={() => setOpen(false)}
                                     className="flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium text-neutral-400 no-underline transition-all duration-200 hover:bg-white/5 hover:text-cyan-400"
                                 >

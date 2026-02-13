@@ -1,5 +1,6 @@
 ---
 import gamesData from "../data/games";
+import { formatPath } from "@/lib/utils";
 
 interface Props {
     gameName: string;
@@ -19,7 +20,7 @@ for (let i = 0; i <= gameData.lastlevel; i++) {
     const urlName = `Level ${i}`;
 
     const slug = `${gameName}${i}`;
-    const url = `/wargames/${gameName}/${slug}`;
+    const url = formatPath(`/wargames/${gameName}/${slug}`);
 
     levels.push({
         name: urlName,
@@ -29,8 +30,8 @@ for (let i = 0; i <= gameData.lastlevel; i++) {
 }
 
 const isLandingActive =
-    pathname === `/wargames/${gameName}` ||
-    pathname === `/wargames/${gameName}/`;
+    pathname === formatPath(`/wargames/${gameName}`) ||
+    pathname === formatPath(`/wargames/${gameName}/`);
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const displayName = capitalize(gameName);
@@ -172,7 +173,7 @@ const displayName = capitalize(gameName);
     {/* Level Navigation */}
     <nav class="rounded-lg border border-white/10 bg-white/5 p-3">
         <a
-            href={`/wargames/${gameName}`}
+            href={formatPath(`/wargames/${gameName}`)}
             class={`mb-2 block rounded-md px-3 py-2 text-sm font-semibold no-underline transition-colors ${
                 isLandingActive
                     ? "bg-white/10 text-white"
