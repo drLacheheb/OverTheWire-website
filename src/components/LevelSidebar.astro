@@ -1,0 +1,98 @@
+---
+import gamesData from "../data/games";
+
+interface Props {
+    gameName: string;
+}
+
+const { gameName } = Astro.props;
+const { pathname } = Astro.url;
+
+const gameData = gamesData[gameName];
+
+if (!gameData) {
+    throw new Error(`Game data not found for ${gameName}`);
+}
+
+const levels = [];
+for (let i = 0; i <= gameData.lastlevel; i++) {
+    let urlName = "";
+    if (!gameData.specialNumbering) {
+        if (i === 0) {
+            urlName = `Level ${i}`;
+        } else {
+            urlName = `Level ${i - 1} \u2192 Level ${i}`;
+        }
+    } else {
+        urlName = `Level ${i} \u2192 Level ${i + 1}`;
+    }
+
+    // Construct URL. Legacy used .html but we use clean URLs.
+    // Note: For Level 0, legacy URL was often /wargames/bandit/bandit0.html
+    // Ideally we map this to /wargames/bandit/bandit0
+    const slug = `${gameName}${i}`;
+    const url = `/wargames/${gameName}/${slug}`;
+
+    levels.push({
+        name: urlName,
+        url: url,
+        active: pathname === url || pathname === url + "/", // Simple active check
+    });
+}
+
+// Check for game landing page active state
+const isLandingActive =
+    pathname === `/wargames/${gameName}` ||
+    pathname === `/wargames/${gameName}/`;
+
+// Capitalize first letter helper
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const displayName = capitalize(gameName);
+---
+
+<div id="sidemenu" class="m-0 left-0 float-left w-[200px] absolute top-[110px]">
+    {
+        gameData.host && gameData.port && (
+            <div
+                id="sshinfo"
+                class="text-white bg-black text-[9pt] ml-[5px] p-[4px] border border-[#00ff00] mb-4"
+            >
+                <>
+                    <span class="text-[#00ff00] text-[12pt]">
+                        SSH Information
+                    </span>
+                    <br />
+                </>
+                Host: {gameData.host}
+                <br />
+                Port: {gameData.port}
+            </div>
+        )
+    }
+
+    <ul class="m-0 list-none no-underline">
+        <li>
+            <a
+                href={`/wargames/${gameName}`}
+                class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${isLandingActive ? "text-[#CCC]" : ""}`}
+            >
+                <span
+                    class="font-['origins','Helvetica','Arial',sans-serif] text-[16pt] leading-[42px] text-[#999]"
+                    >{displayName}</span
+                >
+            </a>
+        </li>
+        {
+            levels.map((level) => (
+                <li>
+                    <a
+                        href={level.url}
+                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${level.active ? "text-[#CCC]" : ""}`}
+                    >
+                        {level.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Vortex Level 14" gameName="vortex" level={14}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Bad Encryption
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        Based on something seen in the "real world", it has weak encryption
+        usage, used over a TCP/IP connection. This level requires you to apply
+        some logic to the challenge at hand. You must login to
+        <a
+            href="ssh://vortex.labs.overthewire.org:2228"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >vortex.labs.overthewire.org</a
+        > to complete this level.
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        The &gt; indicates traffic "from the server, to the client", and the
+        &lt; indicates traffic "from the client, to the server".
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        If you need some hints, consider how you can divide and conquer the
+        problem. For example, does it look like symmetric encryption, or
+        asymmetric encryption? How can you further classify them?
+    </p>
+</GameLayout>

@@ -1,0 +1,89 @@
+---
+const onlineGames = [
+    { name: "Bandit", link: "/wargames/bandit" },
+    { name: "Natas", link: "/wargames/natas" },
+    { name: "Leviathan", link: "/wargames/leviathan" },
+    { name: "Krypton", link: "/wargames/krypton" },
+    { name: "Narnia", link: "/wargames/narnia" },
+    { name: "Behemoth", link: "/wargames/behemoth" },
+    { name: "Utumno", link: "/wargames/utumno" },
+    { name: "Maze", link: "/wargames/maze" },
+    { name: "Vortex", link: "/wargames/vortex" },
+    { name: "Manpage", link: "/wargames/manpage" },
+    { name: "Drifter", link: "/wargames/drifter" },
+    { name: "FormulaOne", link: "/wargames/formulaone" },
+];
+
+const offlineGames = [{ name: "Semtex", link: "/wargames/semtex" }];
+
+const releasedGames = [
+    { name: "HES2010", link: "/wargames/hes2010" },
+    { name: "Abraxas", link: "/wargames/abraxas" },
+    { name: "Monxla", link: "/wargames/monxla" },
+    { name: "Kishi", link: "/wargames/kishi" },
+];
+
+const { pathname } = Astro.url;
+---
+
+<div id="sidemenu" class="m-0 left-0 float-left w-[200px] absolute top-[110px]">
+    <ul class="m-0 list-none no-underline">
+        <li>
+            <span
+                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
+                >Online</span>
+        </li>
+        {
+            onlineGames.map((game) => (
+                <li>
+                    <a
+                        href={game.link}
+                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
+                    >
+                        {game.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    <br />
+    <ul class="m-0 list-none no-underline">
+        <li>
+            <span
+                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
+                >Offline</span>
+        </li>
+        {
+            offlineGames.map((game) => (
+                <li>
+                    <a
+                        href={game.link}
+                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
+                    >
+                        {game.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    <br />
+    <ul class="m-0 list-none no-underline">
+        <li>
+            <span
+                class="font-['origins','Helvetica','Arial',sans-serif] text-[#999] text-[16pt] leading-[42px]"
+                >Released</span>
+        </li>
+        {
+            releasedGames.map((game) => (
+                <li>
+                    <a
+                        href={game.link}
+                        class={`text-[#333] dark:text-white leading-[24px] no-underline block hover:text-[#999] visited:text-[#999] ${pathname.startsWith(game.link) ? "text-[#CCC]" : ""}`}
+                    >
+                        {game.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>

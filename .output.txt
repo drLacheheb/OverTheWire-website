@@ -1,329 +1,315 @@
-On branch gh-pages
-Your branch is up to date with 'origin/gh-pages'.
-Changes not staged for commit:
-  (use "git add/rm <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        deleted:    CNAME
-        deleted:    LICENSE
-        modified:   README.md
-        deleted:    _config.yml
-        deleted:    _includes/beginNote.html
-        deleted:    _includes/endNote.html
-        deleted:    _includes/games.md
-        deleted:    _includes/information.md
-        deleted:    _includes/menu_item.html
-        deleted:    _includes/otwuserdir.html
-        deleted:    _includes/patreonlist.md
-        deleted:    _includes/showFile.html
-        deleted:    _layouts/default.html
-        deleted:    css/highlightcode.css
-        deleted:    css/jquery-ui.css
-        deleted:    css/origins.readme.txt
-        deleted:    css/origins.ttf
-        deleted:    css/patreon.css
-        deleted:    css/style.css
-        deleted:    css/wechall.css
-        deleted:    favicon.ico
-        deleted:    games.json
-        deleted:    img/ATTRIBUTION
-        deleted:    img/bc-logo.png
-        deleted:    img/dc-logo.png
-        deleted:    img/domokitten.png
-        deleted:    img/favicon.ico
-        deleted:    img/fullsize/bc-logo.png
-        deleted:    img/fullsize/dc-logo.png
-        deleted:    img/fullsize/lc-logo.png
-        deleted:    img/lc-logo.png
-        deleted:    img/patreon.png
-        deleted:    img/patreon/includesecurity.png
-        deleted:    img/patreon/interceptsecurity.png
-        deleted:    img/paypal.png
-        deleted:    img/pixelblack40.png
-        deleted:    img/pixelwhite40.png
-        deleted:    img/semtex.gif
-        deleted:    img/vortex.png
-        deleted:    img/wechall.gif
-        deleted:    index.html
-        deleted:    information/alumni.md
-        deleted:    information/chat.md
-        deleted:    information/donate.md
-        deleted:    information/sshinfra.md
-        deleted:    information/staff.md
-        deleted:    information/userdata.md
-        deleted:    information/website.md
-        deleted:    information/wechall.md
-        deleted:    js/highlight.min.js
-        deleted:    js/jquery-3.7.1.min.js
-        deleted:    js/mustache-4.0.0.min.js
-        deleted:    js/otwcrap.js
-        deleted:    js/updatedmarkers-logic.js
-        deleted:    js/updatedmarkers.js
-        deleted:    js/wechall-data.json
-        deleted:    js/wechall.js
-        deleted:    patreon/patreon.py
-        deleted:    patreon/patrons.json
-        deleted:    patreon/update_patreonlist.sh
-        deleted:    rules/index.md
-        deleted:    wargames/abraxas/index.md
-        deleted:    wargames/abraxas/instructions.txt
-        deleted:    wargames/bandit/bandit0.md
-        deleted:    wargames/bandit/bandit1.md
-        deleted:    wargames/bandit/bandit10.md
-        deleted:    wargames/bandit/bandit11.md
-        deleted:    wargames/bandit/bandit12.md
-        deleted:    wargames/bandit/bandit13.md
-        deleted:    wargames/bandit/bandit14.md
-        deleted:    wargames/bandit/bandit15.md
-        deleted:    wargames/bandit/bandit16.md
-        deleted:    wargames/bandit/bandit17.md
-        deleted:    wargames/bandit/bandit18.md
-        deleted:    wargames/bandit/bandit19.md
-        deleted:    wargames/bandit/bandit2.md
-        deleted:    wargames/bandit/bandit20.md
-        deleted:    wargames/bandit/bandit21.md
-        deleted:    wargames/bandit/bandit22.md
-        deleted:    wargames/bandit/bandit23.md
-        deleted:    wargames/bandit/bandit24.md
-        deleted:    wargames/bandit/bandit25.md
-        deleted:    wargames/bandit/bandit26.md
-        deleted:    wargames/bandit/bandit27.md
-        deleted:    wargames/bandit/bandit28.md
-        deleted:    wargames/bandit/bandit29.md
-        deleted:    wargames/bandit/bandit3.md
-        deleted:    wargames/bandit/bandit30.md
-        deleted:    wargames/bandit/bandit31.md
-        deleted:    wargames/bandit/bandit32.md
-        deleted:    wargames/bandit/bandit33.md
-        deleted:    wargames/bandit/bandit34.md
-        deleted:    wargames/bandit/bandit4.md
-        deleted:    wargames/bandit/bandit5.md
-        deleted:    wargames/bandit/bandit6.md
-        deleted:    wargames/bandit/bandit7.md
-        deleted:    wargames/bandit/bandit8.md
-        deleted:    wargames/bandit/bandit9.md
-        deleted:    wargames/bandit/index.md
-        deleted:    wargames/behemoth/behemoth0.md
-        deleted:    wargames/behemoth/behemoth1.md
-        deleted:    wargames/behemoth/behemoth2.md
-        deleted:    wargames/behemoth/behemoth3.md
-        deleted:    wargames/behemoth/behemoth4.md
-        deleted:    wargames/behemoth/behemoth5.md
-        deleted:    wargames/behemoth/behemoth6.md
-        deleted:    wargames/behemoth/behemoth7.md
-        deleted:    wargames/behemoth/behemoth8.md
-        deleted:    wargames/behemoth/index.md
-        deleted:    wargames/blacksun/blacksun0.c
-        deleted:    wargames/blacksun/blacksun0.md
-        deleted:    wargames/blacksun/blacksun1.c
-        deleted:    wargames/blacksun/blacksun1.md
-        deleted:    wargames/blacksun/blacksun2.md
-        deleted:    wargames/blacksun/blacksun3.md
-        deleted:    wargames/blacksun/blacksun4.basic_functions.c
-        deleted:    wargames/blacksun/blacksun4.function.c
-        deleted:    wargames/blacksun/blacksun4.md
-        deleted:    wargames/blacksun/index.md
-        deleted:    wargames/blacksun/reading_material.md
-        deleted:    wargames/drifter/drifter0.c
-        deleted:    wargames/drifter/drifter0.md
-        deleted:    wargames/drifter/drifter1.md
-        deleted:    wargames/drifter/drifter10.md
-        deleted:    wargames/drifter/drifter11.md
-        deleted:    wargames/drifter/drifter12.md
-        deleted:    wargames/drifter/drifter13.md
-        deleted:    wargames/drifter/drifter14.md
-        deleted:    wargames/drifter/drifter15.md
-        deleted:    wargames/drifter/drifter2.md
-        deleted:    wargames/drifter/drifter3.md
-        deleted:    wargames/drifter/drifter4.md
-        deleted:    wargames/drifter/drifter5.md
-        deleted:    wargames/drifter/drifter6.md
-        deleted:    wargames/drifter/drifter7.md
-        deleted:    wargames/drifter/drifter8.md
-        deleted:    wargames/drifter/drifter9.md
-        deleted:    wargames/drifter/index.md
-        deleted:    wargames/drifter/rc4.c
-        deleted:    wargames/drifter/rc4.h
-        deleted:    wargames/formulaone/formulaone0.md
-        deleted:    wargames/formulaone/formulaone1.md
-        deleted:    wargames/formulaone/formulaone2.md
-        deleted:    wargames/formulaone/formulaone3.md
-        deleted:    wargames/formulaone/formulaone4.md
-        deleted:    wargames/formulaone/formulaone5.md
-        deleted:    wargames/formulaone/formulaone6.md
-        deleted:    wargames/formulaone/index.md
-        deleted:    wargames/hes2010/index.md
-        deleted:    wargames/hes2010/instructions.txt
-        deleted:    wargames/index.md
-        deleted:    wargames/kishi/index.md
-        deleted:    wargames/krypton/index.md
-        deleted:    wargames/krypton/krypton0.md
-        deleted:    wargames/krypton/krypton1.md
-        deleted:    wargames/krypton/krypton2.md
-        deleted:    wargames/krypton/krypton3.md
-        deleted:    wargames/krypton/krypton4.md
-        deleted:    wargames/krypton/krypton5.md
-        deleted:    wargames/krypton/krypton6.md
-        deleted:    wargames/leviathan/index.md
-        deleted:    wargames/leviathan/leviathan0.md
-        deleted:    wargames/leviathan/leviathan1.md
-        deleted:    wargames/leviathan/leviathan2.md
-        deleted:    wargames/leviathan/leviathan3.md
-        deleted:    wargames/leviathan/leviathan4.md
-        deleted:    wargames/leviathan/leviathan5.md
-        deleted:    wargames/leviathan/leviathan6.md
-        deleted:    wargames/leviathan/leviathan7.md
-        deleted:    wargames/manpage/index.md
-        deleted:    wargames/manpage/manpage0.md
-        deleted:    wargames/manpage/manpage1.md
-        deleted:    wargames/manpage/manpage2.md
-        deleted:    wargames/manpage/manpage3.md
-        deleted:    wargames/manpage/manpage4.md
-        deleted:    wargames/manpage/manpage5.md
-        deleted:    wargames/manpage/manpage6.md
-        deleted:    wargames/manpage/manpage7.md
-        deleted:    wargames/maze/index.md
-        deleted:    wargames/maze/maze0.md
-        deleted:    wargames/maze/maze1.md
-        deleted:    wargames/maze/maze2.md
-        deleted:    wargames/maze/maze3.md
-        deleted:    wargames/maze/maze4.md
-        deleted:    wargames/maze/maze5.md
-        deleted:    wargames/maze/maze6.md
-        deleted:    wargames/maze/maze7.md
-        deleted:    wargames/maze/maze8.md
-        deleted:    wargames/maze/maze9.md
-        deleted:    wargames/monxla/index.md
-        deleted:    wargames/monxla/instructions.txt
-        deleted:    wargames/narnia/index.md
-        deleted:    wargames/narnia/narnia0.md
-        deleted:    wargames/narnia/narnia1.md
-        deleted:    wargames/narnia/narnia2.md
-        deleted:    wargames/narnia/narnia3.md
-        deleted:    wargames/narnia/narnia4.md
-        deleted:    wargames/narnia/narnia5.md
-        deleted:    wargames/narnia/narnia6.md
-        deleted:    wargames/narnia/narnia7.md
-        deleted:    wargames/narnia/narnia8.md
-        deleted:    wargames/narnia/narnia9.md
-        deleted:    wargames/natas/FP7-NESSOS.jpg
-        deleted:    wargames/natas/index.md
-        deleted:    wargames/natas/level.css
-        deleted:    wargames/natas/natas0.md
-        deleted:    wargames/natas/natas1.md
-        deleted:    wargames/natas/natas10.md
-        deleted:    wargames/natas/natas11.md
-        deleted:    wargames/natas/natas12.md
-        deleted:    wargames/natas/natas13.md
-        deleted:    wargames/natas/natas14.md
-        deleted:    wargames/natas/natas15.md
-        deleted:    wargames/natas/natas16.md
-        deleted:    wargames/natas/natas17.md
-        deleted:    wargames/natas/natas18.md
-        deleted:    wargames/natas/natas19.md
-        deleted:    wargames/natas/natas2.md
-        deleted:    wargames/natas/natas20.md
-        deleted:    wargames/natas/natas21.md
-        deleted:    wargames/natas/natas22.md
-        deleted:    wargames/natas/natas23.md
-        deleted:    wargames/natas/natas24.md
-        deleted:    wargames/natas/natas25.md
-        deleted:    wargames/natas/natas26.md
-        deleted:    wargames/natas/natas27.md
-        deleted:    wargames/natas/natas28.md
-        deleted:    wargames/natas/natas29.md
-        deleted:    wargames/natas/natas3.md
-        deleted:    wargames/natas/natas30.md
-        deleted:    wargames/natas/natas31.md
-        deleted:    wargames/natas/natas32.md
-        deleted:    wargames/natas/natas33.md
-        deleted:    wargames/natas/natas34.md
-        deleted:    wargames/natas/natas4.md
-        deleted:    wargames/natas/natas5.md
-        deleted:    wargames/natas/natas6.md
-        deleted:    wargames/natas/natas7.md
-        deleted:    wargames/natas/natas8.md
-        deleted:    wargames/natas/natas9.md
-        deleted:    wargames/semtex/index.md
-        deleted:    wargames/semtex/semtex0.md
-        deleted:    wargames/semtex/semtex1.md
-        deleted:    wargames/semtex/semtex10.c
-        deleted:    wargames/semtex/semtex10.md
-        deleted:    wargames/semtex/semtex11.c
-        deleted:    wargames/semtex/semtex11.md
-        deleted:    wargames/semtex/semtex12.authd.c
-        deleted:    wargames/semtex/semtex12.daemon.c
-        deleted:    wargames/semtex/semtex12.md
-        deleted:    wargames/semtex/semtex12.reader.c
-        deleted:    wargames/semtex/semtex12.sem.c
-        deleted:    wargames/semtex/semtex12.sem.h
-        deleted:    wargames/semtex/semtex12.server.h
-        deleted:    wargames/semtex/semtex2.md
-        deleted:    wargames/semtex/semtex3.md
-        deleted:    wargames/semtex/semtex4.md
-        deleted:    wargames/semtex/semtex5.md
-        deleted:    wargames/semtex/semtex6.md
-        deleted:    wargames/semtex/semtex6.rawwrapper.c
-        deleted:    wargames/semtex/semtex7.c
-        deleted:    wargames/semtex/semtex7.md
-        deleted:    wargames/semtex/semtex8.md
-        deleted:    wargames/semtex/semtex9.md
-        deleted:    wargames/semtex/semtex9.rawwrapper.c
-        deleted:    wargames/utumno/index.md
-        deleted:    wargames/utumno/utumno0.md
-        deleted:    wargames/utumno/utumno1.md
-        deleted:    wargames/utumno/utumno2.md
-        deleted:    wargames/utumno/utumno3.md
-        deleted:    wargames/utumno/utumno4.md
-        deleted:    wargames/utumno/utumno5.md
-        deleted:    wargames/utumno/utumno6.md
-        deleted:    wargames/utumno/utumno7.md
-        deleted:    wargames/utumno/utumno8.md
-        deleted:    wargames/vortex/index.md
-        deleted:    wargames/vortex/phkmalloc.c
-        deleted:    wargames/vortex/vortex0.md
-        deleted:    wargames/vortex/vortex1.c
-        deleted:    wargames/vortex/vortex1.md
-        deleted:    wargames/vortex/vortex10.md
-        deleted:    wargames/vortex/vortex11.c
-        deleted:    wargames/vortex/vortex11.md
-        deleted:    wargames/vortex/vortex12.md
-        deleted:    wargames/vortex/vortex13.md
-        deleted:    wargames/vortex/vortex14.md
-        deleted:    wargames/vortex/vortex15.md
-        deleted:    wargames/vortex/vortex16.md
-        deleted:    wargames/vortex/vortex17.md
-        deleted:    wargames/vortex/vortex18.c
-        deleted:    wargames/vortex/vortex18.md
-        deleted:    wargames/vortex/vortex19.md
-        deleted:    wargames/vortex/vortex2.c
-        deleted:    wargames/vortex/vortex2.md
-        deleted:    wargames/vortex/vortex20.md
-        deleted:    wargames/vortex/vortex21.md
-        deleted:    wargames/vortex/vortex22.md
-        deleted:    wargames/vortex/vortex23.md
-        deleted:    wargames/vortex/vortex24.c
-        deleted:    wargames/vortex/vortex24.md
-        deleted:    wargames/vortex/vortex25.md
-        deleted:    wargames/vortex/vortex26.md
-        deleted:    wargames/vortex/vortex3.c
-        deleted:    wargames/vortex/vortex3.md
-        deleted:    wargames/vortex/vortex4.c
-        deleted:    wargames/vortex/vortex4.md
-        deleted:    wargames/vortex/vortex5.c
-        deleted:    wargames/vortex/vortex5.md
-        deleted:    wargames/vortex/vortex6.md
-        deleted:    wargames/vortex/vortex7.c
-        deleted:    wargames/vortex/vortex7.md
-        deleted:    wargames/vortex/vortex8.md
-        deleted:    wargames/vortex/vortex9.md
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        astro.config.mjs
-        components.json
-        legacy_website/
-        package-lock.json
-        package.json
-        public/
-        src/
-        tsconfig.json
-no changes added to commit (use "git add" and/or "git commit -a")
+ legacy_website/.gitignore                          |    4 -
+ legacy_website/CNAME                               |    1 -
+ legacy_website/LICENSE                             |   21 -
+ legacy_website/README.md                           |   46 -
+ legacy_website/_config.yml                         |    2 -
+ legacy_website/_includes/beginNote.html            |    2 -
+ legacy_website/_includes/endNote.html              |    1 -
+ legacy_website/_includes/games.md                  |   30 -
+ legacy_website/_includes/information.md            |   12 -
+ legacy_website/_includes/menu_item.html            |   21 -
+ legacy_website/_includes/otwuserdir.html           |   26 -
+ legacy_website/_includes/patreonlist.md            |   66 -
+ legacy_website/_includes/showFile.html             |    9 -
+ legacy_website/_layouts/default.html               |   82 -
+ legacy_website/css/highlightcode.css               |  160 -
+ legacy_website/css/jquery-ui.css                   | 1177 -------
+ legacy_website/css/origins.readme.txt              |    1 -
+ legacy_website/css/origins.ttf                     |  Bin 118044 -> 0 bytes
+ legacy_website/css/patreon.css                     |   79 -
+ legacy_website/css/style.css                       |  392 ---
+ legacy_website/css/wechall.css                     |   20 -
+ legacy_website/favicon.ico                         |    1 -
+ legacy_website/games.json                          |   70 -
+ legacy_website/img/ATTRIBUTION                     |    2 -
+ legacy_website/img/bc-logo.png                     |  Bin 4816 -> 0 bytes
+ legacy_website/img/dc-logo.png                     |  Bin 4954 -> 0 bytes
+ legacy_website/img/domokitten.png                  |  Bin 33294 -> 0 bytes
+ legacy_website/img/favicon.ico                     |  Bin 7060 -> 0 bytes
+ legacy_website/img/fullsize/bc-logo.png            |  Bin 13005 -> 0 bytes
+ legacy_website/img/fullsize/dc-logo.png            |  Bin 184522 -> 0 bytes
+ legacy_website/img/fullsize/lc-logo.png            |  Bin 102605 -> 0 bytes
+ legacy_website/img/lc-logo.png                     |  Bin 3019 -> 0 bytes
+ legacy_website/img/patreon.png                     |  Bin 6579 -> 0 bytes
+ legacy_website/img/patreon/includesecurity.png     |  Bin 8866 -> 0 bytes
+ legacy_website/img/patreon/interceptsecurity.png   |  Bin 16263 -> 0 bytes
+ legacy_website/img/paypal.png                      |  Bin 25620 -> 0 bytes
+ legacy_website/img/pixelblack40.png                |  Bin 178 -> 0 bytes
+ legacy_website/img/pixelwhite40.png                |  Bin 178 -> 0 bytes
+ legacy_website/img/semtex.gif                      |  Bin 7402 -> 0 bytes
+ legacy_website/img/vortex.png                      |  Bin 1569 -> 0 bytes
+ legacy_website/img/wechall.gif                     |  Bin 9279 -> 0 bytes
+ legacy_website/index.html                          |    1 -
+ legacy_website/information/alumni.md               |   21 -
+ legacy_website/information/chat.md                 |   44 -
+ legacy_website/information/donate.md               |   29 -
+ legacy_website/information/sshinfra.md             |   68 -
+ legacy_website/information/staff.md                |   21 -
+ legacy_website/information/userdata.md             |   54 -
+ legacy_website/information/website.md              |   15 -
+ legacy_website/information/wechall.md              |   53 -
+ legacy_website/js/highlight.min.js                 |    1 -
+ legacy_website/js/jquery-3.7.1.min.js              |    2 -
+ legacy_website/js/mustache-4.0.0.min.js            |    1 -
+ legacy_website/js/otwcrap.js                       |   99 -
+ legacy_website/js/updatedmarkers-logic.js          |   42 -
+ legacy_website/js/updatedmarkers.js                |   11 -
+ legacy_website/js/wechall-data.json                |   26 -
+ legacy_website/js/wechall.js                       |   33 -
+ legacy_website/patreon/patreon.py                  |   27 -
+ legacy_website/patreon/patrons.json                |    1 -
+ legacy_website/patreon/update_patreonlist.sh       |   12 -
+ legacy_website/rules/index.md                      |   62 -
+ legacy_website/wargames/abraxas/index.md           |   23 -
+ legacy_website/wargames/abraxas/instructions.txt   |   58 -
+ legacy_website/wargames/bandit/bandit0.md          |   28 -
+ legacy_website/wargames/bandit/bandit1.md          |   33 -
+ legacy_website/wargames/bandit/bandit10.md         |   15 -
+ legacy_website/wargames/bandit/bandit11.md         |   19 -
+ legacy_website/wargames/bandit/bandit12.md         |   20 -
+ legacy_website/wargames/bandit/bandit13.md         |   26 -
+ legacy_website/wargames/bandit/bandit14.md         |   23 -
+ legacy_website/wargames/bandit/bandit15.md         |   30 -
+ legacy_website/wargames/bandit/bandit16.md         |   25 -
+ legacy_website/wargames/bandit/bandit17.md         |   26 -
+ legacy_website/wargames/bandit/bandit18.md         |   19 -
+ legacy_website/wargames/bandit/bandit19.md         |   15 -
+ legacy_website/wargames/bandit/bandit2.md          |   31 -
+ legacy_website/wargames/bandit/bandit20.md         |   17 -
+ legacy_website/wargames/bandit/bandit21.md         |   21 -
+ legacy_website/wargames/bandit/bandit22.md         |   15 -
+ legacy_website/wargames/bandit/bandit23.md         |   20 -
+ legacy_website/wargames/bandit/bandit24.md         |   22 -
+ legacy_website/wargames/bandit/bandit25.md         |   12 -
+ legacy_website/wargames/bandit/bandit26.md         |   20 -
+ legacy_website/wargames/bandit/bandit27.md         |   12 -
+ legacy_website/wargames/bandit/bandit28.md         |   25 -
+ legacy_website/wargames/bandit/bandit29.md         |   25 -
+ legacy_website/wargames/bandit/bandit3.md          |   29 -
+ legacy_website/wargames/bandit/bandit30.md         |   25 -
+ legacy_website/wargames/bandit/bandit31.md         |   25 -
+ legacy_website/wargames/bandit/bandit32.md         |   25 -
+ legacy_website/wargames/bandit/bandit33.md         |   13 -
+ legacy_website/wargames/bandit/bandit34.md         |    6 -
+ legacy_website/wargames/bandit/bandit4.md          |   24 -
+ legacy_website/wargames/bandit/bandit5.md          |   25 -
+ legacy_website/wargames/bandit/bandit6.md          |   27 -
+ legacy_website/wargames/bandit/bandit7.md          |   29 -
+ legacy_website/wargames/bandit/bandit8.md          |   14 -
+ legacy_website/wargames/bandit/bandit9.md          |   19 -
+ legacy_website/wargames/bandit/index.md            |   59 -
+ legacy_website/wargames/behemoth/behemoth0.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth1.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth2.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth3.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth4.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth5.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth6.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth7.md      |    6 -
+ legacy_website/wargames/behemoth/behemoth8.md      |    6 -
+ legacy_website/wargames/behemoth/index.md          |   44 -
+ legacy_website/wargames/blacksun/blacksun0.c       |   91 -
+ legacy_website/wargames/blacksun/blacksun0.md      |   26 -
+ legacy_website/wargames/blacksun/blacksun1.c       |    7 -
+ legacy_website/wargames/blacksun/blacksun1.md      |   19 -
+ legacy_website/wargames/blacksun/blacksun2.md      |   31 -
+ legacy_website/wargames/blacksun/blacksun3.md      |   20 -
+ .../wargames/blacksun/blacksun4.basic_functions.c  | 3206 --------------------
+ .../wargames/blacksun/blacksun4.function.c         |   18 -
+ legacy_website/wargames/blacksun/blacksun4.md      |   32 -
+ legacy_website/wargames/blacksun/index.md          |   51 -
+ .../wargames/blacksun/reading_material.md          |  111 -
+ legacy_website/wargames/drifter/drifter0.c         |  173 --
+ legacy_website/wargames/drifter/drifter0.md        |   74 -
+ legacy_website/wargames/drifter/drifter1.md        |   21 -
+ legacy_website/wargames/drifter/drifter10.md       |    7 -
+ legacy_website/wargames/drifter/drifter11.md       |    7 -
+ legacy_website/wargames/drifter/drifter12.md       |    6 -
+ legacy_website/wargames/drifter/drifter13.md       |    6 -
+ legacy_website/wargames/drifter/drifter14.md       |   13 -
+ legacy_website/wargames/drifter/drifter15.md       |    6 -
+ legacy_website/wargames/drifter/drifter2.md        |    8 -
+ legacy_website/wargames/drifter/drifter3.md        |   12 -
+ legacy_website/wargames/drifter/drifter4.md        |    9 -
+ legacy_website/wargames/drifter/drifter5.md        |   10 -
+ legacy_website/wargames/drifter/drifter6.md        |   22 -
+ legacy_website/wargames/drifter/drifter7.md        |   15 -
+ legacy_website/wargames/drifter/drifter8.md        |    7 -
+ legacy_website/wargames/drifter/drifter9.md        |    7 -
+ legacy_website/wargames/drifter/index.md           |   11 -
+ legacy_website/wargames/drifter/rc4.c              |   52 -
+ legacy_website/wargames/drifter/rc4.h              |   10 -
+ legacy_website/wargames/formulaone/formulaone0.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone1.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone2.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone3.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone4.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone5.md  |    6 -
+ legacy_website/wargames/formulaone/formulaone6.md  |    6 -
+ legacy_website/wargames/formulaone/index.md        |   20 -
+ legacy_website/wargames/hes2010/index.md           |   24 -
+ legacy_website/wargames/hes2010/instructions.txt   |   44 -
+ legacy_website/wargames/index.md                   |   35 -
+ legacy_website/wargames/kishi/index.md             |   39 -
+ legacy_website/wargames/krypton/index.md           |   10 -
+ legacy_website/wargames/krypton/krypton0.md        |   16 -
+ legacy_website/wargames/krypton/krypton1.md        |   15 -
+ legacy_website/wargames/krypton/krypton2.md        |   55 -
+ legacy_website/wargames/krypton/krypton3.md        |   27 -
+ legacy_website/wargames/krypton/krypton4.md        |   49 -
+ legacy_website/wargames/krypton/krypton5.md        |   15 -
+ legacy_website/wargames/krypton/krypton6.md        |   98 -
+ legacy_website/wargames/leviathan/index.md         |   52 -
+ legacy_website/wargames/leviathan/leviathan0.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan1.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan2.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan3.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan4.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan5.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan6.md    |    6 -
+ legacy_website/wargames/leviathan/leviathan7.md    |    6 -
+ legacy_website/wargames/manpage/index.md           |   43 -
+ legacy_website/wargames/manpage/manpage0.md        |    6 -
+ legacy_website/wargames/manpage/manpage1.md        |    6 -
+ legacy_website/wargames/manpage/manpage2.md        |    6 -
+ legacy_website/wargames/manpage/manpage3.md        |    6 -
+ legacy_website/wargames/manpage/manpage4.md        |    6 -
+ legacy_website/wargames/manpage/manpage5.md        |    6 -
+ legacy_website/wargames/manpage/manpage6.md        |    6 -
+ legacy_website/wargames/manpage/manpage7.md        |    6 -
+ legacy_website/wargames/maze/index.md              |   45 -
+ legacy_website/wargames/maze/maze0.md              |    6 -
+ legacy_website/wargames/maze/maze1.md              |    6 -
+ legacy_website/wargames/maze/maze2.md              |    6 -
+ legacy_website/wargames/maze/maze3.md              |    6 -
+ legacy_website/wargames/maze/maze4.md              |    6 -
+ legacy_website/wargames/maze/maze5.md              |    6 -
+ legacy_website/wargames/maze/maze6.md              |    6 -
+ legacy_website/wargames/maze/maze7.md              |    6 -
+ legacy_website/wargames/maze/maze8.md              |    6 -
+ legacy_website/wargames/maze/maze9.md              |    6 -
+ legacy_website/wargames/monxla/index.md            |   18 -
+ legacy_website/wargames/monxla/instructions.txt    |   65 -
+ legacy_website/wargames/narnia/index.md            |   50 -
+ legacy_website/wargames/narnia/narnia0.md          |    6 -
+ legacy_website/wargames/narnia/narnia1.md          |    6 -
+ legacy_website/wargames/narnia/narnia2.md          |    6 -
+ legacy_website/wargames/narnia/narnia3.md          |    6 -
+ legacy_website/wargames/narnia/narnia4.md          |    6 -
+ legacy_website/wargames/narnia/narnia5.md          |    6 -
+ legacy_website/wargames/narnia/narnia6.md          |    6 -
+ legacy_website/wargames/narnia/narnia7.md          |    6 -
+ legacy_website/wargames/narnia/narnia8.md          |    6 -
+ legacy_website/wargames/narnia/narnia9.md          |    6 -
+ legacy_website/wargames/natas/FP7-NESSOS.jpg       |  Bin 4876 -> 0 bytes
+ legacy_website/wargames/natas/index.md             |   40 -
+ legacy_website/wargames/natas/level.css            |   55 -
+ legacy_website/wargames/natas/natas0.md            |    8 -
+ legacy_website/wargames/natas/natas1.md            |    7 -
+ legacy_website/wargames/natas/natas10.md           |    7 -
+ legacy_website/wargames/natas/natas11.md           |    7 -
+ legacy_website/wargames/natas/natas12.md           |    7 -
+ legacy_website/wargames/natas/natas13.md           |    7 -
+ legacy_website/wargames/natas/natas14.md           |    7 -
+ legacy_website/wargames/natas/natas15.md           |    7 -
+ legacy_website/wargames/natas/natas16.md           |    7 -
+ legacy_website/wargames/natas/natas17.md           |    7 -
+ legacy_website/wargames/natas/natas18.md           |    7 -
+ legacy_website/wargames/natas/natas19.md           |    7 -
+ legacy_website/wargames/natas/natas2.md            |    7 -
+ legacy_website/wargames/natas/natas20.md           |    7 -
+ legacy_website/wargames/natas/natas21.md           |    7 -
+ legacy_website/wargames/natas/natas22.md           |    7 -
+ legacy_website/wargames/natas/natas23.md           |    7 -
+ legacy_website/wargames/natas/natas24.md           |    7 -
+ legacy_website/wargames/natas/natas25.md           |    7 -
+ legacy_website/wargames/natas/natas26.md           |    7 -
+ legacy_website/wargames/natas/natas27.md           |    7 -
+ legacy_website/wargames/natas/natas28.md           |    7 -
+ legacy_website/wargames/natas/natas29.md           |    7 -
+ legacy_website/wargames/natas/natas3.md            |    7 -
+ legacy_website/wargames/natas/natas30.md           |    7 -
+ legacy_website/wargames/natas/natas31.md           |    7 -
+ legacy_website/wargames/natas/natas32.md           |    7 -
+ legacy_website/wargames/natas/natas33.md           |    7 -
+ legacy_website/wargames/natas/natas34.md           |    7 -
+ legacy_website/wargames/natas/natas4.md            |    7 -
+ legacy_website/wargames/natas/natas5.md            |    7 -
+ legacy_website/wargames/natas/natas6.md            |    7 -
+ legacy_website/wargames/natas/natas7.md            |    7 -
+ legacy_website/wargames/natas/natas8.md            |    7 -
+ legacy_website/wargames/natas/natas9.md            |    7 -
+ legacy_website/wargames/semtex/index.md            |   43 -
+ legacy_website/wargames/semtex/semtex0.md          |   29 -
+ legacy_website/wargames/semtex/semtex1.md          |   12 -
+ legacy_website/wargames/semtex/semtex10.c          |  126 -
+ legacy_website/wargames/semtex/semtex10.md         |   29 -
+ legacy_website/wargames/semtex/semtex11.c          |   34 -
+ legacy_website/wargames/semtex/semtex11.md         |   17 -
+ legacy_website/wargames/semtex/semtex12.authd.c    |  166 -
+ legacy_website/wargames/semtex/semtex12.daemon.c   |   29 -
+ legacy_website/wargames/semtex/semtex12.md         |   26 -
+ legacy_website/wargames/semtex/semtex12.reader.c   |  192 --
+ legacy_website/wargames/semtex/semtex12.sem.c      |   38 -
+ legacy_website/wargames/semtex/semtex12.sem.h      |    3 -
+ legacy_website/wargames/semtex/semtex12.server.h   |   12 -
+ legacy_website/wargames/semtex/semtex2.md          |   18 -
+ legacy_website/wargames/semtex/semtex3.md          |   18 -
+ legacy_website/wargames/semtex/semtex4.md          |   18 -
+ legacy_website/wargames/semtex/semtex5.md          |   25 -
+ legacy_website/wargames/semtex/semtex6.md          |   26 -
+ .../wargames/semtex/semtex6.rawwrapper.c           |   50 -
+ legacy_website/wargames/semtex/semtex7.c           |   54 -
+ legacy_website/wargames/semtex/semtex7.md          |   18 -
+ legacy_website/wargames/semtex/semtex8.md          |   28 -
+ legacy_website/wargames/semtex/semtex9.md          |   26 -
+ .../wargames/semtex/semtex9.rawwrapper.c           |   51 -
+ legacy_website/wargames/utumno/index.md            |   43 -
+ legacy_website/wargames/utumno/utumno0.md          |    6 -
+ legacy_website/wargames/utumno/utumno1.md          |    6 -
+ legacy_website/wargames/utumno/utumno2.md          |    6 -
+ legacy_website/wargames/utumno/utumno3.md          |    6 -
+ legacy_website/wargames/utumno/utumno4.md          |    6 -
+ legacy_website/wargames/utumno/utumno5.md          |    6 -
+ legacy_website/wargames/utumno/utumno6.md          |    6 -
+ legacy_website/wargames/utumno/utumno7.md          |    6 -
+ legacy_website/wargames/utumno/utumno8.md          |    6 -
+ legacy_website/wargames/vortex/index.md            |   14 -
+ legacy_website/wargames/vortex/phkmalloc.c         | 1166 -------
+ legacy_website/wargames/vortex/vortex0.md          |   23 -
+ legacy_website/wargames/vortex/vortex1.c           |   33 -
+ legacy_website/wargames/vortex/vortex1.md          |   19 -
+ legacy_website/wargames/vortex/vortex10.md         |   13 -
+ legacy_website/wargames/vortex/vortex11.c          |   21 -
+ legacy_website/wargames/vortex/vortex11.md         |   24 -
+ legacy_website/wargames/vortex/vortex12.md         |   12 -
+ legacy_website/wargames/vortex/vortex13.md         |   12 -
+ legacy_website/wargames/vortex/vortex14.md         |   20 -
+ legacy_website/wargames/vortex/vortex15.md         |   13 -
+ legacy_website/wargames/vortex/vortex16.md         |   12 -
+ legacy_website/wargames/vortex/vortex17.md         |   12 -
+ legacy_website/wargames/vortex/vortex18.c          |   92 -
+ legacy_website/wargames/vortex/vortex18.md         |   10 -
+ legacy_website/wargames/vortex/vortex19.md         |    9 -
+ legacy_website/wargames/vortex/vortex2.c           |   10 -
+ legacy_website/wargames/vortex/vortex2.md          |   16 -
+ legacy_website/wargames/vortex/vortex20.md         |   12 -
+ legacy_website/wargames/vortex/vortex21.md         |    9 -
+ legacy_website/wargames/vortex/vortex22.md         |    9 -
+ legacy_website/wargames/vortex/vortex23.md         |   12 -
+ legacy_website/wargames/vortex/vortex24.c          |   58 -
+ legacy_website/wargames/vortex/vortex24.md         |   10 -
+ legacy_website/wargames/vortex/vortex25.md         |   19 -
+ legacy_website/wargames/vortex/vortex26.md         |   14 -
+ legacy_website/wargames/vortex/vortex3.c           |   33 -
+ legacy_website/wargames/vortex/vortex3.md          |   26 -
+ legacy_website/wargames/vortex/vortex4.c           |   10 -
+ legacy_website/wargames/vortex/vortex4.md          |   22 -
+ legacy_website/wargames/vortex/vortex5.c           |  314 --
+ legacy_website/wargames/vortex/vortex5.md          |   16 -
+ legacy_website/wargames/vortex/vortex6.md          |   17 -
+ legacy_website/wargames/vortex/vortex7.c           |   10 -
+ legacy_website/wargames/vortex/vortex7.md          |   20 -
+ legacy_website/wargames/vortex/vortex8.md          |   14 -
+ legacy_website/wargames/vortex/vortex9.md          |   11 -
+ 314 files changed, 12605 deletions(-)

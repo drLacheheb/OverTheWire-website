@@ -1,0 +1,60 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Kishi" gameName="kishi" level="index">
+    <h2
+        class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
+    >
+        [RELEASED] Kishi (HES2013 and NSC2013)
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        This wargame was introduced at the <a
+            href="http://hackitoergosum.org/"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >Hackito Ergo Sum (HES)</a
+        > 2013 and <a
+            href="http://nosuchcon.org"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >No Such Con (NSC)</a
+        > 2013 conferences in Paris and is centered around the <strong
+            >fictictious North-Korean cyberops training facility Kishi</strong
+        >
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        As of December 2014, the Kishi game has been released to the public and
+        can be downloaded through <a
+            href="https://www.vagrantup.com/"
+            class="text-[#999] hover:text-[#CCC] no-underline">Vagrant</a
+        > for VirtualBox by typing:
+    </p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">vagrant init StevenVanAcker/kishi
+vagrant up</pre>
+
+    <p class="leading-[24px] mb-4">
+        Kishi listens on ports 22, 80 and 2222, which are forwarded from the VM
+        host through ports 6622, 6680 and 3322 respectively. Kishi uses several
+        LXC containers internally, you can access them from the host VM through
+    </p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">virsh -c lxc://</pre>
+
+    <p class="leading-[24px] mb-4">
+        The SSH server running on port 2222 can be used to login to kishi itself
+        with username/password vagrant/vagrant. All containers run an SSH server
+        with an admin account with username/password otw/otw. These admin
+        accounts are not part of the game and should only be used for setting up
+        or debugging. Change their passwords if you connect the VM to a public
+        network.
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        To start the game, visit Kishi's web server on port 80 (or port 6680 of
+        the host).
+    </p>
+</GameLayout>

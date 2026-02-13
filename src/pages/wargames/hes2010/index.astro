@@ -1,0 +1,96 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: HES2010" gameName="hes2010" level="index">
+    <h2
+        class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
+    >
+        [RELEASED] HES2010
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        This wargame was introduced at the <a
+            href="http://hackitoergosum.org/"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >Hackito Ergo Sum (HES)</a
+        > 2010 conference in Paris and is centered around the <strong
+            >fictitious company dirty-underwear.com</strong
+        >
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        The winners of this wargame at HES2010 were <strong
+            >CCCP and morla</strong
+        >.
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        As of January 2012, the HES2010 game has been released to the public and
+        can be downloaded <a
+            href="http://images.overthewire.org/HES2010 - OverTheWire Wargame.ova"
+            class="text-[#999] hover:text-[#CCC] no-underline">here</a
+        >.
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        The wargame has its own local website on the virtual machine. Once the
+        VM is running, you can find it at <a
+            href="http://192.168.66.66"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >http://192.168.66.66</a
+        >
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        The following instructions are also included on the diskimage:
+    </p>
+
+    <h3 class="text-[14pt] font-bold mt-4 mb-2">instructions.txt</h3>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">--- OverTheWire's HES2010 wargame, released January 2012 --- 
+
+1. Introduction
+
+This wargame revolves around a company called Dirty-Underwear.com which buys and sells dirty 
+underwear. Your job, very simply, is to break into the server and beat all levels.
+Hint: the credentials for the first level can be found by going through the local 
+website. Think like Google!
+
+2. How to play ?
+
+First, download the diskimage because it is intended to run locally.
+Import the diskimage into your favorite virtualization software. The game is based on Ubuntu, 
+so any virtual hardware supported by Ubuntu should be fine in your virtualization environment.
+
+When booted, the VM configures its network interface with:
+   IP 192.168.66.66/24
+   gateway 192.168.66.254
+   DNS server 8.8.8.8 (Google)
+There is no need to give access to the internet to get this VM working.
+
+You can use SSH to login to the VM. For maintenance reasons, there is an account 'otw' with 
+password 'otw' with sudo rights to get a root account. This maintenance account is not part of
+the wargame and should not be used when playing the wargame fairly.
+ 
+3. Contact information
+
+For information regarding this wargame, find us at http://www.overthewire.org or through
+IRC on irc.overthewire.org, channel #social
+The OverTheWire community offers more wargames and resources for you to explore.
+
+4. History of this wargame
+
+This wargame was reachable on hes2010.labs.overthewire.org.
+With the release of this diskimage, the DNS record has been updated to 
+point to 192.168.66.66, which is the local IP address of this offline version of the game. 
+
+Originally, this wargame was created for the Hackito Ergo Sum 2010 conference in Paris,
+which was held in April of 2010. Afterwards, the wargame was opened up to any player.
+
+5. References
+
+http://www.overthewire.org/
+http://hackitoergosum.org/</pre>
+</GameLayout>

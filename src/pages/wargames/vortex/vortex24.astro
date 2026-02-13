@@ -1,0 +1,74 @@
+---
+import GameLayout from '../../../layouts/GameLayout.astro';
+---
+
+<GameLayout title="OverTheWire: Vortex Level 24" gameName="vortex" level={24}>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Guess the seed</h2>
+  
+  <p class="leading-[24px] mb-4">
+    You might want to analyze "random_r.c" from the GLIBC source code.
+  </p>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">/*
+Written by conscon
+
+
+Hint: Analyze random_r.c from GLIBC Source
+*/
+#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;signal.h&gt;
+
+void alrm(int signo)
+{
+        printf("Operation timed out\n");
+        exit(EXIT_SUCCESS);
+}
+int main()
+{
+        int fd, i, j,word;
+        int seed,guess;
+        unsigned int rr[31];
+
+        fd = open("/dev/urandom", O_RDONLY);
+        if(fd &lt; 0) {
+                perror("/dev/urandom");
+                exit(EXIT_FAILURE);
+        }
+        alarm(60);
+        signal(SIGALRM, alrm);
+
+        for(j=0;j&lt;20;j++)
+        {
+
+                if(read(fd, &seed, sizeof(unsigned int)) != sizeof(unsigned int)) {
+                        perror("read /dev/urandom");
+                        exit(EXIT_FAILURE);
+                }
+
+                srand(seed);
+
+                for(i = 0; i &lt; 29; i++) {
+                        printf(" %d",rand());
+                        if((i%5)==4)printf("\n");
+                }
+                printf("\n");
+                fflush(stdout);
+                scanf("%d",&guess);
+                if(guess!=seed) exit(EXIT_FAILURE);
+        }
+
+        setresgid(getegid(), getegid(), getegid());
+        setresuid(geteuid(),geteuid(), geteuid());
+        execlp("/bin/sh", "sh", NULL);
+
+        return 0;
+}</pre>
+
+</GameLayout>

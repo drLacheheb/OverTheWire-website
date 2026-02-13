@@ -1,0 +1,118 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Rules">
+    <div class="prose max-w-none">
+        <h1 class="text-3xl font-bold mb-6">Rules</h1>
+
+        <p class="mb-4">
+            The goal of the OverTheWire games is to provide educational
+            resources to people willing to learn<br />
+            topics on cybersecurity. The OverTheWire community hosts these resources
+            free of charge for players<br />
+            to use and learn from. However, usage of these resources comes with a
+            few simple rules.
+        </p>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4">In general</h2>
+        <ol class="list-decimal list-inside space-y-2 mb-6">
+            <li>
+                <strong>Treat everyone with respect</strong>. We will not
+                tolerate any form of harassment or discrimination.
+            </li>
+            <li>
+                <strong
+                    >We do not allow unsolicited spam or self-promotion</strong
+                > in the chatrooms or private messages.
+            </li>
+            <li>
+                <strong>Do not spoil the game</strong> for others in the chatrooms.
+                If you need help, specify the game and<br />
+                level and someone will help you in private messages. Do not rely on
+                Discord's <code>/spoiler</code>
+                <br />
+                functionality as the chatrooms are connected to IRC where this functionality
+                is not available.
+            </li>
+            <li>
+                Do not use easy to guess file or directory names and <strong
+                    >clean up after yourself</strong
+                >. If you have<br />
+                created files or directories, please remove them when you are done.
+            </li>
+        </ol>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4">
+            For educators and content-creators
+        </h2>
+        <ol class="list-decimal list-inside space-y-2 mb-6">
+            <li>
+                <strong>Do not publish credentials</strong> to any of the games. We
+                understand the need to create writeups,<br />
+                walkthroughs, and tutorials, but do not publish any credentials.
+            </li>
+            <li>
+                If you are profiting from the content you create and you are
+                able to afford it,<br />
+                <strong
+                    >please <a
+                        href="/information/donate"
+                        class="text-blue-600 hover:text-blue-800 underline"
+                        >consider donating</a
+                    ></strong
+                > a portion of your earnings to the OverTheWire community.<br />
+                We are a community of volunteers which relies on donations to keep
+                the lights on.
+            </li>
+            <li>
+                Please <strong>give credit where credit is due</strong>. If you
+                are using content from the OverTheWire games,<br />
+                please mention the OverTheWire community and provide a link to our
+                website.
+            </li>
+        </ol>
+
+        <div id="accept-rules" class="mt-8">
+            <button
+                id="accept-rules-button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+                Click here to accept these rules
+            </button>
+        </div>
+
+        <div
+            id="rules-accepted"
+            class="hidden mt-8 p-4 bg-green-100 border border-green-400 text-green-700 rounded relative"
+        >
+            <span class="text-xl font-bold mr-2">&check;</span>
+            Thank you for accepting the rules. Have fun playing the games!
+        </div>
+    </div>
+
+    <script>
+        function hideAcceptButton() {
+            const acceptedDiv = document.getElementById("rules-accepted");
+            const buttonDiv = document.getElementById("accept-rules");
+            if (acceptedDiv && buttonDiv) {
+                acceptedDiv.classList.remove("hidden");
+                buttonDiv.classList.add("hidden");
+                localStorage.setItem("rules-accepted", "true");
+            }
+        }
+
+        const button = document.getElementById("accept-rules-button");
+        if (button) {
+            button.addEventListener("click", hideAcceptButton);
+        }
+
+        // Check on load
+        if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("rules-accepted") === "true"
+        ) {
+            hideAcceptButton();
+        }
+    </script>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 16" gameName="bandit" level={16}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        The password for the next level can be retrieved by submitting the
+        password of the current level to <strong>port 30001 on localhost</strong
+        > using SSL/TLS encryption.
+    </p>
+
+    <p class="leading-[24px] mb-4 font-bold">
+        Helpful note: Getting "DONE", "RENEGOTIATING" or "KEYUPDATE"? Read the
+        "CONNECTED COMMANDS" section in the manpage.
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        ssh, telnet, nc, ncat, socat, openssl, s_client, nmap, netstat, ss
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://en.wikipedia.org/wiki/Transport_Layer_Security"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Secure Socket Layer/Transport Layer Security on Wikipedia</a>
+        </li>
+        <li>
+            <a
+                href="https://www.feistyduck.com/library/openssl-cookbook/online/testing-with-openssl/index.html"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >OpenSSL Cookbook - Testing with OpenSSL</a>
+        </li>
+    </ul>
+</GameLayout>

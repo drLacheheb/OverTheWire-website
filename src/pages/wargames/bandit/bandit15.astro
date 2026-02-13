@@ -1,0 +1,33 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 15" gameName="bandit" level={15}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        The password for the next level is retrieved by submitting the password
+        of the current level to
+        <strong>port 30000 on localhost</strong>.
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">ssh, telnet, nc, openssl, s_client, nmap</p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://en.wikipedia.org/wiki/Netcat"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >How to use socket to send data to a TCP port in shell script
+                (at the bottom) or use nc</a>
+        </li>
+    </ul>
+</GameLayout>

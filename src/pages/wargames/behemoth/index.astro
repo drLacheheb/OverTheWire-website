@@ -1,0 +1,61 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Behemoth" gameName="behemoth" level="index">
+    <h2
+        class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
+    >
+        Behemoth
+    </h2>
+
+    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Don't let behemoth get the better of you.
+    </h3>
+
+    <p class="leading-[24px] mb-4">
+        Behemoth is a wargame that has been rescued from the demise of
+        <strong>intruded.net</strong>, previously hosted on
+        behemoth.intruded.net. <strong>Big thanks to adc, morla and reth</strong
+        > for their help in resurrecting this game!
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        What follows below is the original description of behemoth, copied from
+        intruded.net:
+    </p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Summary:
+Difficulty:     3/10
+Levels:         9
+Platform:   Linux/x86
+
+Author:
+Anders Tonfeldt
+
+Special Thanks:
+
+Description:
+This wargame deals with a lot of regular vulnerabilities found commonly 'out 
+in the wild'. While the game makes no attempts at emulating a real environment
+it will teach you how to exploit several of the most common coding mistakes 
+including buffer overflows, race conditions and privilege escalation.</pre>
+
+    <p class="leading-[24px] mb-4">
+        Behemoth's levels are called <strong
+            >behemoth0, behemoth1, ... etc.</strong
+        > and can be accessed on <strong>behemoth.labs.overthewire.org</strong> through
+        SSH on port 2221.
+    </p>
+
+    <p class="leading-[24px] mb-4">To login to the first level use:</p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: behemoth0
+Password: behemoth0</pre>
+
+    <p class="leading-[24px] mb-4">
+        Data for the levels can be found in <strong>/behemoth/</strong>.
+    </p>
+</GameLayout>

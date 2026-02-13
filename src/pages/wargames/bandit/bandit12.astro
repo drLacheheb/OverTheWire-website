@@ -1,0 +1,35 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 12" gameName="bandit" level={12}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        The password for the next level is stored in the file <strong
+            >data.txt</strong
+        >, where all lowercase (a-z) and uppercase (A-Z) letters have been
+        rotated by 13 positions
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://en.wikipedia.org/wiki/ROT13"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Rot13 on Wikipedia</a>
+        </li>
+    </ul>
+</GameLayout>

@@ -1,0 +1,60 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Utumno" gameName="utumno" level="index">
+    <h2
+        class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
+    >
+        Utumno
+    </h2>
+
+    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Are you adequate?
+    </h3>
+
+    <p class="leading-[24px] mb-4">
+        Utumno is a wargame that has been rescued from the demise of
+        <strong>intruded.net</strong>, previously hosted on utumno.intruded.net. <strong
+            >Big thanks to adc, morla and reth</strong
+        > for their help in resurrecting this game!
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        What follows below is the original description of utumno, copied from
+        intruded.net:
+    </p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Summary:
+Difficulty:     4/10
+Levels:         10
+Platform:   Linux/x86
+
+Author:
+Kuba and psi
+
+Special Thanks:
+
+Description:
+This is a regular wargame composed of 10 different levels. It's slightly harder than the
+previous wargames in the same genre. Actually, it's a lot harder than Leviathan and a bit
+harder than Behemoth so if you haven't beaten those two you will probably want to do that
+first.</pre>
+
+    <p class="leading-[24px] mb-4">
+        Utumno's levels are called <strong>utumno0, utumno1, ... etc.</strong> and
+        can be accessed on <strong>utumno.labs.overthewire.org</strong> through SSH
+        on port 2227.
+    </p>
+
+    <p class="leading-[24px] mb-4">To login to the first level use:</p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: utumno0
+Password: utumno0</pre>
+
+    <p class="leading-[24px] mb-4">
+        Data for the levels can be found in <strong>/utumno/</strong>.
+    </p>
+</GameLayout>

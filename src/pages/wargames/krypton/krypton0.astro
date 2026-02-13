@@ -1,0 +1,21 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Krypton Level 0" gameName="krypton" level={0}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Info</h2>
+
+    <p class="leading-[24px] mb-4">
+        Welcome to Krypton! The first level is easy. The following string
+        encodes the password using Base64:
+    </p>
+
+    <pre
+        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">S1JZUFRPTklTR1JFQVQ=</pre>
+
+    <p class="leading-[24px] mb-4">
+        Use this password to log in to krypton.labs.overthewire.org with
+        username krypton1 using SSH on port 2231. You can find the files for
+        other levels in /krypton/
+    </p>
+</GameLayout>

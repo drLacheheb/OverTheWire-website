@@ -1,0 +1,64 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Blacksun Level 2" gameName="blacksun" level={2}>
+    <p class="leading-[24px] mb-4">
+        Level2 is a test application from a <a
+            href="http://brouits.free.fr/libspopc/"
+            class="text-[#999] hover:text-[#CCC] no-underline">pop3 library</a
+        > that's pretty buggy. The idea is to write a pop3 server to trigger a vulnerability
+        (pick any you like :p) in the code and get a shell.
+    </p>
+
+    <p class="leading-[24px] mb-4 font-bold">Notes</p>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            -fpic -fPIC was added to the compile options to remote DT_TEXTREL's
+            :p
+        </li>
+        <li>
+            If you're feeling generous, perhaps drop the author a note about any
+            bugs you find so that future versions of the library can be fixed.
+        </li>
+        <li>ASLR remote fun!</li>
+    </ul>
+
+    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Binary information
+    </h3>
+
+    <div class="p-4 mb-4 bg-[#F7F7F9] border border-[#E1E1E8] rounded">
+        <div class="grid grid-cols-[1fr_2fr] gap-2">
+            <div class="font-bold text-right">
+                Stack smashing protection (SSP):
+            </div>
+            <div>Disabled</div>
+
+            <div class="font-bold text-right">
+                Postition Independent Executable (PIE):
+            </div>
+            <div>Disabled</div>
+
+            <div class="font-bold text-right">
+                Address space layout randomisation (ASLR):
+            </div>
+            <div>Enabled</div>
+
+            <div class="font-bold text-right">Non-executable pages:</div>
+            <div>None / disabled</div>
+
+            <div class="col-span-2 border-t border-[#CCC] my-2"></div>
+
+            <div class="font-bold text-right">Code Location:</div>
+            <div>
+                /levels/2/libspopc-0.7, using poptest1.c, and associated library
+                code
+            </div>
+
+            <div class="font-bold text-right">Location:</div>
+            <div>/levels/level2</div>
+        </div>
+    </div>
+</GameLayout>

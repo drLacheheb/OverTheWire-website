@@ -1,0 +1,36 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 14" gameName="bandit" level={14}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        The password for the next level is stored in
+        <strong
+            >/etc/bandit_pass/bandit14 and can only be read by user bandit14</strong
+        >. For this level, you don't get the next password, but you get a
+        private SSH key that can be used to log into the next level. Look at the
+        commands that logged you into previous bandit levels, and find out how
+        to use the key for this level.
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">ssh, scp, umask, chmod, cat, nc, install</p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >SSH/OpenSSH/Keys</a>
+        </li>
+    </ul>
+</GameLayout>

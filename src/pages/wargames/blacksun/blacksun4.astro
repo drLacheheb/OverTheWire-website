@@ -1,0 +1,81 @@
+---
+import GameLayout from '../../../layouts/GameLayout.astro';
+---
+
+<GameLayout title="OverTheWire: Blacksun Level 4" gameName="blacksun" level={4}>
+  
+  <p class="leading-[24px] mb-4">
+    level4 is an installation of Apache and PHP with an introduced heap
+    vulnerability.
+  </p>
+
+  <p class="leading-[24px] mb-4">
+    The introduced vulnerability is as follows:
+  </p>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun4.function.c</h3>
+    
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">PHP_FUNCTION(dovuln)
+{
+        zval **p_str, **p_len;
+        char *str, *smashme;
+        int argc = ZEND_NUM_ARGS(), len = 42, strlen;
+        
+        if (argc < 2 || argc > 3 || zend_get_parameters_ex(argc, &p_str, &p_len) == FAILURE) {
+             WRONG_PARAM_COUNT;
+        }
+
+        convert_to_string_ex(p_str);
+        convert_to_long_ex(p_len);
+        len = Z_LVAL_PP(p_len);
+        str = Z_STRVAL_PP(p_str);
+        strlen = Z_STRLEN_PP(p_str);
+        smashme = emalloc(len);
+        memcpy(smashme, str, strlen); //xxx
+}</pre>
+
+  <p class="leading-[24px] mb-4">
+    Thanks to orix for the introduced code snippet
+  </p>
+
+  <p class="leading-[24px] mb-4">
+    The document root is in /levels/level4/htdocs, you'll need to put your
+    php code there and call it via the webserver on port 55555.
+  </p>
+
+  <p class="leading-[24px] mb-4 font-bold">
+    Note: that if you're executing a shell, it can't be /bin/sh or
+    /bin/bash, oh, and the apache process can't access the /etc/pass
+    directory :P
+  </p>
+
+  <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Binary information</h3>
+  
+  <div class="p-4 mb-4 bg-[#F7F7F9] border border-[#E1E1E8] rounded">
+    <div class="grid grid-cols-[1fr_2fr] gap-2">
+      <div class="font-bold text-right">Stack smashing protection (SSP):</div>
+      <div>Enabled</div>
+      
+      <div class="font-bold text-right">Postition Independent Executable (PIE):</div>
+      <div>Enabled</div>
+
+      <div class="font-bold text-right">Address space layout randomisation (ASLR):</div>
+      <div>Enabled</div>
+      
+      <div class="font-bold text-right">Non-executable pages:</div>
+      <div>None / disabled</div>
+      
+      <div class="col-span-2 border-t border-[#CCC] my-2"></div>
+
+      <div class="font-bold text-right">Location:</div>
+      <div>127.0.0.1:55555</div>
+    </div>
+  </div>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun4.basic_functions.c</h3>
+  
+  <p class="leading-[24px] mb-4">
+    (The file is too large to display inline, but it is available on the level)
+  </p>
+
+</GameLayout>

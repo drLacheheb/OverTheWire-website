@@ -1,0 +1,46 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 31" gameName="bandit" level={31}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        There is a git repository at <code class="text-[#e13379]"
+            >ssh://bandit30-git@bandit.labs.overthewire.org/home/bandit30-git/repo</code
+        > via the port <code class="text-[#e13379]">2220</code>. The password
+        for the user <code class="text-[#e13379]">bandit30-git</code> is the same
+        as for the user <code class="text-[#e13379]">bandit30</code>.
+    </p>
+
+    <p class="leading-[24px] mb-4">
+        From your local machine (not the OverTheWire machine!), clone the
+        repository and find the password for the next level. This needs git
+        installed locally on your machine.
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">git</p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Installing Git</a>
+        </li>
+        <li>
+            <a
+                href="https://jwiegley.github.io/git-from-the-bottom-up/"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Git from the Bottom Up</a>
+        </li>
+    </ul>
+</GameLayout>

@@ -1,0 +1,57 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 3" gameName="bandit" level={3}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        The password for the next level is stored in a file called <strong
+            >--spaces in this filename--</strong
+        > located in the home directory
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">ls</a
+        >,
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/cd.1posix.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">cd</a
+        >,
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/cat.1.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">cat</a
+        >,
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/file.1.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">file</a
+        >,
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/du.1.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">du</a
+        >,
+        <a
+            href="https://manpages.ubuntu.com/manpages/noble/man1/find.1.html"
+            class="text-[#999] hover:text-[#CCC] no-underline">find</a
+        >
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://www.google.com/search?q=spaces+in+filename"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Google Search for "spaces in filename"</a>
+        </li>
+    </ul>
+</GameLayout>

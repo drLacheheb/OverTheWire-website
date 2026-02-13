@@ -1,0 +1,18 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Vortex Level 12" gameName="vortex" level={12}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        We don't want no executable stack
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        Exploit this level knowing that the stack is not executable. You must
+        login to <a
+            href="ssh://vortex.labs.overthewire.org:2228"
+            class="text-[#999] hover:text-[#CCC] no-underline"
+            >vortex.labs.overthewire.org</a
+        > to complete this level..
+    </p>
+</GameLayout>

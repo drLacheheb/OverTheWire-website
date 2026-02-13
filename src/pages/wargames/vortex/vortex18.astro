@@ -1,0 +1,108 @@
+---
+import GameLayout from '../../../layouts/GameLayout.astro';
+---
+
+<GameLayout title="OverTheWire: Vortex Level 18" gameName="vortex" level={18}>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">urandom seeds</h2>
+  
+  <p class="leading-[24px] mb-4">
+    Take advantage of the application's urandom dependency.
+  </p>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">/*
+ * vortex18 challenge
+ * 
+ * written by Tim Newsham
+ * contributions by Joshua J. Drake
+ */
+
+
+#include &lt;stdio.h&gt;
+
+#define RANDLEN 16
+#define BUFLEN 20
+
+#define TERMINATE1 'n'
+#define TERMINATE2 's'
+#define TERMINATE3 '$'
+#define TERMINATE4 'S'
+
+void
+seedrand(char *seed)
+{
+    char buf[RANDLEN];
+    int fd, i;
+
+    /* read in a seed */
+    fd = open("/dev/urandom", 0);
+    if(fd == -1) 
+        exit(1);
+    if(read(fd, buf, sizeof buf) != sizeof buf)
+        exit(2);
+    close(fd);
+
+    /* make sure it doesnt use the terminator */
+    for(i = 0; i &lt; RANDLEN - 1; i++) {
+        if(buf[i] == TERMINATE1 
+           || buf[i] == TERMINATE2 
+           || buf[i] == TERMINATE3
+           || buf[i] == TERMINATE4
+           || buf[i] == '\0')
+            buf[i] = ' ';
+    }
+    buf[i] = 0;
+
+    /* return it */
+    strcpy(seed, buf);
+}
+
+int
+guess(char *seed)
+{
+    char buf[BUFLEN];
+    int i;
+
+    for(i = 0; i &lt; BUFLEN - 1; i++) {
+        if(read(0, buf + i, 1) != 1)
+            exit(1);
+        if(buf[i] == TERMINATE1 
+           || buf[i] == TERMINATE2
+           || buf[i] == TERMINATE3
+           || buf[i] == TERMINATE4)
+            break;
+    }
+    buf[i] = 0;
+    
+    if(strcmp(buf, seed) == 0)
+        return 1;
+    printf(buf);
+    printf("\n");
+    fflush(stdout);
+    return 0;
+}
+
+int
+main(int argc, char **argv)
+{
+    char seed[RANDLEN];
+    int i;
+
+    seedrand(seed);
+    for(i = 0; i &lt; 10; i++) {
+        if(guess(seed)) {
+            i = geteuid();
+            setresuid(i, i, i);
+            write(1, "YAY!\n", 5);
+            execlp("/bin/sh", "sh", 0);
+            exit(0);
+        }
+    }
+
+    printf("sorry.\n");
+    return 0;
+}</pre>
+
+</GameLayout>

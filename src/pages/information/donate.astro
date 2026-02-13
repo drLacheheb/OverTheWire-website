@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<BaseLayout title="Donating">
+    <div class="prose max-w-none">
+        <h1 class="text-3xl font-bold mb-6">Donating</h1>
+
+        <p class="mb-4">
+            We gladly accept donations to keep our infrastructure running!<br />
+            We prefer receiving monthly donations via Patreon, since this allows us
+            to give perks to sponsors.<br />
+            However, PayPal donations are also an option.
+        </p>
+
+        <div class="flex flex-wrap gap-6 mt-8 justify-center">
+            <a
+                href="https://www.patreon.com/join/StevenVanAcker"
+                class="block transform hover:scale-105 transition-transform duration-200"
+            >
+                <div
+                    class="bg-[#FF424D] text-white px-8 py-6 rounded-lg shadow-md text-center min-w-[220px]"
+                >
+                    <Icon
+                        name="simple-icons:patreon"
+                        class="w-12 h-12 mx-auto mb-3"
+                    />
+                    <span class="font-bold text-lg block"
+                        >Support us on Patreon</span
+                    >
+                </div>
+            </a>
+
+            <a
+                href="https://paypal.me/overthewire"
+                class="block transform hover:scale-105 transition-transform duration-200"
+            >
+                <div
+                    class="bg-[#003087] text-white px-8 py-6 rounded-lg shadow-md text-center min-w-[220px]"
+                >
+                    <Icon
+                        name="simple-icons:paypal"
+                        class="w-12 h-12 mx-auto mb-3"
+                    />
+                    <span class="font-bold text-lg block"
+                        >Donate via PayPal</span
+                    >
+                </div>
+            </a>
+        </div>
+    </div>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+const { pathname } = Astro.url;
+
+const navItems = [
+    { name: "Wargames", link: "/wargames/" },
+    { name: "Rules", link: "/rules/" },
+    { name: "Information", link: "/information/donate" },
+];
+---
+
+<nav id="topmenu" class="absolute top-0 left-0 w-full h-[73px] bg-[#333]">
+    <a href="/" class="absolute top-[10px] left-[210px]">
+        <img src="/favicon.svg" alt="OverTheWire" class="h-[50px] w-[50px]" />
+    </a>
+    <ul class="pl-[270px] mt-[35px] list-none">
+        {
+            navItems.map((item) => {
+                const isActive = pathname.startsWith(item.link);
+                return (
+                    <li class="inline-block text-center">
+                        <a
+                            href={item.link}
+                            class={`float-left p-2.5 no-underline block w-[92px] hover:text-white ${isActive ? "text-white" : "text-[#999]"}`}
+                        >
+                            {item.name}
+                        </a>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</nav>

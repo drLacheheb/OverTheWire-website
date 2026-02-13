@@ -1,0 +1,27 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 20" gameName="bandit" level={20}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        To gain access to the next level, you should use the setuid binary in
+        the homedirectory. Execute it without arguments to find out how to use
+        it. The password for this level can be found in the usual place
+        (/etc/bandit_pass), after you have used the setuid binary.
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Helpful Reading Material
+    </h2>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="https://en.wikipedia.org/wiki/Setuid"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >setuid on Wikipedia</a>
+        </li>
+    </ul>
+</GameLayout>

@@ -1,0 +1,46 @@
+---
+import GameLayout from '../../../layouts/GameLayout.astro';
+---
+
+<GameLayout title="OverTheWire: Blacksun Level 1" gameName="blacksun" level={1}>
+  
+  <p class="leading-[24px] mb-4">
+    Level1 is a trivial stack buffer overflow. Note that you'll probably
+    find it easier to use the compiled version than compiling it from
+    source.
+  </p>
+
+  <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Binary information</h3>
+  
+  <div class="p-4 mb-4 bg-[#F7F7F9] border border-[#E1E1E8] rounded">
+    <div class="grid grid-cols-[1fr_2fr] gap-2">
+      <div class="font-bold text-right">Stack smashing protection (SSP):</div>
+      <div>Disabled</div>
+      
+      <div class="font-bold text-right">Postition Independent Executable (PIE):</div>
+      <div>Disabled</div>
+
+      <div class="font-bold text-right">Address space layout randomisation (ASLR):</div>
+      <div>Enabled - No PIE</div>
+      
+      <div class="font-bold text-right">Non-executable pages:</div>
+      <div>None / disabled</div>
+      
+      <div class="col-span-2 border-t border-[#CCC] my-2"></div>
+
+      <div class="font-bold text-right">Location:</div>
+      <div>/levels/level1</div>
+    </div>
+  </div>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun1.c</h3>
+
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">/* gcc -fno-pie -fno-stack-protector */
+
+int main(int argc, char **argv)
+{
+	char buffer[64];
+	gets(buffer);
+}</pre>
+
+</GameLayout>

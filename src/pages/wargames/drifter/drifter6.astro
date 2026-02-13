@@ -1,0 +1,38 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Drifter Level 6" gameName="drifter" level={6}>
+    <p class="leading-[24px] mb-4">
+        Level 6 is a simple remote daemon with a particular vulnerability. In
+        what I intended for this level, it is running in a vulnerable state :P
+    </p>
+
+    <p class="leading-[24px] mb-4 font-bold">Reading material:</p>
+
+    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+        <li>
+            <a
+                href="http://www.phrack.org/archives/59/p59-0x07.txt"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Advances in format string exploitation</a>
+        </li>
+        <li>
+            <a
+                href="http://julianor.tripod.com/bc/NN-formats.txt"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Format String Technique</a>
+        </li>
+        <li>
+            <a
+                href="http://doc.bughunter.net/format-string/exploit-fs.html"
+                class="text-[#999] hover:text-[#CCC] no-underline"
+                >Exploiting Format String Vulnerabilities</a>
+        </li>
+    </ul>
+
+    <p class="leading-[24px] mb-4">
+        As usual when I grab random code and look over it, someone might want to
+        tell the developer :P
+    </p>
+</GameLayout>

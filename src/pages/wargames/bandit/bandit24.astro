@@ -1,0 +1,33 @@
+---
+import GameLayout from "../../../layouts/GameLayout.astro";
+---
+
+<GameLayout title="OverTheWire: Bandit Level 24" gameName="bandit" level={24}>
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+
+    <p class="leading-[24px] mb-4">
+        A program is running automatically at regular intervals from
+        <strong>cron</strong>, the time-based job scheduler. Look in <strong
+            >/etc/cron.d/</strong
+        > for the configuration and see what command is being executed.
+    </p>
+
+    <p class="leading-[24px] mb-4 font-bold">
+        NOTE: This level requires you to create your own first shell-script.
+        This is a very big step and you should be proud of yourself when you
+        beat this level!
+    </p>
+
+    <p class="leading-[24px] mb-4 font-bold">
+        NOTE 2: Keep in mind that your shell script is removed once executed, so
+        you may want to keep a copy around...
+    </p>
+
+    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        Commands you may need to solve this level
+    </h2>
+
+    <p class="leading-[24px] mb-4">
+        chmod, cron, crontab, crontab(5) (use "man 5 crontab" to access this)
+    </p>
+</GameLayout>

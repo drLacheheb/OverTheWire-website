@@ -1,0 +1,47 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import LevelSidebar from "../components/LevelSidebar.astro";
+import gamesData from "../data/games";
+
+interface Props {
+    title: string;
+    gameName: string;
+    level?: number;
+}
+
+const { title, gameName, level } = Astro.props;
+
+// Level Title Logic
+let levelTitle = "";
+if (level !== undefined) {
+    const gameData = gamesData[gameName];
+    const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+    const displayName = capitalize(gameName);
+
+    if (gameData) {
+        if (!gameData.specialNumbering) {
+            if (level === 0) {
+                levelTitle = `${displayName} Level ${level}`;
+            } else {
+                levelTitle = `${displayName} Level ${level - 1} \u2192 Level ${level}`;
+            }
+        } else {
+            levelTitle = `${displayName} Level ${level} \u2192 Level ${level + 1}`;
+        }
+    }
+}
+---
+
+<BaseLayout title={title}>
+    <LevelSidebar gameName={gameName} />
+
+    {
+        levelTitle && (
+            <div id="title" class="mb-4">
+                <h1 class="text-[22pt] font-normal">{levelTitle}</h1>
+            </div>
+        )
+    }
+
+    <slot />
+</BaseLayout>

@@ -1,0 +1,140 @@
+---
+import GameLayout from '../../../layouts/GameLayout.astro';
+---
+
+<GameLayout title="OverTheWire: Blacksun Level 0" gameName="blacksun" level={0}>
+  
+  <p class="leading-[24px] mb-4">
+    Level0 is a remote format string intended to get you started with
+    blacksun. It is a remote format string bug with you being able to see
+    the reply, with address space randomisation enabled. You'll need to use
+    the direct parameter access method to analyse the stack and to
+    manipulate it.
+  </p>
+
+  <p class="leading-[24px] mb-4">
+    Once getting access to a shell, read /etc/motd for more information
+  </p>
+
+  <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Binary information</h3>
+  
+  <div class="p-4 mb-4 bg-[#F7F7F9] border border-[#E1E1E8] rounded">
+    <div class="grid grid-cols-[1fr_2fr] gap-2">
+      <div class="font-bold text-right">Stack smashing protection (SSP):</div>
+      <div>Enabled</div>
+      
+      <div class="font-bold text-right">Postition Independent Executable (PIE):</div>
+      <div>Enabled</div>
+
+      <div class="font-bold text-right">Address space layout randomisation (ASLR):</div>
+      <div>Enabled</div>
+      
+      <div class="font-bold text-right">Non-executable pages:</div>
+      <div>None / disabled</div>
+      
+      <div class="col-span-2 border-t border-[#CCC] my-2"></div>
+
+      <div class="font-bold text-right">Location:</div>
+      <div>Connect to blacksun.overthewire.org on port 79</div>
+    </div>
+  </div>
+
+  <p class="leading-[24px] mb-4">
+    Alternatively, there is a debug version on port 78 if you need help
+    understanding what you're seeing
+  </p>
+
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun0.c</h3>
+    
+  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#include &lt;stdlib.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;pwd.h&gt;
+#include &lt;fcntl.h&gt;
+
+void query(char *username);
+
+
+int main()
+{
+	int y0;	 // special marker, you can use this for when you're doing exploition analysis to find where main is on the stack etc.
+	int cont;
+	char username[256];
+	char blah[20];
+	
+	//setvbuf(stdin, NULL, _IONBF, 0);
+	//setvbuf(stdout, NULL, _IONBF, 0);
+
+#ifdef DEBUG
+	y0 = open("/proc/self/maps", O_RDONLY);
+
+	while((cont = read(y0, username, sizeof(username))) > 0) {
+		write(1, username, cont);
+	}
+	close(y0);
+#endif
+	
+	printf("--&gt; Blacksun level 0\r\n");
+	printf("by Andrew Griffiths (andrewg@felinemenace.org)\r\n");
+	printf("/-------------------------------------------------\\ \r\n");
+	printf("|Use netcat as opposed to telnet -- telnet sends  |\r\n");
+	printf("|certain control charachers and will fuck up your |\r\n");
+	printf("|connection. This won't be a problem if you're    |\r\n"); 
+	printf("|coding the program to connect.                   |\r\n");
+	printf("\\-------------------------------------------------/\r\n\r\n");
+
+	memset(username, 0, sizeof(username));
+	cont = 1;
+
+	while(cont) {
+		printf("Enter request number: ");
+		fflush(stdout);
+		fgets(blah, sizeof(blah)-1, stdin);
+		y0 = atoi(blah);
+		
+#ifdef DEBUG
+		printf("blah: %p\n", blah);
+		printf("username: %p\n", username);
+		printf("y0: %p\n", &y0);
+#endif
+		
+		cont = (y0 != 0);
+		
+		printf("Enter the username you'd like to query: ");
+		fflush(stdout);
+		gets(username);
+
+		username[strlen(username)] = 0;
+		
+		
+		query(username);
+
+	}
+	
+	return 0;
+}
+
+
+void query(char *username)
+{
+	struct passwd *pw;
+	char response[4096];
+	
+	pw = getpwnam(username);
+
+	if(pw) {
+		sprintf(response, "Username: %s, uid: %d, gid: %d, gecos: %s, dir: %s, shell: %s\n\n", pw->pw_name, pw->pw_uid, pw->pw_gid, pw->pw_gecos, pw->pw_dir, pw->pw_shell); 
+	} else {
+		sprintf(response, "%s does not exist on this system, according to getpwnam().\n\n", username);
+	}
+
+#ifdef DEBUG
+	printf("response: %p\n", response);
+#endif
+	
+	printf(response);
+}</pre>
+
+</GameLayout>
