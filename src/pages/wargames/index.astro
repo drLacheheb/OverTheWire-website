@@ -4,55 +4,65 @@ import GamesSidebar from "../../components/GamesSidebar.astro";
 ---
 
 <BaseLayout title="OverTheWire: Wargames">
-    <GamesSidebar />
+    <div class="flex flex-col gap-8 md:flex-row">
+        <GamesSidebar />
 
-    <h1 class="text-[22pt] font-normal">Wargames</h1>
+        <div class="min-w-0 flex-1">
+            <h1 class="text-2xl font-light text-neutral-200 mb-6">Wargames</h1>
 
-    <p class="leading-[24px] mb-4">
-        The wargames offered by the OverTheWire community can help you to learn
-        and practice security concepts in the form of fun-filled games.<br />
-        To find out more about a certain wargame, just visit its page linked from
-        the menu on the left.
-    </p>
+            <p class="leading-relaxed text-neutral-400 mb-4">
+                The wargames offered by the OverTheWire community can help you
+                to learn and practice security concepts in the form of
+                fun-filled games.<br />
+                To find out more about a certain wargame, just visit its page linked
+                from the sidebar.
+            </p>
 
-    <p class="leading-[24px] mb-4">
-        If you have a problem, a question or a suggestion, you can <a
-            href="/information/chat.html"
-            class="text-[#999] hover:text-[#CCC] no-underline"
-            >join us via chat</a
-        >.
-    </p>
+            <p class="leading-relaxed text-neutral-400 mb-4">
+                If you have a problem, a question or a suggestion, you can <a
+                    href="/information/chat"
+                    class="text-emerald-400 hover:text-emerald-300 no-underline transition-colors"
+                    >join us via chat</a
+                >.
+            </p>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
-        Suggested order to play the games in
-    </h2>
+            <h2 class="text-lg font-medium text-neutral-300 mt-8 mb-3">
+                Suggested order to play the games in
+            </h2>
 
-    <ol class="list-decimal list-inside pl-4 leading-[24px]">
-        <li>Bandit - Unix/Linux basics</li>
-        <li>
-            Pick one:
-            <ul class="list-disc list-inside pl-6">
-                <li>Natas - web security</li>
-                <li>Krypton - cryptography</li>
-                <li>Leviathan - reverse engineering</li>
-            </ul>
-        </li>
-        <li>
-            Narnia - Start into binary exploitation (and reverse engineering)
-        </li>
-        <li>Behemoth - binary exploitation (and reverse engineering)</li>
-        <li>Utumno - binary exploitation (and reverse engineering)</li>
-        <li>Maze - binary exploitation (and reverse engineering)</li>
-        <li>...</li>
-    </ol>
+            <ol
+                class="list-decimal list-inside pl-4 leading-relaxed text-neutral-400 space-y-1"
+            >
+                <li>Bandit – Unix/Linux basics</li>
+                <li>
+                    Pick one:
+                    <ul class="list-disc list-inside pl-6 mt-1 space-y-0.5">
+                        <li>Natas – web security</li>
+                        <li>Krypton – cryptography</li>
+                        <li>Leviathan – reverse engineering</li>
+                    </ul>
+                </li>
+                <li>
+                    Narnia – Start into binary exploitation (and reverse
+                    engineering)
+                </li>
+                <li>
+                    Behemoth – binary exploitation (and reverse engineering)
+                </li>
+                <li>Utumno – binary exploitation (and reverse engineering)</li>
+                <li>Maze – binary exploitation (and reverse engineering)</li>
+                <li>…</li>
+            </ol>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
-        Each shell game has its own SSH port
-    </h2>
+            <h2 class="text-lg font-medium text-neutral-300 mt-8 mb-3">
+                Each shell game has its own SSH port
+            </h2>
 
-    <p class="leading-[24px] mb-4">
-        Information about how to connect to each game using SSH, is provided in
-        the top left corner of the page. Keep in mind that every game uses a
-        different SSH port.
-    </p>
+            <p class="leading-relaxed text-neutral-400 mb-4">
+                Information about how to connect to each game using SSH, is
+                provided in the sidebar. Keep in mind that every game uses a
+                different SSH port.
+            </p>
+        </div>
+    </div>
 </BaseLayout>
