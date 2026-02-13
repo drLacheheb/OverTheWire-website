@@ -49,23 +49,23 @@ import GameLayout from '../../../layouts/GameLayout.astro';
 // rawwrapper, aton 2004
 
 int main(int argc, char *argv[])
-{
+&#123;
         int rfd;
         char *argv0, *argv1;
 
         if (argc&lt;2)
-        {
+        &#123;
                 printf("usage: rawwrapper &lt;program&gt;\n");
                 printf("argv[1] will be the raw socket\n");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
 
         //open raw socket
         if ((rfd = socket(PF_INET, SOCK_RAW, IPPROTO_ICMP))&lt;0)
-        {
+        &#123;
                 perror("socket");
                 return EXIT_FAILURE;
-        }
+        &#125;
 
         //drop priviledges
         setresgid(DROPGID, DROPGID, DROPGID);
@@ -83,6 +83,6 @@ int main(int argc, char *argv[])
         //execute the client program
         execve(argv[0], argv, NULL);
         return EXIT_SUCCESS;
-}</pre>
+&#125;</pre>
 
 </GameLayout>

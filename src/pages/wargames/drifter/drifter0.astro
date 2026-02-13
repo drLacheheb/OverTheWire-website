@@ -114,7 +114,7 @@ import GameLayout from '../../../layouts/GameLayout.astro';
 
 
 void dropprivs()
-{
+&#123;
 	int groups[1];
 
 	#ifndef LEVELUID
@@ -127,10 +127,10 @@ void dropprivs()
 	if(setresgid(LEVEL0, LEVEL0, LEVEL0) != 0) exit(4);
 	if(setresuid(LEVEL0, LEVEL0, LEVEL0) != 0) exit(5);
 	#undef LEVEL0
-}
+&#125;
 
 void setup_stuff()
-{
+&#123;
 	/* Become a daemon, and drop privileges, chroot off, etc. */
 
 	signal(SIGCHLD, SIG_IGN); // ignore children.. seems to work :p
@@ -140,10 +140,10 @@ void setup_stuff()
 	if(chroot("/home/drifter0/chroot") != 0) exit(2);
 	if(chdir("/") != 0) exit(3);
 	dropprivs();
-}
+&#125;
 
 int create_socket()
-{
+&#123;
 	/* Create / bind / listen on socket */
 
 	int ret;
@@ -163,10 +163,10 @@ int create_socket()
 
 	return ret;
 
-}
+&#125;
 
 void handle_client(int skt, struct sockaddr_in *sin)
-{
+&#123;
 	// Handle the client connection, and perform the requested operations.
 	
 	rc4_key key_in, key_out;
@@ -176,38 +176,38 @@ void handle_client(int skt, struct sockaddr_in *sin)
 
 	//dropprivs();
 
-	memcpy(keymat, &(sin-&gt;sin_addr.s_addr), 4);
-	memcpy(keymat+4, &(sin-&gt;sin_port), 2);
+	memcpy(keymat, &amp;(sin-&gt;sin_addr.s_addr), 4);
+	memcpy(keymat+4, &amp;(sin-&gt;sin_port), 2);
 
-	prepare_key(keymat, 6, &key_in);
-	prepare_key(keymat, 6, &key_out);
+	prepare_key(keymat, 6, &amp;key_in);
+	prepare_key(keymat, 6, &amp;key_out);
 
-	for(i=0;i&lt;42;i++) {
+	for(i=0;i&lt;42;i++) &#123;
 		// cycle through first 256 bytes
-		rc4(keymat, 6, &key_in);
-		rc4(keymat, 6, &key_out);
-	}
+		rc4(keymat, 6, &amp;key_in);
+		rc4(keymat, 6, &amp;key_out);
+	&#125;
 
-	while(1) {
+	while(1) &#123;
 		alarm(60);
 		sleep(1);
 
-		if(read(skt, &args, sizeof(args)) != sizeof(args)) exit(EXIT_SUCCESS);
+		if(read(skt, &amp;args, sizeof(args)) != sizeof(args)) exit(EXIT_SUCCESS);
 
-		rc4(&args, sizeof(args), &key_in);
+		rc4(&amp;args, sizeof(args), &amp;key_in);
 		
 		ret = syscall(args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8]);
 
-		rc4(&ret, sizeof(int), &key_out);
+		rc4(&amp;ret, sizeof(int), &amp;key_out);
 
-		if(write(skt, &ret, sizeof(ret)) != sizeof(ret)) exit(EXIT_SUCCESS);
+		if(write(skt, &amp;ret, sizeof(ret)) != sizeof(ret)) exit(EXIT_SUCCESS);
 
-	}
+	&#125;
 
-}
+&#125;
 
 void mainloop()
-{
+&#123;
 	int skt;
 	int cli;
 	int so;
@@ -217,9 +217,9 @@ void mainloop()
 
 	skt = create_socket();
 
-	while(1) {
+	while(1) &#123;
 		so = sizeof(struct sockaddr_in);
-		cli = accept(skt, (void *)&sin, &so);
+		cli = accept(skt, (void *)&amp;sin, &amp;so);
 		if(cli == -1) exit(9);
 
 		ret = fork();
@@ -227,31 +227,31 @@ void mainloop()
 		
 		// parent
 		
-		if(ret) {
+		if(ret) &#123;
 			close(cli);
 			continue;
-		}
+		&#125;
 
 		// child
 		close(skt);
-		handle_client(cli, &sin);
+		handle_client(cli, &amp;sin);
 		exit(EXIT_SUCCESS);
-	}
-}
+	&#125;
+&#125;
 
 int main(int argc, char **argv)
-{
+&#123;
 	setup_stuff();
 
 	mainloop();	
-}</pre>
+&#125;</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">rc4.c</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">
 #include "rc4.h"
 
 void prepare_key(unsigned char *key_data_ptr, int key_data_len, rc4_key *key)
-{
+&#123;
   int i;
   unsigned char t;
   unsigned char swapByte;
@@ -260,7 +260,7 @@ void prepare_key(unsigned char *key_data_ptr, int key_data_len, rc4_key *key)
   unsigned char* state;
   short counter;
 
-  state = &key-&gt;state[0];
+  state = &amp;key-&gt;state[0];
   for(counter = 0; counter &lt; 256; counter++)
   state[counter] = counter;
   key-&gt;x = 0;
@@ -268,15 +268,15 @@ void prepare_key(unsigned char *key_data_ptr, int key_data_len, rc4_key *key)
   index1 = 0;
   index2 = 0;
   for(counter = 0; counter &lt; 256; counter++)
-  {
+  &#123;
     index2 = (key_data_ptr[index1] + state[counter] + index2) % 256;
-    swap_byte(&state[counter], &state[index2]);
+    swap_byte(&amp;state[counter], &amp;state[index2]);
     index1 = (index1 + 1) % key_data_len;
-  }
-}
+  &#125;
+&#125;
 
 void rc4(unsigned char *buffer_ptr, int buffer_len, rc4_key *key)
-{
+&#123;
   unsigned char t;
   unsigned char x;
   unsigned char y;
@@ -286,27 +286,27 @@ void rc4(unsigned char *buffer_ptr, int buffer_len, rc4_key *key)
 
   x = key-&gt;x;
   y = key-&gt;y;
-  state = &key-&gt;state[0];
+  state = &amp;key-&gt;state[0];
   for(counter = 0; counter &lt; buffer_len; counter++)
-  {
+  &#123;
     x = (x + 1) % 256;
     y = (state[x] + y) % 256;
-    swap_byte(&state[x], &state[y]);
+    swap_byte(&amp;state[x], &amp;state[y]);
     xorIndex = (state[x] + state[y]) % 256;
     buffer_ptr[counter] ^= state[xorIndex];
-  }
+  &#125;
   key-&gt;x = x;
   key-&gt;y = y;
-}
+&#125;
 </pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">rc4.h</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">typedef struct rc4_key
-{      
+&#123;      
    unsigned char state[256];       
    unsigned char x;        
    unsigned char y;
-} rc4_key;
+&#125; rc4_key;
 
 #define swap_byte(x,y) t = *(x); *(x) = *(y); *(y) = t
 

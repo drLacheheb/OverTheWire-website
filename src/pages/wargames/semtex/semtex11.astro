@@ -31,31 +31,31 @@ import GameLayout from '../../../layouts/GameLayout.astro';
 
 // code by andrewg, modified by aton
 
-#define e(); if(((unsigned int)ptr & 0xff000000)==0xca000000) { setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh", "-i", NULL); }
+#define e(); if(((unsigned int)ptr &amp; 0xff000000)==0xca000000) &#123; setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh", "-i", NULL); &#125;
 
 void print(unsigned char *buf, int len)
-{
+&#123;
         int i;
 
         printf("[ ");
         for(i=0; i &lt; len; i++) printf("%x ", buf[i]);
         printf(" ]\n");
-}
+&#125;
 
 int main()
-{
+&#123;
         unsigned char buf[512];
         unsigned char *ptr = buf + (sizeof(buf)/2);
         unsigned int x;
 
-        while((x = getchar()) != EOF) {
-                switch(x) {
+        while((x = getchar()) != EOF) &#123;
+                switch(x) &#123;
                         case '\n': print(buf, sizeof(buf)); continue; break;
                         case '\\': ptr--; break;
                         default: e(); if(ptr &gt; buf + sizeof(buf)) continue; ptr++; break;
-                }
-        }
+                &#125;
+        &#125;
         printf("All done\n");
-}</pre>
+&#125;</pre>
 
 </GameLayout>

@@ -56,13 +56,13 @@ int new_connection(unsigned int addr, int pass, struct sharea* auth_array);
 int daemonize();
 
 int main(int argc, char **argv)
-{
-        if(argc &gt; 1) {
-                if((argv[1][0] == 'D')) {
+&#123;
+        if(argc &gt; 1) &#123;
+                if((argv[1][0] == 'D')) &#123;
                         if((daemonize()) == -1)
                                 exit(EXIT_FAILURE);
-                }
-        }
+                &#125;
+        &#125;
         
         int                     fd, sockfd, connfd;
         unsigned int            sin_size;
@@ -76,122 +76,122 @@ int main(int argc, char **argv)
         char            sendbuf[BUFSIZE], recvbuf[BUFSIZE], super_pass[BUFSIZE];        
 
         fd = open(PATH, O_RDONLY);
-        if(fd &lt; 0) {
+        if(fd &lt; 0) &#123;
                 perror("open");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
 
-        if((read(fd, super_pass, BUFSIZE)) &lt; 0) {
+        if((read(fd, super_pass, BUFSIZE)) &lt; 0) &#123;
                 perror("pass");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
         close(fd);
 
         /*Set up the shared memory authorization array */
 
-        if((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) == -1) {
+        if((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) == -1) &#123;
                 perror("Shared");
                 exit(1);
-        }
+        &#125;
         
-        if((auth_array = shmat(shmid, NULL, 0)) == (void *)-1) {
+        if((auth_array = shmat(shmid, NULL, 0)) == (void *)-1) &#123;
                 perror("Share attach");
                 exit(1);
-        }
+        &#125;
 
         memset(auth_array, 0, sizeof(*auth_array));
         
         memset(&reap_zombies, 0, sizeof(reap_zombies));
         reap_zombies.sa_flags = SA_NOCLDWAIT;
 
-        if((sigaction(SIGCHLD, &reap_zombies, 0)) == -1) {
+        if((sigaction(SIGCHLD, &reap_zombies, 0)) == -1) &#123;
                 perror("Sighandler");
                 exit(1);
-        }
+        &#125;
         
         /* Lets set up the listening socket */
 
-        if((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) {
+        if((sockfd = socket(PF_INET, SOCK_STREAM, 0)) == -1) &#123;
                 perror("Socket");
                 exit(1);
-        }
+        &#125;
         my_addr.sin_family = AF_INET;
         my_addr.sin_port = htons(AUTH_PORT);
         my_addr.sin_addr.s_addr = htonl(INADDR_ANY);
         memset(&(my_addr.sin_zero), '\0', 8);
 
-        if((bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr))) == -1) {
+        if((bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr))) == -1) &#123;
                 perror("Bind");
                 exit(1);
-        }
+        &#125;
 
         
         listen(sockfd, 5);      /* Error checks... nah! */
         
-        while(1) {
+        while(1) &#123;
 
                 pid_t   pid;
                 
                 sin_size = sizeof(struct sockaddr_in);
-                if((connfd = accept(sockfd, (struct sockaddr*)&remote_addr, &sin_size)) == -1) {
+                if((connfd = accept(sockfd, (struct sockaddr*)&remote_addr, &sin_size)) == -1) &#123;
                         perror("Accept");
                         exit(1);
-                }
+                &#125;
                 
                 pid = fork();
-                if(pid &lt; 0) {
+                if(pid &lt; 0) &#123;
                         perror("fork");
                         exit(EXIT_FAILURE);
-                }
-                if(pid &gt; 0) {
+                &#125;
+                if(pid &gt; 0) &#123;
                         close(connfd);
                         continue;
-                }               
+                &#125;               
                 
                 strcpy(sendbuf, "Authd login - Send Pass");
                 send(connfd, sendbuf, strlen(sendbuf), 0);
                 recv(connfd, recvbuf, BUFSIZE - 1, 0);
                 recvbuf[BUFSIZE - 1] = '\0';
                 
-                if(!new_connection(remote_addr.sin_addr.s_addr, strcmp(recvbuf, super_pass), auth_array)) {
+                if(!new_connection(remote_addr.sin_addr.s_addr, strcmp(recvbuf, super_pass), auth_array)) &#123;
                         strcpy(sendbuf, "Failed - try again later");
                         send(connfd, sendbuf, strlen(sendbuf), 0);
-                }
+                &#125;
                 close(connfd);
                 exit(EXIT_SUCCESS);
-        }
-}
+        &#125;
+&#125;
 
 int new_connection(unsigned int addr, int super, struct sharea *auth_array)
-{
+&#123;
         int i, found = 0;
 
         /* Insert new entry with correct perms */
         
         down(&auth_array-&gt;sem);
-        for(i = 0; i &lt; 32; i++) {
-                if(auth_array-&gt;list[i].token == 0) {
+        for(i = 0; i &lt; 32; i++) &#123;
+                if(auth_array-&gt;list[i].token == 0) &#123;
                         found++;
                         auth_array-&gt;list[i].token = addr;
                         auth_array-&gt;list[i].timestamp = time(NULL);
                         if(super)
                                 auth_array-&gt;list[i].perms = 1;  /* 1 = ordinary user */
                         break;
-                }
+                &#125;
                                                 
-        }
+        &#125;
         up(&auth_array-&gt;sem);
 
         /* Expire old connections */
         down(&auth_array-&gt;sem);
-        for(i = 0; i &lt; 32; i++) {
+        for(i = 0; i &lt; 32; i++) &#123;
                 if((auth_array-&gt;list[i].timestamp + 300) &lt; time(NULL)) 
                         memset(&auth_array-&gt;list[i], 0, sizeof(struct auth));
-        }
+        &#125;
         up(&auth_array-&gt;sem);
         
         return found;
-}</pre>
+&#125;</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.daemon.c</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#include &lt;sys/types.h&gt;
@@ -207,7 +207,7 @@ int new_connection(unsigned int addr, int super, struct sharea *auth_array)
 #define TARGET_UID 1998
 
 int daemonize()
-{
+&#123;
         int ret = -1;
 
         if((daemon(0, 0)) == -1)
@@ -222,7 +222,7 @@ int daemonize()
 
         return ret;
         
-}</pre>
+&#125;</pre>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.reader.c</h3>
   <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#include &lt;stdio.h&gt;

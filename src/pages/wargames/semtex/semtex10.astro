@@ -57,20 +57,20 @@ password cracked!</pre>
 #define DROPGID 1998
 
 struct query
-{
+&#123;
         unsigned char oldpass[20+1];
         unsigned char pass[100+1];
         unsigned int len;
-} qry;
+&#125; qry;
 
 struct response
-{
+&#123;
         unsigned int result;
         unsigned char pass[100+1];
-} rsp;
+&#125; rsp;
 
 int main(int argc, char *argv[])
-{
+&#123;
         int listenfd, connfd;
         struct sockaddr_in localaddr;
         struct sockaddr_in remoteaddr;
@@ -83,83 +83,83 @@ int main(int argc, char *argv[])
         daemon(0,0);
 
         if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
-        {
+        &#123;
                 perror("socket");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
 
         localaddr.sin_family = AF_INET;
         localaddr.sin_port = htons(port);
         localaddr.sin_addr.s_addr = INADDR_ANY;
-        bzero(&(localaddr.sin_zero), 8);
+        bzero(&amp;(localaddr.sin_zero), 8);
 
-        if (bind(listenfd, (struct sockaddr *)&localaddr, sizeof(struct sockaddr)) == -1)
-        {
+        if (bind(listenfd, (struct sockaddr *)&amp;localaddr, sizeof(struct sockaddr)) == -1)
+        &#123;
                 perror("bind");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
 
         if (listen(listenfd, 20) == -1)
-        {
+        &#123;
                 perror("listen");
                 exit(EXIT_FAILURE);
-        }
+        &#125;
 
         for (;;)
-        {
+        &#123;
                 sin_size = sizeof(struct sockaddr_in);
-                if ((connfd = accept(listenfd, (struct sockaddr *)&remoteaddr, &sin_size)) == -1)
-                {
+                if ((connfd = accept(listenfd, (struct sockaddr *)&amp;remoteaddr, &amp;sin_size)) == -1)
+                &#123;
                         perror("accept");
                         continue;
-                }
+                &#125;
 
 //              printf("connection from %s\n",  inet_ntoa(remoteaddr.sin_addr));
 
                 if (!fork()) //child
-                {
+                &#123;
                         close(listenfd);
 
                         for (;;)
-                        {
-                                memset(&qry, 0, sizeof(struct query));
-                                memset(&rsp, 0, sizeof(struct response));
+                        &#123;
+                                memset(&amp;qry, 0, sizeof(struct query));
+                                memset(&amp;rsp, 0, sizeof(struct response));
 
-                                if (recv(connfd, &qry, sizeof(struct query), 0)!=sizeof(struct query))
-                                {
+                                if (recv(connfd, &amp;qry, sizeof(struct query), 0)!=sizeof(struct query))
+                                &#123;
                                         perror("recv");
                                         close(connfd);
                                         exit(EXIT_FAILURE);
-                                }
+                                &#125;
 
                                 if (strncmp(qry.oldpass, OLDPWD, strlen(OLDPWD)))
-                                {
+                                &#123;
                                         close(connfd);
                                         exit(EXIT_FAILURE);
-                                }
+                                &#125;
 
                                 // validate
                                 if (!strncmp(qry.pass, REALPWD, qry.len))
                                         rsp.result=1;
 
-                                if (rsp.result && (qry.len==strlen(REALPWD)))
+                                if (rsp.result &amp;&amp; (qry.len==strlen(REALPWD)))
                                         strcpy(rsp.pass, REALPWD);
 
 //                              printf("-&gt; result=%s\n", rsp.result?"CORRECT":"WRONG");
-                                if (send(connfd, &rsp, sizeof(struct response), 0)!=sizeof(struct response))
-                                {
+                                if (send(connfd, &amp;rsp, sizeof(struct response), 0)!=sizeof(struct response))
+                                &#123;
                                         perror("send");
                                         close(connfd);
                                         exit(EXIT_FAILURE);
-                                }
-                        }
-                }
+                                &#125;
+                        &#125;
+                &#125;
 
                 while(waitpid(-1,NULL,WNOHANG) &gt; 0);
 
                 close(connfd);
-        }
+        &#125;
 
-}</pre>
+&#125;</pre>
 
 </GameLayout>

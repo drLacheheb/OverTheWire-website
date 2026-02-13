@@ -39,7 +39,7 @@ import GameLayout from '../../../layouts/GameLayout.astro';
 #define ADDVALUE 27137
 
 int main(int argc, char *argv[])
-{
+&#123;
         mpz_t longjohn, mul, cmpval;
         char userstr[512+1];
         int n=0;
@@ -51,28 +51,28 @@ int main(int argc, char *argv[])
         mpz_set_str(cmpval, "insert-here-the-password-hash-from-your-home-directory-on-semtex-7", 10);
 
         if (argc&lt;2)
-        {
+        &#123;
                 printf("%s &lt;string&gt;\n", argv[0]);
                 return -1;
-        }
+        &#125;
 
         strncpy(userstr, argv[1], 512);
 
         for (n=0;n&lt;strlen(userstr);n++)
-        {
+        &#123;
                 mpz_set_ui(mul, (unsigned long)(userstr[n]+ADDVALUE));
                 mpz_mul(longjohn, longjohn, mul);
-        }
+        &#125;
 
         if (!(n=mpz_cmp(longjohn, cmpval)))
-        {
+        &#123;
                 setresuid(geteuid(), geteuid(), geteuid());
                 execlp("/bin/bash", "bash", NULL);
-        }
+        &#125;
         else
                 printf("err... booom!\n");
 
         return 0;
-}</pre>
+&#125;</pre>
 
 </GameLayout>
