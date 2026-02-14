@@ -1,5 +1,6 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 4" gameName="semtex" level={4}>
@@ -12,8 +13,10 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         the next level's password. This time it is not so easy:
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">/semtex/semtex4: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), statically linked, for GNU/Linux 2.6.15, stripped</pre>
+    <CodeBlock client:visible
+        >/semtex/semtex4: ELF 32-bit LSB executable, Intel 80386, version 1
+        (SYSV), statically linked, for GNU/Linux 2.6.15, stripped</CodeBlock
+    >
 
     <h3 class="text-[14pt] font-bold mt-4 mb-2">Tip :</h3>
     <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">

@@ -1,57 +1,51 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
+import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 1" gameName="vortex" level={1}>
-  
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Canary Values</h2>
-  
-  <p class="leading-[24px] mb-4">
-    We are looking for a specific value in ptr. You may need to consider
-    how bash handles EOF..
-  </p>
+	<h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Canary Values</h2>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Reading Material</h2>
-  
-  <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
-    <li><a href="http://www.phrack.com/issues/49/14.html#article" class="text-[#999] hover:text-[#CCC] no-underline">Smashing the Stack for Fun and Profit</a></li>
-    <li><a href="https://www.exploit-db.com/papers/13162/" class="text-[#999] hover:text-[#CCC] no-underline">Smashing The Modern Stack For Fun And Profit</a></li>
-  </ul>
+	<p class="leading-[24px] mb-4">
+		We are looking for a specific value in ptr. You may need to consider how
+		bash handles EOF..
+	</p>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+	<h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+		Reading Material
+	</h2>
 
-  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#define _GNU_SOURCE
-#include &lt;stdlib.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdio.h&gt;
+	<ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+		<li>
+			<a
+				href="http://www.phrack.com/issues/49/14.html#article"
+				class="text-[#999] hover:text-[#CCC] no-underline"
+				>Smashing the Stack for Fun and Profit</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://www.exploit-db.com/papers/13162/"
+				class="text-[#999] hover:text-[#CCC] no-underline"
+				>Smashing The Modern Stack For Fun And Profit</a
+			>
+		</li>
+	</ul>
 
-#define e(); if(((unsigned int)ptr &amp; 0xff000000)==0xca000000) &#123; setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh", NULL); printf("%p %p\n", &amp;ptr,ptr); &#125;
+	<h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-void print(unsigned char *buf, int len)
-&#123;
-	int i;
-
-	printf("[ ");
-	for(i=0; i &lt; len; i++) printf("%x ", buf[i]); 
-	printf(" ]\n");
-&#125;
-
-int main()
-&#123;
-	unsigned char buf[512];
-	unsigned char *ptr = buf + (sizeof(buf)/2);
-	unsigned int x;
-
-	while((x = getchar()) != EOF) &#123;
-		switch(x) &#123;
-			case '\n': print(buf, sizeof(buf)); continue; break;
-			case '\\': ptr--; break; 
-			default: e(); if(ptr &gt; buf + sizeof(buf)) continue; ptr++[0] = x; break;
-		&#125;
-	&#125;
-	printf("All done\n");
-	return 0;
-&#125;</pre>
-
+	<CodeBlock client:visible className="language-c"
+		>#define _GNU_SOURCE #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt;
+		#include &lt;string.h&gt; #include &lt;stdio.h&gt; #define e();
+		if(((unsigned int)ptr &amp; 0xff000000)==0xca000000) &#123;
+		setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh",
+		NULL); printf("%p %p\n", &amp;ptr,ptr); &#125; void print(unsigned char
+		*buf, int len) &#123; int i; printf("[ "); for(i=0; i &lt; len; i++)
+		printf("%x ", buf[i]); printf(" ]\n"); &#125; int main() &#123; unsigned
+		char buf[512]; unsigned char *ptr = buf + (sizeof(buf)/2); unsigned int
+		x; while((x = getchar()) != EOF) &#123; switch(x) &#123; case '\n':
+		print(buf, sizeof(buf)); continue; break; case '\\': ptr--; break;
+		default: e(); if(ptr &gt; buf + sizeof(buf)) continue; ptr++[0] = x;
+		break; &#125; &#125; printf("All done\n"); return 0; &#125;</CodeBlock
+	>
 </GameLayout>

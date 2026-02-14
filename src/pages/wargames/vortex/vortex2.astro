@@ -1,32 +1,32 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
+import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 2" gameName="vortex" level={2}>
-  
   <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
-  
-  <p class="leading-[24px] mb-4">
-    Create a special tar file
-  </p>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Helpful Reading Material</h2>
-  
+  <p class="leading-[24px] mb-4">Create a special tar file</p>
+
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    Helpful Reading Material
+  </h2>
+
   <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
-    <li><a href="http://linux.die.net/man/1/tar" class="text-[#999] hover:text-[#CCC] no-underline">GNU tar manual</a></li>
+    <li>
+      <a
+        href="http://linux.die.net/man/1/tar"
+        class="text-[#999] hover:text-[#CCC] no-underline">GNU tar manual</a
+      >
+    </li>
   </ul>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;sys/types.h&gt;
-
-
-int main(int argc, char **argv)
-&#123;
-        char *args[] = &#123; "/bin/tar", "cf", "/tmp/ownership.$$.tar", argv[1], argv[2], argv[3] &#125;;
-        execv(args[0], args);
-&#125;</pre>
-
+  <CodeBlock client:visible className="language-c"
+    >#include &lt;stdlib.h&gt; #include &lt;stdio.h&gt; #include
+    &lt;sys/types.h&gt; int main(int argc, char **argv) &#123; char *args[] =
+    &#123; "/bin/tar", "cf", "/tmp/ownership.$$.tar", argv[1], argv[2], argv[3]
+    &#125;; execv(args[0], args); &#125;</CodeBlock
+  >
 </GameLayout>

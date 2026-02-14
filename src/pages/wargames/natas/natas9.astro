@@ -1,9 +1,35 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Natas Level 9" gameName="natas" level={9}>
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: natas9
-URL:      <a href="http://natas9.natas.labs.overthewire.org" class="text-[#999] hover:text-[#CCC] no-underline">http://natas9.natas.labs.overthewire.org</a></pre>
+    <h2 class="text-xl font-bold text-white mb-4">Level 9</h2>
+
+    <p class="text-neutral-300 mb-4">
+        Find words containing:
+        <form action="" method="post" class="inline-block ml-2">
+            <input
+                type="text"
+                name="needle"
+                class="bg-neutral-800 border border-neutral-700 rounded px-2 py-1 text-white text-sm"
+            />
+            <input
+                type="submit"
+                name="submit"
+                value="Search"
+                class="ml-2 bg-neutral-700 hover:bg-neutral-600 text-white rounded px-3 py-1 text-sm cursor-pointer transition-colors"
+            />
+        </form>
+    </p>
+
+    <div class="mb-4 text-neutral-300">
+        <a
+            href="index-source.html"
+            class="text-neutral-400 hover:text-white underline transition-colors"
+            >View sourcecode</a
+        >
+    </div>
+
+    <CodeBlock client:visible>Output: </CodeBlock>
 </GameLayout>

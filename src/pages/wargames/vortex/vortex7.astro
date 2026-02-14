@@ -1,5 +1,6 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 7" gameName="vortex" level={7}>
@@ -19,27 +20,23 @@ import GameLayout from "../../../layouts/GameLayout.astro";
       <a
         href="http://www.woodmann.com/fravia/crctut1.htm"
         class="text-[#999] hover:text-[#CCC] no-underline"
-        >CRC and How to Reverse It</a>
+        >CRC and How to Reverse It</a
+      >
     </li>
     <li>
       <a
         href="http://taz.newffr.com/TAZ/Reverse_Engineering/CRC.html"
         class="text-[#999] hover:text-[#CCC] no-underline"
-        >CRC and How to Reverse It (mirror)</a>
+        >CRC and How to Reverse It (mirror)</a
+      >
     </li>
   </ul>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-  <pre
-    class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">int main(int argc, char **argv)
-&#123;
-        char buf[58];
-        u_int32_t hi;
-        if((hi = crc32(0, argv[1], strlen(argv[1]))) == 0xe1ca95ee) &#123;
-                strcpy(buf, argv[1]);
-        &#125; else &#123;
-                printf("0x%08x\n", hi);
-        &#125;
-&#125;</pre>
+  <CodeBlock client:visible className="language-c"
+    >int main(int argc, char **argv) &#123; char buf[58]; u_int32_t hi; if((hi =
+    crc32(0, argv[1], strlen(argv[1]))) == 0xe1ca95ee) &#123; strcpy(buf,
+    argv[1]); &#125; else &#123; printf("0x%08x\n", hi); &#125; &#125;</CodeBlock
+  >
 </GameLayout>

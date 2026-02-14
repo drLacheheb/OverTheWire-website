@@ -1,64 +1,61 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
+import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 3" gameName="vortex" level={3}>
-  
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">A Stack Overflow with a Difference</h2>
-  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    A Stack Overflow with a Difference
+  </h2>
+
   <p class="leading-[24px] mb-4">
-    This level is pretty straight forward. Just sit down and understand
-    what the code is doing. Your shellcode will require a
-    setuid(LEVEL4_UID) since bash drops effective privileges. You could
-    alternatively write a quick setuid(geteuid()) wrapper around bash.
+    This level is pretty straight forward. Just sit down and understand what the
+    code is doing. Your shellcode will require a setuid(LEVEL4_UID) since bash
+    drops effective privileges. You could alternatively write a quick
+    setuid(geteuid()) wrapper around bash.
   </p>
 
   <p class="leading-[24px] mb-4">
     <strong>NOTE:</strong> ctors/dtors might no longer be writable, although this
     level is compiled with <em>-Wl,-z,norelro</em>. Lookup some information
-    about this e.g. <a href="http://unix.stackexchange.com/questions/8062/dtors-looks-writable-but-attempts-to-write-segfault" class="text-[#999] hover:text-[#CCC] no-underline">here</a>
+    about this e.g. <a
+      href="http://unix.stackexchange.com/questions/8062/dtors-looks-writable-but-attempts-to-write-segfault"
+      class="text-[#999] hover:text-[#CCC] no-underline">here</a
+    >
   </p>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Reading Material</h2>
-  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    Reading Material
+  </h2>
+
   <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
-    <li><a href="http://phrack.org/issues/49/14.html#article" class="text-[#999] hover:text-[#CCC] no-underline">Smashing the Stack for Fun and Profit</a></li>
-    <li><a href="http://www.phrack.org/issues.html?issue=56&id=5#article" class="text-[#999] hover:text-[#CCC] no-underline">Bypassing StackGuard and StackShield</a></li>
+    <li>
+      <a
+        href="http://phrack.org/issues/49/14.html#article"
+        class="text-[#999] hover:text-[#CCC] no-underline"
+        >Smashing the Stack for Fun and Profit</a
+      >
+    </li>
+    <li>
+      <a
+        href="http://www.phrack.org/issues.html?issue=56&id=5#article"
+        class="text-[#999] hover:text-[#CCC] no-underline"
+        >Bypassing StackGuard and StackShield</a
+      >
+    </li>
   </ul>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">/*
- * 0xbadc0ded.org Challenge #02 (2003-07-08)
- *
- * Joel Eriksson &lt;je@0xbadc0ded.org&gt;
- */
-
-#include &lt;string.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-
-unsigned long val = 31337;
-unsigned long *lp = &amp;val;
-
-int main(int argc, char **argv)
-&#123;
-        unsigned long **lpp = &amp;lp, *tmp;
-        char buf[128];
-
-        if (argc != 2)
-                exit(1);
-
-        strcpy(buf, argv[1]);
-
-        if (((unsigned long) lpp &amp; 0xffff0000) != 0x08040000)
-                exit(2);
-
-        tmp = *lpp;
-        **lpp = (unsigned long) &amp;buf;
-        // *lpp = tmp; // Fix suggested by Michael Weissbacher @mweissbacher 2013-06-30
-
-        exit(0);
-&#125;</pre>
-
+  <CodeBlock client:visible className="language-c"
+    >/* * 0xbadc0ded.org Challenge #02 (2003-07-08) * * Joel Eriksson
+    &lt;je@0xbadc0ded.org&gt; */ #include &lt;string.h&gt; #include
+    &lt;stdlib.h&gt; #include &lt;stdio.h&gt; unsigned long val = 31337;
+    unsigned long *lp = &amp;val; int main(int argc, char **argv) &#123;
+    unsigned long **lpp = &amp;lp, *tmp; char buf[128]; if (argc != 2) exit(1);
+    strcpy(buf, argv[1]); if (((unsigned long) lpp &amp; 0xffff0000) !=
+    0x08040000) exit(2); tmp = *lpp; **lpp = (unsigned long) &amp;buf; // *lpp =
+    tmp; // Fix suggested by Michael Weissbacher @mweissbacher 2013-06-30
+    exit(0); &#125;</CodeBlock
+  >
 </GameLayout>

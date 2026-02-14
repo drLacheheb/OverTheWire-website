@@ -90,4 +90,8 @@
   html {
     font-family: 'Inconsolata', monospace;
   }
+
+  pre {
+    @apply bg-background border border-neutral-800 p-4 mb-4 overflow-x-auto text-sm font-mono text-neutral-300;
+  }
 }

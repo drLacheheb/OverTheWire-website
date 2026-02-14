@@ -24,15 +24,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <li>
                 <strong
                     >We do not allow unsolicited spam or self-promotion</strong
-                > in the chatrooms or private messages.
+                > in the chat rooms or private messages.
             </li>
             <li>
-                <strong>Do not spoil the game</strong> for others in the chatrooms.
+                <strong>Do not spoil the game</strong> for others in the chat rooms.
                 If you need help, specify the game and<br />
                 level and someone will help you in private messages. Do not rely on
                 Discord's <code>/spoiler</code>
                 <br />
-                functionality as the chatrooms are connected to IRC where this functionality
+                functionality as the chat rooms are connected to IRC where this functionality
                 is not available.
             </li>
             <li>
@@ -50,7 +50,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <li>
                 <strong>Do not publish credentials</strong> to any of the games. We
                 understand the need to create writeups,<br />
-                walkthroughs, and tutorials, but do not publish any credentials.
+                walkthroughes, and tutorials, but do not publish any credentials.
             </li>
             <li>
                 If you are profiting from the content you create and you are
@@ -107,7 +107,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             button.addEventListener("click", hideAcceptButton);
         }
 
-        // Check on load
         if (
             typeof localStorage !== "undefined" &&
             localStorage.getItem("rules-accepted") === "true"

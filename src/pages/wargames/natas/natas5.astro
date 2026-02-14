@@ -1,9 +1,15 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Natas Level 5" gameName="natas" level={5}>
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: natas5
-URL:      <a href="http://natas5.natas.labs.overthewire.org" class="text-[#999] hover:text-[#CCC] no-underline">http://natas5.natas.labs.overthewire.org</a></pre>
-</GameLayout>
+    <h2 class="text-xl font-bold text-white mb-4">Level 5</h2>
+
+    <p class="text-neutral-300 mb-4">
+        Access disallowed. You are not logged in
+    </p>
+
+    <CodeBlock client:visible>Refresh page</CodeBlock>xt-[#999]
+    hover:text-[#CCC] no-underline">http://natas5.natas.labs.overthewire.org</GameLayout
+>

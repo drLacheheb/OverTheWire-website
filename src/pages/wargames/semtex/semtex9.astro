@@ -1,88 +1,51 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
+import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 9" gameName="semtex" level={9}>
-  
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Tunneling your firewall</h2>
-  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    Tunneling your firewall
+  </h2>
+
   <p class="leading-[24px] mb-4">
-    How do you get data through a firewall that is blocking any tcp
-    connection? You just don't use a tcp connection, but instead other
-    packets, that might not be filtered. For example network maintenance
-    protocols like ICMP.
+    How do you get data through a firewall that is blocking any tcp connection?
+    You just don't use a tcp connection, but instead other packets, that might
+    not be filtered. For example network maintenance protocols like ICMP.
   </p>
 
   <p class="leading-[24px] mb-4">
-    There is a raw socket open on a yet unknown host that listens for
-    icmp packets and forwards them to a tcp server that you cannot
-    reach. Your job is to create a client that communicates with this
-    icmp "server". If everything works, you find yourself in a shell on
-    an unknown system, and can search for the password.
+    There is a raw socket open on a yet unknown host that listens for icmp
+    packets and forwards them to a tcp server that you cannot reach. Your job is
+    to create a client that communicates with this icmp "server". If everything
+    works, you find yourself in a shell on an unknown system, and can search for
+    the password.
   </p>
 
   <p class="leading-[24px] mb-4">
-    The protocol and the server, that is used by the ICMP tunnel is
-    described in your home directory. If you manage to blackbox analyze
-    it, then you can jump directly from semtex0 to semtex10 :)
+    The protocol and the server, that is used by the ICMP tunnel is described in
+    your home directory. If you manage to blackbox analyze it, then you can jump
+    directly from semtex0 to semtex10 :)
   </p>
 
-  <p class="leading-[24px] mb-4">
-    You will have to use /rdx/rawwrapper. 
-  </p>
+  <p class="leading-[24px] mb-4">You will have to use /rdx/rawwrapper.</p>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex9.rawwrapper.c</h3>
 
-  <pre class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">#ifndef _GNU_SOURCE
-#define _GNU_SOURCE
-#endif
-#include &lt;unistd.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;netinet/ip_icmp.h&gt;
-#include &lt;string.h&gt;
-
-
-#define DROPUID 1009
-#define DROPGID 1009
-
-// rawwrapper, aton 2004
-
-int main(int argc, char *argv[])
-&#123;
-        int rfd;
-        char *argv0, *argv1;
-
-        if (argc&lt;2)
-        &#123;
-                printf("usage: rawwrapper &lt;program&gt;\n");
-                printf("argv[1] will be the raw socket\n");
-                exit(EXIT_FAILURE);
-        &#125;
-
-        //open raw socket
-        if ((rfd = socket(PF_INET, SOCK_RAW, IPPROTO_ICMP))&lt;0)
-        &#123;
-                perror("socket");
-                return EXIT_FAILURE;
-        &#125;
-
-        //drop priviledges
-        setresgid(DROPGID, DROPGID, DROPGID);
-        setresuid(DROPUID, DROPUID, DROPUID);
-
-        argv0=malloc(strlen(argv[0])+1);
-        strcpy(argv0, argv[0]);
-        argv1=malloc(strlen(argv[1])+1);
-        strcpy(argv1, argv[1]);
-
-        // fill in new argv
-        argv[0]=argv1;
-        sprintf(argv[1], "%d", rfd);
-
-        //execute the client program
-        execve(argv[0], argv, NULL);
-        return EXIT_SUCCESS;
-&#125;</pre>
-
+  <CodeBlock client:visible className="language-c"
+    >#ifndef _GNU_SOURCE #define _GNU_SOURCE #endif #include &lt;unistd.h&gt;
+    #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include
+    &lt;netinet/ip_icmp.h&gt; #include &lt;string.h&gt; #define DROPUID 1009
+    #define DROPGID 1009 // rawwrapper, aton 2004 int main(int argc, char
+    *argv[]) &#123; int rfd; char *argv0, *argv1; if (argc&lt;2) &#123;
+    printf("usage: rawwrapper &lt;program&gt;\n"); printf("argv[1] will be the
+    raw socket\n"); exit(EXIT_FAILURE); &#125; //open raw socket if ((rfd =
+    socket(PF_INET, SOCK_RAW, IPPROTO_ICMP))&lt;0) &#123; perror("socket");
+    return EXIT_FAILURE; &#125; //drop priviledges setresgid(DROPGID, DROPGID,
+    DROPGID); setresuid(DROPUID, DROPUID, DROPUID);
+    argv0=malloc(strlen(argv[0])+1); strcpy(argv0, argv[0]);
+    argv1=malloc(strlen(argv[1])+1); strcpy(argv1, argv[1]); // fill in new argv
+    argv[0]=argv1; sprintf(argv[1], "%d", rfd); //execute the client program
+    execve(argv[0], argv, NULL); return EXIT_SUCCESS; &#125;</CodeBlock
+  >
 </GameLayout>
