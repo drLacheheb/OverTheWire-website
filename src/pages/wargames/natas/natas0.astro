@@ -1,14 +1,15 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
 ---
 
 <GameLayout title="OverTheWire: Natas Level 0" gameName="natas" level={0}>
-    <CodeBlock client:visible
-        >Username: natas0 Password: natas0 URL: <a
-            href="http://natas0.natas.labs.overthewire.org"
-            class="text-[#999] hover:text-[#CCC] no-underline"
-            >http://natas0.natas.labs.overthewire.org</a
-        ></CodeBlock
-    >
+    <ConnectionInfo
+        client:load
+        username="natas0"
+        password="natas0"
+        url="http://natas0.natas.labs.overthewire.org"
+    />
 </GameLayout>
+

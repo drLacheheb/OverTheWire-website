@@ -1,15 +1,13 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
 ---
 
 <GameLayout title="OverTheWire: Natas Level 4" gameName="natas" level={4}>
-    <h2 class="text-xl font-bold text-white mb-4">Level 4</h2>
-
-    <p class="text-neutral-300 mb-4">
-        Access disallowed. You are visiting from "" while authorized users
-        should come only from "http://natas5.natas.labs.overthewire.org/"
-    </p>
-
-    <CodeBlock client:visible>Refresh page</CodeBlock>
+    <ConnectionInfo
+        client:load
+        username="natas4"
+        url="http://natas4.natas.labs.overthewire.org"
+    />
 </GameLayout>
+

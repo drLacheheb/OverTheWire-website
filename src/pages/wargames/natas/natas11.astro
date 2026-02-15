@@ -1,28 +1,13 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
 ---
 
 <GameLayout title="OverTheWire: Natas Level 11" gameName="natas" level={11}>
-    <h2 class="text-xl font-bold text-white mb-4">Level 11</h2>
-
-    <p class="text-neutral-300 mb-4">
-        Cookies are protected with XOR encryption<br />
-        <small class="text-neutral-400"
-            >The background color usually changes randomly.</small
-        >
-    </p>
-
-    <div class="mb-4 text-neutral-300">
-        <a
-            href="index-source.html"
-            class="text-neutral-400 hover:text-white underline transition-colors"
-            >View sourcecode</a
-        >
-    </div>
-
-    <CodeBlock client:visible
-        >&lt;? $defaultdata = array( "showpassword"=&gt;"no",
-        "bgcolor"=&gt;"#ffffff"); ?&gt;</CodeBlock
-    >
+    <ConnectionInfo
+        client:load
+        username="natas11"
+        url="http://natas11.natas.labs.overthewire.org"
+    />
 </GameLayout>
+
