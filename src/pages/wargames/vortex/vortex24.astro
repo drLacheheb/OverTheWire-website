@@ -1,6 +1,17 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(
+        process.cwd(),
+        "src",
+        "snippets",
+        "vortex",
+        "vortex24.c",
+);
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 24" gameName="vortex" level={24}>
@@ -15,23 +26,5 @@ import { CodeBlock } from "@/components/ui/code-block";
 
         <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-        <CodeBlock client:visible className="language-c"
-                >/* Written by conscon Hint: Analyze random_r.c from GLIBC
-                Source */ #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt;
-                #include &lt;stdio.h&gt; #include &lt;sys/types.h&gt; #include
-                &lt;fcntl.h&gt; #include &lt;signal.h&gt; void alrm(int signo)
-                &#123; printf("Operation timed out\n"); exit(EXIT_SUCCESS);
-                &#125; int main() &#123; int fd, i, j,word; int seed,guess;
-                unsigned int rr[31]; fd = open("/dev/urandom", O_RDONLY); if(fd
-                &lt; 0) &#123; perror("/dev/urandom"); exit(EXIT_FAILURE);
-                &#125; alarm(60); signal(SIGALRM, alrm); for(j=0;j&lt;20;j++)
-                &#123; if(read(fd, &seed, sizeof(unsigned int)) !=
-                sizeof(unsigned int)) &#123; perror("read /dev/urandom");
-                exit(EXIT_FAILURE); &#125; srand(seed); for(i = 0; i &lt; 29;
-                i++) &#123; printf(" %d",rand()); if((i%5)==4)printf("\n");
-                &#125; printf("\n"); fflush(stdout); scanf("%d",&guess);
-                if(guess!=seed) exit(EXIT_FAILURE); &#125; setresgid(getegid(),
-                getegid(), getegid()); setresuid(geteuid(),geteuid(),
-                geteuid()); execlp("/bin/sh", "sh", NULL); return 0; &#125;</CodeBlock
-        >
+        <CodeBlock client:visible className="language-c" code={snippet} />
 </GameLayout>

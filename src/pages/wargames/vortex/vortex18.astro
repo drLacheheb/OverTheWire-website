@@ -1,6 +1,17 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(
+    process.cwd(),
+    "src",
+    "snippets",
+    "vortex",
+    "vortex18.c",
+);
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 18" gameName="vortex" level={18}>
@@ -12,26 +23,5 @@ import { CodeBlock } from "@/components/ui/code-block";
 
     <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-    <CodeBlock client:visible className="language-c"
-        >#include &lt;stdlib.h&gt; /* * vortex18 challenge * * written by Tim
-        Newsham * contributions by Joshua J. Drake */ #include &lt;stdio.h&gt;
-        #define RANDLEN 16 #define BUFLEN 20 #define TERMINATE1 'n' #define
-        TERMINATE2 's' #define TERMINATE3 '$' #define TERMINATE4 'S' void
-        seedrand(char *seed) &#123; char buf[RANDLEN]; int fd, i; /* read in a
-        seed */ fd = open("/dev/urandom", 0); if(fd == -1) exit(1); if(read(fd,
-        buf, sizeof buf) != sizeof buf) exit(2); close(fd); /* make sure it
-        doesnt use the terminator */ for(i = 0; i &lt; RANDLEN - 1; i++) &#123;
-        if(buf[i] == TERMINATE1 || buf[i] == TERMINATE2 || buf[i] == TERMINATE3
-        || buf[i] == TERMINATE4 || buf[i] == '\0') buf[i] = ' '; &#125; buf[i] =
-        0; /* return it */ strcpy(seed, buf); &#125; int guess(char *seed)
-        &#123; char buf[BUFLEN]; int i; for(i = 0; i &lt; BUFLEN - 1; i++)
-        &#123; if(read(0, buf + i, 1) != 1) exit(1); if(buf[i] == TERMINATE1 ||
-        buf[i] == TERMINATE2 || buf[i] == TERMINATE3 || buf[i] == TERMINATE4)
-        break; &#125; buf[i] = 0; if(strcmp(buf, seed) == 0) return 1;
-        printf(buf); printf("\n"); fflush(stdout); return 0; &#125; int main(int
-        argc, char **argv) &#123; char seed[RANDLEN]; int i; seedrand(seed);
-        for(i = 0; i &lt; 10; i++) &#123; if(guess(seed)) &#123; i = geteuid();
-        setresuid(i, i, i); write(1, "YAY!\n", 5); execlp("/bin/sh", "sh", 0);
-        exit(0); &#125; &#125; printf("sorry.\n"); return 0; &#125;</CodeBlock
-    >
+    <CodeBlock className="language-c" code={snippet} />
 </GameLayout>

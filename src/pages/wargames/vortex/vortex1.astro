@@ -1,6 +1,11 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "vortex", "vortex1.c");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 1" gameName="vortex" level={1}>
@@ -34,18 +39,5 @@ import { CodeBlock } from "@/components/ui/code-block";
 
 	<h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-	<CodeBlock client:visible className="language-c"
-		>#define _GNU_SOURCE #include &lt;stdlib.h&gt; #include &lt;unistd.h&gt;
-		#include &lt;string.h&gt; #include &lt;stdio.h&gt; #define e();
-		if(((unsigned int)ptr &amp; 0xff000000)==0xca000000) &#123;
-		setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh",
-		NULL); printf("%p %p\n", &amp;ptr,ptr); &#125; void print(unsigned char
-		*buf, int len) &#123; int i; printf("[ "); for(i=0; i &lt; len; i++)
-		printf("%x ", buf[i]); printf(" ]\n"); &#125; int main() &#123; unsigned
-		char buf[512]; unsigned char *ptr = buf + (sizeof(buf)/2); unsigned int
-		x; while((x = getchar()) != EOF) &#123; switch(x) &#123; case '\n':
-		print(buf, sizeof(buf)); continue; break; case '\\': ptr--; break;
-		default: e(); if(ptr &gt; buf + sizeof(buf)) continue; ptr++[0] = x;
-		break; &#125; &#125; printf("All done\n"); return 0; &#125;</CodeBlock
-	>
+	<CodeBlock client:visible className="language-c" code={snippet} />
 </GameLayout>

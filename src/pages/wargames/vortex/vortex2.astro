@@ -1,6 +1,11 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "vortex", "vortex2.c");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 2" gameName="vortex" level={2}>
@@ -23,10 +28,5 @@ import { CodeBlock } from "@/components/ui/code-block";
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-  <CodeBlock client:visible className="language-c"
-    >#include &lt;stdlib.h&gt; #include &lt;stdio.h&gt; #include
-    &lt;sys/types.h&gt; int main(int argc, char **argv) &#123; char *args[] =
-    &#123; "/bin/tar", "cf", "/tmp/ownership.$$.tar", argv[1], argv[2], argv[3]
-    &#125;; execv(args[0], args); &#125;</CodeBlock
-  >
+  <CodeBlock client:visible className="language-c" code={snippet} />
 </GameLayout>

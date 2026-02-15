@@ -1,0 +1,1 @@
+Collision(s) tested : 489265082 in 217 second(s), 361 millisec, 101 microsec. Average of 2250932.1 hashes/sec.
