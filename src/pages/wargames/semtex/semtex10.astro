@@ -24,7 +24,7 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 10" gameName="semtex" level={10}>
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Hacking szene</h2>
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Hacking szene</h2>
 
   <div class="p-4 mb-4 bg-[#E0E0E0] border-l-4 border-[#A0A0A0] text-black">
     <p class="font-bold">
@@ -32,7 +32,7 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
     </p>
   </div>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     Do you know these hacking movies where they push some buttons, then the evil
     hacker script window turns up and a percentage bar is showing how far the
     password cracking has gone?
@@ -40,20 +40,20 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 
   <CodeBlock code={snippet2} />
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     Ever wanted to do it yourself? Here is your chance.<br />
     This level implements a weakness in the authentication scheme used by M$ win95
     and win98 for the netbios shares.
   </p>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     There is a TCP daemon on brebera port 24019. It authenticates your password.
     Once you send the correct password, it echoes it back. Well, let the source
     speak for itself. As far as brute force may take you, a little brain is
     never bad :P Perhaps you have heard of pqwak?
   </p>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">Source code</h3>
 
   <CodeBlock className="language-c" code={snippet1} />
 </GameLayout>

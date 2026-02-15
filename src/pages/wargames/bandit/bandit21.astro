@@ -3,9 +3,9 @@ import GameLayout from "../../../layouts/GameLayout.astro";
 ---
 
 <GameLayout title="OverTheWire: Bandit Level 21" gameName="bandit" level={21}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Level Goal</h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         There is a setuid binary in the homedirectory that does the following:
         it makes a connection to localhost on the port you specify as a
         commandline argument. It then reads a line of text from the connection
@@ -14,16 +14,16 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         (bandit21).
     </p>
 
-    <p class="leading-[24px] mb-4 font-bold">
+    <p class="leading-relaxed mb-4 font-bold">
         NOTE: Try connecting to your own network daemon to see if it works as
         you think
     </p>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Commands you may need to solve this level
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         ssh, nc, cat, bash, screen, tmux, Unix 'job control' (bg, fg, jobs,
         &amp;, CTRL-Z, ...)
     </p>

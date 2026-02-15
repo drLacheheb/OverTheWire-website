@@ -15,35 +15,35 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 7" gameName="vortex" level={7}>
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Checksum Fun</h2>
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Checksum Fun</h2>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     This level requires CRC_32(argv[1], strlen(argv[1])) to be 0xe1ca95ee. You
     might need to extract the crc tables from the program.
   </p>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
     Reading Material
   </h2>
 
-  <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+  <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
     <li>
       <a
         href="http://www.woodmann.com/fravia/crctut1.htm"
-        class="text-[#999] hover:text-[#CCC] no-underline"
+        class="text-neutral-500 hover:text-neutral-300 no-underline"
         >CRC and How to Reverse It</a
       >
     </li>
     <li>
       <a
         href="http://taz.newffr.com/TAZ/Reverse_Engineering/CRC.html"
-        class="text-[#999] hover:text-[#CCC] no-underline"
+        class="text-neutral-500 hover:text-neutral-300 no-underline"
         >CRC and How to Reverse It (mirror)</a
       >
     </li>
   </ul>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">Source code</h3>
 
   <CodeBlock className="language-c" code={snippet} />
 </GameLayout>

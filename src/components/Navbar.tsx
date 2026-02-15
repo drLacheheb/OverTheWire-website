@@ -33,7 +33,7 @@ export default function Navbar({ pathname }: NavbarProps) {
                         <span className="text-base font-semibold tracking-tight text-white">
                             OverTheWire
                         </span>
-                        <span className="hidden text-[10px] leading-tight text-neutral-500 sm:block">
+                        <span className="hidden text-xs leading-tight text-neutral-500 sm:block">
                             We're hackers, and we are good-looking.
                         </span>
                     </div>

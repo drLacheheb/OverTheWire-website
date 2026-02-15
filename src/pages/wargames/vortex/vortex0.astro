@@ -3,35 +3,35 @@ import GameLayout from "../../../layouts/GameLayout.astro";
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 0" gameName="vortex" level={0}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Level Goal</h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Your goal is to connect to port 5842 on vortex.labs.overthewire.org and
         read in 4 unsigned integers in host byte order. Add these integers
         together and send back the results to get a username and password for
         vortex1. This information can be used to log in using SSH.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         <strong>Note:</strong> vortex is on an 32bit x86 machine (meaning, a little
         endian architecture)
     </p>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Helpful Reading Material
     </h2>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://beej.us/guide/bgc/"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >C Programming Introduction</a>
         </li>
         <li>
             <a
                 href="http://beej.us/guide/bgnet/"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Network Programming Tutorial</a>
         </li>
     </ul>

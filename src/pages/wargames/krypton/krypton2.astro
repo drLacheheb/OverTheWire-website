@@ -24,30 +24,30 @@ const terminal = fs.readFileSync(terminalPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Krypton Level 2" gameName="krypton" level={2}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Info</h2>
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Level Info</h2>
 
-    <p class="leading-[24px] mb-4">ROT13 is a simple substitution cipher.</p>
+    <p class="leading-relaxed mb-4">ROT13 is a simple substitution cipher.</p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Substitution ciphers are a simple replacement algorithm. In this example
         of a substitution cipher, we will explore a 'monoalphebetic' cipher.
         Monoalphebetic means, literally, "one alphabet" and you will see why.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         This level contains an old form of cipher called a 'Caesar Cipher'. A
         Caesar cipher shifts the alphabet by a set number. For example:
     </p>
 
     <CodeBlock className="language-text" code={cipher} />
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         In this example, the letter 'a' in plaintext is replaced by a 'G' in the
         ciphertext so, for example, the plaintext 'bad' becomes 'HGJ' in
         ciphertext.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         The password for level 3 is in the file krypton3. It is in 5 letter
         group ciphertext. It is encrypted with a Caesar Cipher. Without any
         further information, this cipher text may be difficult to break. You do
@@ -56,13 +56,13 @@ const terminal = fs.readFileSync(terminalPath, "utf-8").trim();
         you think logically, this is completely easy.
     </p>
 
-    <p class="leading-[24px] mb-4">One shot can solve it!</p>
+    <p class="leading-relaxed mb-4">One shot can solve it!</p>
 
-    <p class="leading-[24px] mb-4">Have fun.</p>
+    <p class="leading-relaxed mb-4">Have fun.</p>
 
-    <h3 class="text-[14pt] font-bold mt-4 mb-2">Additional Information:</h3>
+    <h3 class="text-xl font-bold mt-4 mb-2">Additional Information:</h3>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         The <code>encrypt</code> binary will look for the keyfile in your current
         working directory. Therefore, it might be best to create a working direcory
         in /tmp and in there a link to the keyfile. As the <code>encrypt</code> binary
@@ -71,7 +71,7 @@ const terminal = fs.readFileSync(terminalPath, "utf-8").trim();
         to your working directory.
     </p>
 
-    <p class="leading-[24px] mb-4">Here is an example:</p>
+    <p class="leading-relaxed mb-4">Here is an example:</p>
 
     <CodeBlock className="language-bash" code={terminal} />
 </GameLayout>

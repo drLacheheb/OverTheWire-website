@@ -103,7 +103,7 @@ const displayName = capitalize(gameName);
                             data-copy={gameData.host}
                             title="Click to copy"
                         >
-                            <div class="text-neutral-500 text-[10px] mb-0.5">
+                            <div class="text-neutral-500 text-xs mb-0.5">
                                 Host
                             </div>
                             <div class="flex items-center justify-between">
@@ -138,7 +138,7 @@ const displayName = capitalize(gameName);
                             data-copy={String(gameData.port)}
                             title="Click to copy"
                         >
-                            <div class="text-neutral-500 text-[10px] mb-0.5">
+                            <div class="text-neutral-500 text-xs mb-0.5">
                                 Port
                             </div>
                             <div class="flex items-center justify-between">
@@ -173,7 +173,7 @@ const displayName = capitalize(gameName);
                             data-copy={`ssh ${gameName}0@${gameData.host} -p ${gameData.port}`}
                             title="Click to copy full SSH command"
                         >
-                            <div class="text-neutral-500 text-[10px] mb-0.5">
+                            <div class="text-neutral-500 text-xs mb-0.5">
                                 SSH Command
                             </div>
                             <div class="flex items-center justify-between">
@@ -247,9 +247,7 @@ const displayName = capitalize(gameName);
                 {displayName}
             </a>
 
-            <div
-                class="max-h-[280px] space-y-0.5 overflow-y-auto scrollbar-thin"
-            >
+            <div class="max-h-72 space-y-0.5 overflow-y-auto scrollbar-thin">
                 {
                     levels.map((level) => (
                         <a

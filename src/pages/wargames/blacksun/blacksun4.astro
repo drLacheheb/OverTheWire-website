@@ -12,32 +12,32 @@ const blacksun4Snippet = fs
 ---
 
 <GameLayout title="OverTheWire: Blacksun Level 4" gameName="blacksun" level={4}>
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     level4 is an installation of Apache and PHP with an introduced heap
     vulnerability.
   </p>
 
-  <p class="leading-[24px] mb-4">The introduced vulnerability is as follows:</p>
+  <p class="leading-relaxed mb-4">The introduced vulnerability is as follows:</p>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun4.function.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">blacksun4.function.c</h3>
 
   <CodeBlock code={blacksun4Snippet} lang="c" />
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     Thanks to orix for the introduced code snippet
   </p>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     The document root is in /levels/level4/htdocs, you'll need to put your php
     code there and call it via the webserver on port 55555.
   </p>
 
-  <p class="leading-[24px] mb-4 font-bold">
+  <p class="leading-relaxed mb-4 font-bold">
     Note: that if you're executing a shell, it can't be /bin/sh or /bin/bash,
     oh, and the apache process can't access the /etc/pass directory :P
   </p>
 
-  <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+  <h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
     Binary information
   </h3>
 
@@ -59,16 +59,16 @@ const blacksun4Snippet = fs
       <div class="font-bold text-right">Non-executable pages:</div>
       <div>None / disabled</div>
 
-      <div class="col-span-2 border-t border-[#CCC] my-2"></div>
+      <div class="col-span-2 border-t border-neutral-700 my-2"></div>
 
       <div class="font-bold text-right">Location:</div>
       <div>127.0.0.1:55555</div>
     </div>
   </div>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun4.basic_functions.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">blacksun4.basic_functions.c</h3>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     (The file is too large to display inline, but it is available on the level)
   </p>
 </GameLayout>

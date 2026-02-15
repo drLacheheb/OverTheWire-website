@@ -8,70 +8,70 @@ import GameLayout from "../../../layouts/GameLayout.astro";
     level="reading-material"
 >
     <h2
-        class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
+        class="text-3xl font-normal text-neutral-500 mt-6 mb-4 border-b border-neutral-700 pb-2"
     >
         Reading material
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Below is a list of overall reading material which you may wish to read
         over before starting.
     </p>
 
-    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Bug class exploitation
     </h3>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">Format strings:</h4>
+    <h4 class="text-xl font-bold mt-4 mb-2">Format strings:</h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/formatstring-1.2.tar.gz"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Scut's formatstring paper</a
             > (class paper and recommended reading)
         </li>
         <li>
             <a
                 href="papers/p59-0x07.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Advances in format string exploitation</a>
         </li>
         <li>
             <a
                 href="papers/format-bug-analysis.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Format bug analysis</a>
         </li>
         <li>
             <a
                 href="papers/core_format_strings.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Vulnerabilities in your code - Format Strings</a>
         </li>
         <li>
             <a
                 href="papers/rebel-formatstring.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >The Mystery of Format String Exploitation</a>
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">Heap exploitation</h4>
+    <h4 class="text-xl font-bold mt-4 mb-2">Heap exploitation</h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/p57-0x09"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Once upon a free()</a
             > - Historical document, later glibc's have additional checking
         </li>
         <li>
             <a
                 href="papers/p57-0x08"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Vudo - An object superstitiously believed to embody magical
                 powers</a
             > - ""
@@ -79,199 +79,199 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         <li>
             <a
                 href="papers/p61-0x06_Advanced_malloc_exploits.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Advanced Doug lea's malloc exploits</a
             > - ""
         </li>
         <li>
             <a
                 href="papers/MallocMaleficarum.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Malloc Maleficarum</a
             > - Recent glibc malloc exploitation document, should be relevant for
             blacksun
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">Frame pointer overwrites</h4>
+    <h4 class="text-xl font-bold mt-4 mb-2">Frame pointer overwrites</h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/P55-08"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Framepointer overwrites</a>
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">
+    <h4 class="text-xl font-bold mt-4 mb-2">
         Adress space layout randomisation (ASLR)/ PaX specific
     </h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/p59-0x09.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Bypassing PaX ASLR protection</a
             > - somewhat outdated.
         </li>
         <li>
             <a
                 href="papers/p58-0x04"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >The advanced return-into-lib(c) exploits: PaX case study</a
             > - ""
         </li>
         <li>
             <a
                 href="http://pax.grsecurity.net/docs/"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >PaX documentation</a
             > - external link
         </li>
         <li>
             <a
                 href="papers/smash_the_stack_advanced_bufferoverflow_methods.txt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Smash the stack - Advanced bufferoverflow methods</a>
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">Execshield documents</h4>
+    <h4 class="text-xl font-bold mt-4 mb-2">Execshield documents</h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://www.hackinthebox.org/print.php?sid=15604"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >A Solution To Red Hat PIE Protection</a
             > - External link
         </li>
         <li>
             <a
                 href="http://neworder.box.sk/newsread.php?newsid=13007"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >How to Exploit Overflow Vulnerability Under Fedora Core</a
             > - External link
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">
+    <h4 class="text-xl font-bold mt-4 mb-2">
         Stackguard / Stack smashing protection
     </h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://www.research.ibm.com/trl/projects/security/ssp/"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Stack Smashing Protection homepage</a
             > - external link
         </li>
         <li>
             <a
                 href="papers/p56-0x05"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Bypassing StackGuard and StackShield</a>
         </li>
         <li>
             <a
                 href="papers/StackguardPaper.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Four different tricks to bypass StackShield and StackGuard
                 protection</a>
         </li>
         <li>
             <a
                 href="papers/alexander0506.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Defeating compiler-level buffer overflow protection</a>
         </li>
     </ul>
 
-    <h4 class="text-[14pt] font-bold mt-4 mb-2">
+    <h4 class="text-xl font-bold mt-4 mb-2">
         Hardware protection (e.g amd64 / nx bit)
     </h4>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/no-nx.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >x86-64 buffer overflow exploits and the borrowed chunks
                 exploitation technique</a>
         </li>
     </ul>
 
-    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Generalised papers / notes / presentations (not always indepth)
     </h3>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="papers/Buffer_Overflow_Prevention.ppt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >A Comparison of Buffer Overflow Prevention Implementations and
                 Their Weaknesses</a>
         </li>
         <li>
             <a
                 href="papers/PaX-presentation.ppt"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Spender's PaX Presentation</a>
         </li>
         <li>
             <a
                 href="papers/smashing.sxi"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Taking the fun out of smashing the stack</a>
         </li>
         <li>
             <a
                 href="papers/practical_unix_security.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Practical Unix Security</a>
         </li>
         <li>
             <a
                 href="papers/PaX_Memory_Protection.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >PaX Memory Protection</a
             > - Linux Journal entry
         </li>
         <li>
             <a
                 href="papers/advancesinsoftwareattacks.pdf"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Advances In Software Attack</a>
         </li>
     </ul>
 
-    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Secure computing
     </h3>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://kerneltrap.org/node/4005"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Seccomp announcement</a
             > - Secure Computing (seccomp) patch announcement (external link)
         </li>
     </ul>
 
-    <h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Got some good additional papers?
     </h3>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         If you have some relevant papers that would be suitable for this site,
         please drop <a
             href="mailto:andrewg@felinemenace.org"
-            class="text-[#999] hover:text-[#CCC] no-underline">me</a
+            class="text-neutral-500 hover:text-neutral-300 no-underline">me</a
         > an email.
     </p>
 </GameLayout>

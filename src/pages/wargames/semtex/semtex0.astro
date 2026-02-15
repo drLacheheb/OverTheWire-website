@@ -3,27 +3,27 @@ import GameLayout from "../../../layouts/GameLayout.astro";
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 0" gameName="semtex" level={0}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Get a shell</h2>
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Get a shell</h2>
 
-    <p class="leading-[24px] mb-4">semtex.labs.overthewire.org</p>
+    <p class="leading-relaxed mb-4">semtex.labs.overthewire.org</p>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>x86/elf: Connect to port 24000</li>
         <li>amd64/elf: Connect to port 24001</li>
         <li>ppc/mach-O: Connect to port 24002</li>
     </ul>
 
-    <p class="leading-[24px] mb-4">Receive data until the port is closed.</p>
+    <p class="leading-relaxed mb-4">Receive data until the port is closed.</p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Every second byte you receive is trash, ignore it. The other bytes are
         an executable that shows you the password.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Then login to <a
             href="ssh://semtex1@semtex.labs.overthewire.org:2229"
-            class="text-[#999] hover:text-[#CCC] no-underline"
+            class="text-neutral-500 hover:text-neutral-300 no-underline"
             >semtex1@semtex.labs.overthewire.org</a
         > on port 2229
     </p>
@@ -32,15 +32,15 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         <p class="font-bold">Thanks to mrx for the amd64 and ppc binaries!</p>
     </div>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Reading Material
     </h2>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://beej.us/guide/bgnet/"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Beej's guide to network programming</a>
         </li>
     </ul>

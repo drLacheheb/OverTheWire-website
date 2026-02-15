@@ -33,16 +33,16 @@ const ciphertext = fs.readFileSync(ciphertextPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Krypton Level 4" gameName="krypton" level={4}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Info</h2>
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Level Info</h2>
 
-    <p class="leading-[24px] mb-4">Good job!</p>
+    <p class="leading-relaxed mb-4">Good job!</p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         You more than likely used some form of FA and some common sense to solve
         that one.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         So far we have worked with simple substitution ciphers. They have also
         been 'monoalphabetic', meaning using a fixed key, and giving a one to
         one mapping of plaintext (P) to ciphertext (C). Another type of
@@ -50,12 +50,12 @@ const ciphertext = fs.readFileSync(ciphertextPath, "utf-8").trim();
         character of P may map to many, or all, possible ciphertext characters.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         An example of a polyalphabetic cipher is called a Vigenère Cipher. It
         works like this:
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         If we use the key(K) 'GOLD', and P = PROCEED MEETING AS AGREED, then
         "add" P to K, we get C. When adding, if we exceed 25, then we roll to 0
         (modulo 26).
@@ -63,24 +63,24 @@ const ciphertext = fs.readFileSync(ciphertextPath, "utf-8").trim();
 
     <CodeBlock className="language-text" code={vigenere1} />
 
-    <p class="leading-[24px] mb-4">becomes:</p>
+    <p class="leading-relaxed mb-4">becomes:</p>
 
     <CodeBlock className="language-text" code={vigenere2} />
 
-    <p class="leading-[24px] mb-4">So, we get a ciphertext of:</p>
+    <p class="leading-relaxed mb-4">So, we get a ciphertext of:</p>
 
     <CodeBlock className="language-text" code={ciphertext} />
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         This level is a Vigenère Cipher. You have intercepted two longer,
         english language messages (American English). You also have a key piece
         of information. You know the key length!
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         For this exercise, the key length is 6. The password to level five is in
         the usual place, encrypted with the 6 letter key.
     </p>
 
-    <p class="leading-[24px] mb-4">Have fun!</p>
+    <p class="leading-relaxed mb-4">Have fun!</p>
 </GameLayout>

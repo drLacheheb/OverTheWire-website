@@ -3,11 +3,11 @@ import GameLayout from "../../../layouts/GameLayout.astro";
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 5" gameName="semtex" level={5}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Random Networking
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Make 10 connections to port 24027 from different IP's. On each
         connection you will receive a string of 10 ASCII characters. XOR this
         string with the Semtex5 password, character by character. Then send back
@@ -27,15 +27,15 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         </p>
     </div>
 
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Reading Material
     </h2>
 
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
         <li>
             <a
                 href="http://www.faqs.org/rfcs/rfc1928.html"
-                class="text-[#999] hover:text-[#CCC] no-underline"
+                class="text-neutral-500 hover:text-neutral-300 no-underline"
                 >Socks5 Request For Comment</a>
         </li>
     </ul>

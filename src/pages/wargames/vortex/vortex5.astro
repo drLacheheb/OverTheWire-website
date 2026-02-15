@@ -24,11 +24,11 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 5" gameName="vortex" level={5}>
-        <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+        <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
                 MD5 Brute Force
         </h2>
 
-        <p class="leading-[24px] mb-4">
+        <p class="leading-relaxed mb-4">
                 A password is required for the next level. vortex5.c and md5.h.
                 a-z,A-Z,0-9 is the search space. The password length is 5 chars
                 long, it was originally 7 chars long.
@@ -36,7 +36,7 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 
         <CodeBlock code={snippet1} />
 
-        <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+        <h3 class="text-xl font-bold mt-4 mb-2">Source code</h3>
 
         <CodeBlock className="language-c" code={snippet2} />
 </GameLayout>

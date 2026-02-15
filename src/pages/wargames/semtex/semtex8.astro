@@ -15,32 +15,32 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 8" gameName="semtex" level={8}>
-    <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
         Non-sniffable data
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         This level is about some very simple covert channel, about transferring
         information that cannot possibly be sniffed. There is a socket file in
         /rdx/nature. It is a local Unix socket. Receive data from it until EOF
         and save it to a file.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Watch the time between the received bytes. Certain delays mean certain
         bytes that have been left out (have not been sent).
     </p>
 
     <CodeBlock code={snippet} />
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         you have to take these "unsent" data into your output file too, exactly
         at the places where they occur.
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-relaxed mb-4">
         Thus you are receiving data while not receiving anything.
     </p>
 
-    <p class="leading-[24px] mb-4">The output file is a .jpg image :)</p>
+    <p class="leading-relaxed mb-4">The output file is a .jpg image :)</p>
 </GameLayout>

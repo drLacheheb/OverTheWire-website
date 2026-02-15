@@ -12,7 +12,7 @@ const blacksun0Snippet = fs
 ---
 
 <GameLayout title="OverTheWire: Blacksun Level 0" gameName="blacksun" level={0}>
-	<p class="leading-[24px] mb-4">
+	<p class="leading-relaxed mb-4">
 		Level0 is a remote format string intended to get you started with
 		blacksun. It is a remote format string bug with you being able to see
 		the reply, with address space randomisation enabled. You'll need to use
@@ -20,11 +20,11 @@ const blacksun0Snippet = fs
 		manipulate it.
 	</p>
 
-	<p class="leading-[24px] mb-4">
+	<p class="leading-relaxed mb-4">
 		Once getting access to a shell, read /etc/motd for more information
 	</p>
 
-	<h3 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+	<h3 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
 		Binary information
 	</h3>
 
@@ -48,19 +48,19 @@ const blacksun0Snippet = fs
 			<div class="font-bold text-right">Non-executable pages:</div>
 			<div>None / disabled</div>
 
-			<div class="col-span-2 border-t border-[#CCC] my-2"></div>
+			<div class="col-span-2 border-t border-neutral-700 my-2"></div>
 
 			<div class="font-bold text-right">Location:</div>
 			<div>Connect to blacksun.overthewire.org on port 79</div>
 		</div>
 	</div>
 
-	<p class="leading-[24px] mb-4">
+	<p class="leading-relaxed mb-4">
 		Alternatively, there is a debug version on port 78 if you need help
 		understanding what you're seeing
 	</p>
 
-	<h3 class="text-[14pt] font-bold mt-4 mb-2">blacksun0.c</h3>
+	<h3 class="text-xl font-bold mt-4 mb-2">blacksun0.c</h3>
 
 	<CodeBlock code={blacksun0Snippet} lang="c" />
 </GameLayout>

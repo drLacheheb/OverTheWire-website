@@ -15,9 +15,9 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 11" gameName="semtex" level={11}>
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Deja vue</h2>
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Deja vue</h2>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     /rdx/vl1b is vortex semtex1 with a slight modification to make things a
     little bit harder.
   </p>
@@ -26,13 +26,13 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
     <p class="font-bold">Thanks to andrewg for inspiration.</p>
   </div>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
     Suggested reading
   </h2>
 
-  <p class="leading-[24px] mb-4">manpages: popen, dup2</p>
+  <p class="leading-relaxed mb-4">manpages: popen, dup2</p>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex11.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex11.c</h3>
 
   <CodeBlock className="language-c" code={snippet} />
 </GameLayout>

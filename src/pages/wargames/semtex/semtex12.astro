@@ -60,7 +60,7 @@ const snippet6 = fs.readFileSync(snippet6Path, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 12" gameName="semtex" level={12}>
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
     Authentication Daemon
   </h2>
 
@@ -71,7 +71,7 @@ const snippet6 = fs.readFileSync(snippet6Path, "utf-8").trim();
     access...
   </p>
 
-  <p class="leading-[24px] mb-4">
+  <p class="leading-relaxed mb-4">
     After authentication you connect to the remote file system reader on port
     24013. Depending on your access level you can list files and show them. The
     semtex 13 password has been located in one of the files on this remote file
@@ -82,21 +82,21 @@ const snippet6 = fs.readFileSync(snippet6Path, "utf-8").trim();
     <p class="font-bold">Thanks to bk for this level!</p>
   </div>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.authd.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.authd.c</h3>
   <CodeBlock className="language-c" code={snippet1} />
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.daemon.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.daemon.c</h3>
   <CodeBlock className="language-c" code={snippet2} />
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.reader.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.reader.c</h3>
   <CodeBlock className="language-c" code={snippet3} />
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.sem.c</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.sem.c</h3>
   <CodeBlock className="language-c" code={snippet4} />
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.sem.h</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.sem.h</h3>
   <CodeBlock className="language-c" code={snippet5} />
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.server.h</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">semtex12.server.h</h3>
   <CodeBlock className="language-c" code={snippet6} />
 </GameLayout>

@@ -15,24 +15,24 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Vortex Level 2" gameName="vortex" level={2}>
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Level Goal</h2>
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">Level Goal</h2>
 
-  <p class="leading-[24px] mb-4">Create a special tar file</p>
+  <p class="leading-relaxed mb-4">Create a special tar file</p>
 
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+  <h2 class="text-2xl font-normal text-neutral-500 mt-6 mb-2">
     Helpful Reading Material
   </h2>
 
-  <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+  <ul class="list-disc list-inside pl-4 leading-relaxed mb-4">
     <li>
       <a
         href="http://linux.die.net/man/1/tar"
-        class="text-[#999] hover:text-[#CCC] no-underline">GNU tar manual</a
+        class="text-neutral-500 hover:text-neutral-300 no-underline">GNU tar manual</a
       >
     </li>
   </ul>
 
-  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+  <h3 class="text-xl font-bold mt-4 mb-2">Source code</h3>
 
   <CodeBlock className="language-c" code={snippet} />
 </GameLayout>
