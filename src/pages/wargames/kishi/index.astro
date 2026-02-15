@@ -9,7 +9,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         [RELEASED] Kishi (HES2013 and NSC2013)
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-6 mb-4">
         This wargame was introduced at the <a
             href="http://hackitoergosum.org/"
             class="text-[#999] hover:text-[#CCC] no-underline"
@@ -23,7 +23,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         >
     </p>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-6 mb-4">
         As of December 2014, the Kishi game has been released to the public and
         can be downloaded through <a
             href="https://www.vagrantup.com/"
@@ -35,7 +35,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">vagrant init StevenVanAcker/kishi
 vagrant up</pre>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-6 mb-4">
         Kishi listens on ports 22, 80 and 2222, which are forwarded from the VM
         host through ports 6622, 6680 and 3322 respectively. Kishi uses several
         LXC containers internally, you can access them from the host VM through
@@ -44,7 +44,7 @@ vagrant up</pre>
     <pre
         class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">virsh -c lxc://</pre>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-6 mb-4">
         The SSH server running on port 2222 can be used to login to kishi itself
         with username/password vagrant/vagrant. All containers run an SSH server
         with an admin account with username/password otw/otw. These admin
