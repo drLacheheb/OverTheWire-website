@@ -1,5 +1,6 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
 ---
 
 <GameLayout title="OverTheWire: Leviathan" gameName="leviathan">
@@ -27,9 +28,7 @@ import GameLayout from "../../../layouts/GameLayout.astro";
 
     <p class="leading-[24px] mb-4">To login to the first level use:</p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: leviathan0
-Password: leviathan0</pre>
+    <ConnectionInfo client:load username="leviathan0" password="leviathan0" />
 
     <p class="leading-[24px] mb-4">
         Data for the levels can be found in <strong>the homedirectories</strong
