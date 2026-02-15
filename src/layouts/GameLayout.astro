@@ -12,31 +12,17 @@ interface Props {
 
 const { title, gameName, level } = Astro.props;
 
-// Level Title Logic
 let levelTitle = "";
 if (level !== undefined) {
-    const gameData = gamesData[gameName];
     const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
     const displayName = capitalize(gameName);
-
-    if (gameData) {
-        if (!gameData.specialNumbering) {
-            if (level === 0) {
-                levelTitle = `${displayName} Level ${level}`;
-            } else {
-                levelTitle = `${displayName} Level ${level - 1} → Level ${level}`;
-            }
-        } else {
-            levelTitle = `${displayName} Level ${level} → Level ${level + 1}`;
-        }
-    }
+    levelTitle = `${displayName} Level ${level}`;
 }
 ---
 
 <BaseLayout title={title}>
     <div class="flex flex-col gap-8 md:flex-row">
         <LevelSidebar gameName={gameName} />
-
         <div class="min-w-0 flex-1">
             {
                 levelTitle && (
@@ -47,7 +33,6 @@ if (level !== undefined) {
                     </div>
                 )
             }
-
             <slot />
         </div>
     </div>
