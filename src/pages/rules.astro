@@ -72,46 +72,5 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 website.
             </li>
         </ol>
-
-        <div id="accept-rules" class="mt-8">
-            <button
-                id="accept-rules-button"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-                Click here to accept these rules
-            </button>
-        </div>
-
-        <div
-            id="rules-accepted"
-            class="hidden mt-8 p-4 bg-green-100 border border-green-400 text-green-700 rounded relative"
-        >
-            <span class="text-xl font-bold mr-2">&check;</span>
-            Thank you for accepting the rules. Have fun playing the games!
-        </div>
     </div>
-
-    <script>
-        function hideAcceptButton() {
-            const acceptedDiv = document.getElementById("rules-accepted");
-            const buttonDiv = document.getElementById("accept-rules");
-            if (acceptedDiv && buttonDiv) {
-                acceptedDiv.classList.remove("hidden");
-                buttonDiv.classList.add("hidden");
-                localStorage.setItem("rules-accepted", "true");
-            }
-        }
-
-        const button = document.getElementById("accept-rules-button");
-        if (button) {
-            button.addEventListener("click", hideAcceptButton);
-        }
-
-        if (
-            typeof localStorage !== "undefined" &&
-            localStorage.getItem("rules-accepted") === "true"
-        ) {
-            hideAcceptButton();
-        }
-    </script>
 </BaseLayout>
