@@ -1,10 +1,16 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import CodeBlock from "@/components/CodeBlock.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const snippetPath = path.join(process.cwd(), "src", "snippets", "vortex", "vortex3.c");
+const snippetPath = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "vortex",
+  "vortex3.c",
+);
 const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
@@ -52,5 +58,5 @@ const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-  <CodeBlock client:visible className="language-c" code={snippet} />
+  <CodeBlock className="language-c" code={snippet} />
 </GameLayout>

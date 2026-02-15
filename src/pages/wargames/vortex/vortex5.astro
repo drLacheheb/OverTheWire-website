@@ -1,13 +1,25 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import CodeBlock from "@/components/CodeBlock.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const snippet1Path = path.join(process.cwd(), "src", "snippets", "vortex", "vortex5_output.txt");
+const snippet1Path = path.join(
+        process.cwd(),
+        "src",
+        "snippets",
+        "vortex",
+        "vortex5_output.txt",
+);
 const snippet1 = fs.readFileSync(snippet1Path, "utf-8").trim();
 
-const snippet2Path = path.join(process.cwd(), "src", "snippets", "vortex", "vortex5.c");
+const snippet2Path = path.join(
+        process.cwd(),
+        "src",
+        "snippets",
+        "vortex",
+        "vortex5.c",
+);
 const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 ---
 
@@ -22,9 +34,9 @@ const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
                 long, it was originally 7 chars long.
         </p>
 
-        <CodeBlock client:visible code={snippet1} />
+        <CodeBlock code={snippet1} />
 
         <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-        <CodeBlock client:visible className="language-c" code={snippet2} />
+        <CodeBlock className="language-c" code={snippet2} />
 </GameLayout>

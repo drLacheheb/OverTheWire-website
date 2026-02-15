@@ -1,44 +1,47 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
-import { CodeBlock } from "@/components/ui/code-block";
+import GameLayout from "../../../layouts/GameLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex9.rawwrapper.c");
+const snippetPath = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex9.rawwrapper.c",
+);
 const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 9" gameName="semtex" level={9}>
-  
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Tunneling your firewall</h2>
-  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    Tunneling your firewall
+  </h2>
+
   <p class="leading-[24px] mb-4">
-    How do you get data through a firewall that is blocking any tcp
-    connection? You just don't use a tcp connection, but instead other
-    packets, that might not be filtered. For example network maintenance
-    protocols like ICMP.
+    How do you get data through a firewall that is blocking any tcp connection?
+    You just don't use a tcp connection, but instead other packets, that might
+    not be filtered. For example network maintenance protocols like ICMP.
   </p>
 
   <p class="leading-[24px] mb-4">
-    There is a raw socket open on a yet unknown host that listens for
-    icmp packets and forwards them to a tcp server that you cannot
-    reach. Your job is to create a client that communicates with this
-    icmp "server". If everything works, you find yourself in a shell on
-    an unknown system, and can search for the password.
+    There is a raw socket open on a yet unknown host that listens for icmp
+    packets and forwards them to a tcp server that you cannot reach. Your job is
+    to create a client that communicates with this icmp "server". If everything
+    works, you find yourself in a shell on an unknown system, and can search for
+    the password.
   </p>
 
   <p class="leading-[24px] mb-4">
-    The protocol and the server, that is used by the ICMP tunnel is
-    described in your home directory. If you manage to blackbox analyze
-    it, then you can jump directly from semtex0 to semtex10 :)
+    The protocol and the server, that is used by the ICMP tunnel is described in
+    your home directory. If you manage to blackbox analyze it, then you can jump
+    directly from semtex0 to semtex10 :)
   </p>
 
-  <p class="leading-[24px] mb-4">
-    You will have to use /rdx/rawwrapper. 
-  </p>
+  <p class="leading-[24px] mb-4">You will have to use /rdx/rawwrapper.</p>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex9.rawwrapper.c</h3>
 
   <CodeBlock className="language-c" code={snippet} />
-
 </GameLayout>

@@ -1,45 +1,81 @@
 ---
-import GameLayout from '../../../layouts/GameLayout.astro';
-import { CodeBlock } from "@/components/ui/code-block";
+import GameLayout from "../../../layouts/GameLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const snippet1Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.authd.c");
+const snippet1Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.authd.c",
+);
 const snippet1 = fs.readFileSync(snippet1Path, "utf-8").trim();
 
-const snippet2Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.daemon.c");
+const snippet2Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.daemon.c",
+);
 const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 
-const snippet3Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.reader.c");
+const snippet3Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.reader.c",
+);
 const snippet3 = fs.readFileSync(snippet3Path, "utf-8").trim();
 
-const snippet4Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.sem.c");
+const snippet4Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.sem.c",
+);
 const snippet4 = fs.readFileSync(snippet4Path, "utf-8").trim();
 
-const snippet5Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.sem.h");
+const snippet5Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.sem.h",
+);
 const snippet5 = fs.readFileSync(snippet5Path, "utf-8").trim();
 
-const snippet6Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex12.server.h");
+const snippet6Path = path.join(
+  process.cwd(),
+  "src",
+  "snippets",
+  "semtex",
+  "semtex12.server.h",
+);
 const snippet6 = fs.readFileSync(snippet6Path, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 12" gameName="semtex" level={12}>
-  
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Authentication Daemon</h2>
-  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
+    Authentication Daemon
+  </h2>
+
   <p class="leading-6 mb-4">
-    There is an authentication daemon waiting on brebera port 24012. You
-    connect to it, supply your password and get authenticated. The
-    semtex 12 password will give you user access, the admin password
-    will give you administrator access...
+    There is an authentication daemon waiting on brebera port 24012. You connect
+    to it, supply your password and get authenticated. The semtex 12 password
+    will give you user access, the admin password will give you administrator
+    access...
   </p>
 
   <p class="leading-[24px] mb-4">
-    After authentication you connect to the remote file system reader
-    on port 24013. Depending on your access level you can list files and
-    show them. The semtex 13 password has been located in one of the
-    files on this remote file system. Brebera is fast, can you be
-    faster?
+    After authentication you connect to the remote file system reader on port
+    24013. Depending on your access level you can list files and show them. The
+    semtex 13 password has been located in one of the files on this remote file
+    system. Brebera is fast, can you be faster?
   </p>
 
   <div class="p-4 mb-4 bg-[#E0E0E0] border-l-4 border-[#A0A0A0] text-black">
@@ -63,5 +99,4 @@ const snippet6 = fs.readFileSync(snippet6Path, "utf-8").trim();
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex12.server.h</h3>
   <CodeBlock className="language-c" code={snippet6} />
-
 </GameLayout>

@@ -1,10 +1,16 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
-import { CodeBlock } from "@/components/ui/code-block";
+import CodeBlock from "@/components/CodeBlock.astro";
 import fs from "node:fs";
 import path from "node:path";
 
-const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex8_mapping.txt");
+const snippetPath = path.join(
+    process.cwd(),
+    "src",
+    "snippets",
+    "semtex",
+    "semtex8_mapping.txt",
+);
 const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
