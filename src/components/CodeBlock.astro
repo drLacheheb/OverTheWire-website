@@ -7,14 +7,20 @@ interface Props {
     code: string;
     class?: string;
     className?: string; // Support both for easier migration
+    lang?: string;
 }
 
-const { code, class: className, className: classNameProp } = Astro.props;
+const {
+    code,
+    class: className,
+    className: classNameProp,
+    lang: langProp,
+} = Astro.props;
 
 // Determine language from className (e.g., "language-c" -> "c")
 const finalClass = cn(className, classNameProp);
 const languageMatch = finalClass?.match(/language-(\w+)/);
-const lang = languageMatch ? languageMatch[1] : "text";
+const lang = langProp || (languageMatch ? languageMatch[1] : "text");
 
 // Generate a unique ID for this block to handle copy functionality
 const id = `code-block-${Math.random().toString(36).substring(2, 9)}`;

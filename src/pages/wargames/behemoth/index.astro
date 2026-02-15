@@ -1,8 +1,21 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetDir = path.join(process.cwd(), "src", "snippets", "behemoth");
+
+const infoSnippet = fs
+    .readFileSync(path.join(snippetDir, "info.txt"), "utf-8")
+    .trim();
+
+const credsSnippet = fs
+    .readFileSync(path.join(snippetDir, "creds.txt"), "utf-8")
+    .trim();
 ---
 
-<GameLayout title="OverTheWire: Behemoth" gameName="behemoth" level="index">
+<GameLayout title="OverTheWire: Behemoth" gameName="behemoth">
     <h2
         class="text-[24pt] font-normal text-[#999] mt-6 mb-4 border-b border-[#CCC] pb-2"
     >
@@ -25,22 +38,7 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         intruded.net:
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Summary:
-Difficulty:     3/10
-Levels:         9
-Platform:   Linux/x86
-
-Author:
-Anders Tonfeldt
-
-Special Thanks:
-
-Description:
-This wargame deals with a lot of regular vulnerabilities found commonly 'out 
-in the wild'. While the game makes no attempts at emulating a real environment
-it will teach you how to exploit several of the most common coding mistakes 
-including buffer overflows, race conditions and privilege escalation.</pre>
+    <CodeBlock code={infoSnippet} />
 
     <p class="leading-[24px] mb-4">
         Behemoth's levels are called <strong
@@ -51,9 +49,7 @@ including buffer overflows, race conditions and privilege escalation.</pre>
 
     <p class="leading-[24px] mb-4">To login to the first level use:</p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: behemoth0
-Password: behemoth0</pre>
+    <CodeBlock code={credsSnippet} />
 
     <p class="leading-[24px] mb-4">
         Data for the levels can be found in <strong>/behemoth/</strong>.
