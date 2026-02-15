@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+---
+
+<BaseLayout title="Donating">
+    <div class="prose max-w-none">
+        <h1 class="text-3xl font-bold mb-6">Donating</h1>
+
+        <p class="mb-4">
+            We gladly accept donations to keep our infrastructure running!<br />
+            We prefer receiving monthly donations via Patreon, since this allows us
+            to give perks to sponsors.<br />
+            However, PayPal donations are also an option.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mt-8">
+            <a
+                href="https://www.patreon.com/join/StevenVanAcker"
+                class={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "h-auto py-4 px-6 flex-col gap-2 w-full sm:w-72 hover:bg-[#FF424D]/10 hover:text-[#FF424D] hover:border-[#FF424D]/50 transition-all duration-300 group",
+                )}
+            >
+                <Icon
+                    name="simple-icons:patreon"
+                    class="w-8 h-8 group-hover:scale-110 transition-transform duration-300"
+                />
+                <span class="font-bold text-base">Support us on Patreon</span>
+            </a>
+
+            <a
+                href="https://paypal.me/overthewire"
+                class={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "h-auto py-4 px-6 flex-col gap-2 w-full sm:w-72 hover:bg-[#003087]/10 hover:text-[#003087] hover:border-[#003087]/50 transition-all duration-300 group",
+                )}
+            >
+                <Icon
+                    name="simple-icons:paypal"
+                    class="w-8 h-8 group-hover:scale-110 transition-transform duration-300"
+                />
+                <span class="font-bold text-base">Donate via PayPal</span>
+            </a>
+        </div>
+    </div>
+</BaseLayout>
