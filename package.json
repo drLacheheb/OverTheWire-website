@@ -11,6 +11,8 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
     "@iconify-json/simple-icons": "^1.2.70",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.14",
