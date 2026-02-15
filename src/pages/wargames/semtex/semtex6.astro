@@ -1,64 +1,40 @@
 ---
-import GameLayout from "../../../layouts/GameLayout.astro";
+import GameLayout from '../../../layouts/GameLayout.astro';
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex6.rawwrapper.c");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 6" gameName="semtex" level={6}>
-	<h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">ICMP forging</h2>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">ICMP forging</h2>
+  
+  <p class="leading-6 mb-4">
+    Send a special ICMP packet to an unknown host. Add the correct
+    payload to it, to make sure you can receive the password. Spoof your
+    origin address and make semtex believe, the packet is really coming
+    from some government server (*.gov) Make sure this server you are
+    sending from has a reverse DNS entry, otherwise you will not receive
+    an answer.
+  </p>
 
-	<p class="leading-6 mb-4">
-		Send a special ICMP packet to an unknown host. Add the correct payload
-		to it, to make sure you can receive the password. Spoof your origin
-		address and make semtex believe, the packet is really coming from some
-		government server (*.gov) Make sure this server you are sending from has
-		a reverse DNS entry, otherwise you will not receive an answer.
-	</p>
+  <p class="leading-[24px] mb-4">
+    You find more specific information in your home directory.
+    <strong>Note: You will have to use /semtex/semtexraw. Take a look at the source</strong>
+  </p>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Reading Material</h2>
+  
+  <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <li><a href="http://www.faqs.org/rfcs/rfc792.html" class="text-[#999] hover:text-[#CCC] no-underline">ICMP Request For Comment</a></li>
+    <li><a href="http://mixter.void.ru/rawip.html" class="text-[#999] hover:text-[#CCC] no-underline">Mixter's raw socket tutorial</a></li>
+  </ul>
 
-	<p class="leading-[24px] mb-4">
-		You find more specific information in your home directory.
-		<strong
-			>Note: You will have to use /semtex/semtexraw. Take a look at the
-			source</strong
-		>
-	</p>
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex6.rawwrapper.c</h3>
 
-	<h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
-		Reading Material
-	</h2>
+  <CodeBlock className="language-c" code={snippet} />
 
-	<ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
-		<li>
-			<a
-				href="http://www.faqs.org/rfcs/rfc792.html"
-				class="text-[#999] hover:text-[#CCC] no-underline"
-				>ICMP Request For Comment</a
-			>
-		</li>
-		<li>
-			<a
-				href="http://mixter.void.ru/rawip.html"
-				class="text-[#999] hover:text-[#CCC] no-underline"
-				>Mixter's raw socket tutorial</a
-			>
-		</li>
-	</ul>
-
-	<h3 class="text-[14pt] font-bold mt-4 mb-2">semtex6.rawwrapper.c</h3>
-
-	<CodeBlock client:visible className="language-c"
-		>#ifndef _GNU_SOURCE #define _GNU_SOURCE #endif #include
-		&lt;unistd.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt;
-		#include &lt;netinet/ip_icmp.h&gt; #include &lt;string.h&gt; #define
-		DROPUID 1009 #define DROPGID 1009 // rawwrapper, aton 2004 int main(int
-		argc, char *argv[]) &#123; int rfd; char *argv0, *argv1; if (argc&lt;2)
-		&#123; printf("usage: rawwrapper &lt;program&gt;\n"); printf("argv[1]
-		will be the raw socket\n"); exit(EXIT_FAILURE); &#125; //open raw socket
-		if ((rfd = socket(PF_INET, SOCK_RAW, IPPROTO_ICMP))&lt;0) &#123;
-		perror("socket"); return EXIT_FAILURE; &#125; //drop priviledges
-		setresgid(DROPGID, DROPGID, DROPGID); setresuid(DROPUID, DROPUID,
-		DROPUID); argv0=malloc(strlen(argv[0])+1); strcpy(argv0, argv[0]);
-		argv1=malloc(strlen(argv[1])+1); strcpy(argv1, argv[1]); // fill in new
-		argv argv[0]=argv1; sprintf(argv[1], "%d", rfd); //execute the client
-		program execve(argv[0], argv, NULL); return EXIT_SUCCESS; &#125;</CodeBlock
-	>
 </GameLayout>

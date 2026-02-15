@@ -1,39 +1,34 @@
 ---
-import GameLayout from "../../../layouts/GameLayout.astro";
+import GameLayout from '../../../layouts/GameLayout.astro';
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex11.c");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 11" gameName="semtex" level={11}>
+  
   <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Deja vue</h2>
-
+  
   <p class="leading-[24px] mb-4">
-    /rdx/vl1b is vortex semtex1 with a slight modification to make things a
-    little bit harder.
+    /rdx/vl1b is vortex semtex1 with a slight modification to make
+    things a little bit harder.
   </p>
 
   <div class="p-4 mb-4 bg-[#E0E0E0] border-l-4 border-[#A0A0A0] text-black">
     <p class="font-bold">Thanks to andrewg for inspiration.</p>
   </div>
-
-  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
-    Suggested reading
-  </h2>
-
-  <p class="leading-[24px] mb-4">manpages: popen, dup2</p>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Suggested reading</h2>
+  
+  <p class="leading-[24px] mb-4">
+    manpages: popen, dup2
+  </p>
 
   <h3 class="text-[14pt] font-bold mt-4 mb-2">semtex11.c</h3>
 
-  <CodeBlock client:visible className="language-c"
-    >#include &lt;stdlib.h&gt; #include &lt;unistd.h&gt; #include
-    &lt;string.h&gt; #include &lt;stdio.h&gt; // code by andrewg, modified by
-    aton #define e(); if(((unsigned int)ptr & 0xff000000)==0xca000000) &#123;
-    setresuid(geteuid(), geteuid(), geteuid()); execlp("/bin/sh", "sh", "-i",
-    NULL); &#125; void print(unsigned char *buf, int len) &#123; int i;
-    printf("[ "); for(i=0; i &lt; len; i++) printf("%x ", buf[i]); printf("
-    ]\n"); &#125; int main() &#123; unsigned char buf[512]; unsigned char *ptr =
-    buf + (sizeof(buf)/2); unsigned int x; while((x = getchar()) != EOF) &#123;
-    switch(x) &#123; case '\n': print(buf, sizeof(buf)); continue; break; case
-    '\\': ptr--; break; default: e(); if(ptr &gt; buf + sizeof(buf)) continue;
-    ptr++; break; &#125; &#125; printf("All done\n"); &#125;</CodeBlock
-  >
+  <CodeBlock className="language-c" code={snippet} />
+
 </GameLayout>

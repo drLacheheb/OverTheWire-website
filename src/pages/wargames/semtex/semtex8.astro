@@ -1,6 +1,11 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex8_mapping.txt");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 8" gameName="semtex" level={8}>
@@ -20,9 +25,7 @@ import { CodeBlock } from "@/components/ui/code-block";
         bytes that have been left out (have not been sent).
     </p>
 
-    <CodeBlock client:visible
-        >0-1 s : no special data 1-2 s : 'Q' 2-3 s : 'L' 3-4 s : 'A' 4-5 s : 'V'</CodeBlock
-    >
+    <CodeBlock code={snippet} />
 
     <p class="leading-[24px] mb-4">
         you have to take these "unsent" data into your output file too, exactly

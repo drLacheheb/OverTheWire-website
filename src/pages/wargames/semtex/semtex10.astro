@@ -1,94 +1,48 @@
 ---
-import GameLayout from "../../../layouts/GameLayout.astro";
+import GameLayout from '../../../layouts/GameLayout.astro';
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippet1Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex10.c");
+const snippet1 = fs.readFileSync(snippet1Path, "utf-8").trim();
+
+const snippet2Path = path.join(process.cwd(), "src", "snippets", "semtex", "semtex10_output.txt");
+const snippet2 = fs.readFileSync(snippet2Path, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 10" gameName="semtex" level={10}>
-        <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">
-                Hacking szene
-        </h2>
+  
+  <h2 class="text-[18pt] font-normal text-[#999] mt-6 mb-2">Hacking szene</h2>
+  
+  <div class="p-4 mb-4 bg-[#E0E0E0] border-l-4 border-[#A0A0A0] text-black">
+    <p class="font-bold">Thanks to zaphod and Mush for finding a bugs in this level</p>
+  </div>
 
-        <div
-                class="p-4 mb-4 bg-[#E0E0E0] border-l-4 border-[#A0A0A0] text-black"
-        >
-                <p class="font-bold">
-                        Thanks to zaphod and Mush for finding a bugs in this
-                        level
-                </p>
-        </div>
+  <p class="leading-[24px] mb-4">
+    Do you know these hacking movies where they push some buttons, then
+    the evil hacker script window turns up and a percentage bar is
+    showing how far the password cracking has gone?
+  </p>
 
-        <p class="leading-[24px] mb-4">
-                Do you know these hacking movies where they push some buttons,
-                then the evil hacker script window turns up and a percentage bar
-                is showing how far the password cracking has gone?
-        </p>
+  <CodeBlock code={snippet2} />
 
-        <CodeBlock client:visible
-                >0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
-                password cracked!</CodeBlock
-        >
+  <p class="leading-[24px] mb-4">
+    Ever wanted to do it yourself? Here is your chance.<br>
+    This level implements a weakness in the authentication scheme used
+    by M$ win95 and win98 for the netbios shares.
+  </p>
 
-        <p class="leading-[24px] mb-4">
-                Ever wanted to do it yourself? Here is your chance.<br />
-                This level implements a weakness in the authentication scheme used
-                by M$ win95 and win98 for the netbios shares.
-        </p>
+  <p class="leading-[24px] mb-4">
+    There is a TCP daemon on brebera port 24019. It authenticates your
+    password. Once you send the correct password, it echoes it back.
+    Well, let the source speak for itself. As far as brute force may
+    take you, a little brain is never bad :P Perhaps you have heard of
+    pqwak?
+  </p>
 
-        <p class="leading-[24px] mb-4">
-                There is a TCP daemon on brebera port 24019. It authenticates
-                your password. Once you send the correct password, it echoes it
-                back. Well, let the source speak for itself. As far as brute
-                force may take you, a little brain is never bad :P Perhaps you
-                have heard of pqwak?
-        </p>
+  <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
 
-        <h3 class="text-[14pt] font-bold mt-4 mb-2">Source code</h3>
+  <CodeBlock className="language-c" code={snippet1} />
 
-        <CodeBlock client:visible className="language-c"
-                >#define _GNU_SOURCE #include &lt;unistd.h&gt; #include
-                &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include
-                &lt;errno.h&gt; #include &lt;string.h&gt; #include
-                &lt;sys/types.h&gt; #include &lt;netinet/in.h&gt; #include
-                &lt;sys/socket.h&gt; #include &lt;sys/wait.h&gt; #include
-                &lt;arpa/inet.h&gt; #include &lt;unistd.h&gt; #include
-                &lt;signal.h&gt; #define LISTENPORT 24019 #define REALPWD
-                "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-                #define OLDPWD "XXXXXXXXXXXXXXXX" #define DROPUID 1998 #define
-                DROPGID 1998 struct query &#123; unsigned char oldpass[20+1];
-                unsigned char pass[100+1]; unsigned int len; &#125; qry; struct
-                response &#123; unsigned int result; unsigned char pass[100+1];
-                &#125; rsp; int main(int argc, char *argv[]) &#123; int
-                listenfd, connfd; struct sockaddr_in localaddr; struct
-                sockaddr_in remoteaddr; int sin_size; int port=LISTENPORT;
-                setresgid(DROPGID, DROPGID, DROPGID); setresuid(DROPUID,
-                DROPUID, DROPUID); signal(SIGPIPE, SIG_IGN); daemon(0,0); if
-                ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) &#123;
-                perror("socket"); exit(EXIT_FAILURE); &#125;
-                localaddr.sin_family = AF_INET; localaddr.sin_port =
-                htons(port); localaddr.sin_addr.s_addr = INADDR_ANY;
-                bzero(&amp;(localaddr.sin_zero), 8); if (bind(listenfd, (struct
-                sockaddr *)&amp;localaddr, sizeof(struct sockaddr)) == -1)
-                &#123; perror("bind"); exit(EXIT_FAILURE); &#125; if
-                (listen(listenfd, 20) == -1) &#123; perror("listen");
-                exit(EXIT_FAILURE); &#125; for (;;) &#123; sin_size =
-                sizeof(struct sockaddr_in); if ((connfd = accept(listenfd,
-                (struct sockaddr *)&amp;remoteaddr, &amp;sin_size)) == -1)
-                &#123; perror("accept"); continue; &#125; // printf("connection
-                from %s\n", inet_ntoa(remoteaddr.sin_addr)); if (!fork())
-                //child &#123; close(listenfd); for (;;) &#123; memset(&amp;qry,
-                0, sizeof(struct query)); memset(&amp;rsp, 0, sizeof(struct
-                response)); if (recv(connfd, &amp;qry, sizeof(struct query),
-                0)!=sizeof(struct query)) &#123; perror("recv"); close(connfd);
-                exit(EXIT_FAILURE); &#125; if (strncmp(qry.oldpass, OLDPWD,
-                strlen(OLDPWD))) &#123; close(connfd); exit(EXIT_FAILURE);
-                &#125; // validate if (!strncmp(qry.pass, REALPWD, qry.len))
-                rsp.result=1; if (rsp.result &amp;&amp;
-                (qry.len==strlen(REALPWD))) strcpy(rsp.pass, REALPWD); //
-                printf("-&gt; result=%s\n", rsp.result?"CORRECT":"WRONG"); if
-                (send(connfd, &amp;rsp, sizeof(struct response),
-                0)!=sizeof(struct response)) &#123; perror("send");
-                close(connfd); exit(EXIT_FAILURE); &#125; &#125; &#125;
-                while(waitpid(-1,NULL,WNOHANG) &gt; 0); close(connfd); &#125;
-                &#125;</CodeBlock
-        >
 </GameLayout>

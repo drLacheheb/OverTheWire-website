@@ -1,6 +1,11 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
 import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetPath = path.join(process.cwd(), "src", "snippets", "semtex", "semtex4_file_output.txt");
+const snippet = fs.readFileSync(snippetPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Semtex Level 4" gameName="semtex" level={4}>
@@ -8,18 +13,15 @@ import { CodeBlock } from "@/components/ui/code-block";
         Ptrace your way
     </h2>
 
-    <p class="leading-[24px] mb-4">
+    <p class="leading-6 mb-4">
         Pass prints the password for the level you are on. Try to make it print
         the next level's password. This time it is not so easy:
     </p>
 
-    <CodeBlock client:visible
-        >/semtex/semtex4: ELF 32-bit LSB executable, Intel 80386, version 1
-        (SYSV), statically linked, for GNU/Linux 2.6.15, stripped</CodeBlock
-    >
+    <CodeBlock code={snippet} />
 
     <h3 class="text-[14pt] font-bold mt-4 mb-2">Tip :</h3>
-    <ul class="list-disc list-inside pl-4 leading-[24px] mb-4">
+    <ul class="list-disc list-inside pl-4 leading-6 mb-4">
         <li>Pass uses geteuid() to get its information.</li>
         <li>Read man ptrace</li>
     </ul>
