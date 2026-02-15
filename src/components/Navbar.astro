@@ -4,4 +4,4 @@ import NavbarReact from "./Navbar.tsx";
 const { pathname } = Astro.url;
 ---
 
-<NavbarReact client:load pathname={pathname} />
+<NavbarReact client:idle pathname={pathname} />
