@@ -6,31 +6,39 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
-    code: string
+    code?: string
 }
 
 export function CodeBlock({
     className,
     code,
+    children,
     ...props
 }: CodeBlockProps) {
     const [hasCopied, setHasCopied] = React.useState(false)
 
     const language = className?.replace("language-", "") || "text"
 
+    // Derive code content from code prop or children
+    const codeContent = React.useMemo(() => {
+        if (code) return code
+        if (typeof children === "string") return children.trim()
+        return ""
+    }, [code, children])
+
     const onCopy = React.useCallback(() => {
-        navigator.clipboard.writeText(code)
+        navigator.clipboard.writeText(codeContent)
         setHasCopied(true)
         setTimeout(() => {
             setHasCopied(false)
         }, 2000)
-    }, [code])
+    }, [codeContent])
 
     return (
         <div className={cn("relative group mb-4", className)} {...props}>
             <Highlight
                 theme={themes.vsDark}
-                code={code}
+                code={codeContent}
                 language={language}
             >
                 {({ className, style, tokens, getLineProps, getTokenProps }) => (
