@@ -1,5 +1,6 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { ConnectionInfo } from "@/components/ConnectionInfo";
 ---
 
 <GameLayout title="OverTheWire: Krypton Level 0" gameName="krypton" level={0}>
@@ -10,8 +11,12 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         encodes the password using Base64:
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">S1JZUFRPTklTR1JFQVQ=</pre>
+    <ConnectionInfo
+        client:load
+        username="krypton1"
+        password="KRYPTONISGREAT"
+        url="ssh krypton1@krypton.labs.overthewire.org -p 2231"
+    />
 
     <p class="leading-[24px] mb-4">
         Use this password to log in to krypton.labs.overthewire.org with

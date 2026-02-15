@@ -1,5 +1,35 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import { CodeBlock } from "@/components/ui/code-block";
+import fs from "node:fs";
+import path from "node:path";
+
+const vigenere1Path = path.join(
+    process.cwd(),
+    "src",
+    "snippets",
+    "krypton",
+    "krypton4.vigenere_1.txt",
+);
+const vigenere1 = fs.readFileSync(vigenere1Path, "utf-8").trim();
+
+const vigenere2Path = path.join(
+    process.cwd(),
+    "src",
+    "snippets",
+    "krypton",
+    "krypton4.vigenere_2.txt",
+);
+const vigenere2 = fs.readFileSync(vigenere2Path, "utf-8").trim();
+
+const ciphertextPath = path.join(
+    process.cwd(),
+    "src",
+    "snippets",
+    "krypton",
+    "krypton4.ciphertext.txt",
+);
+const ciphertext = fs.readFileSync(ciphertextPath, "utf-8").trim();
 ---
 
 <GameLayout title="OverTheWire: Krypton Level 4" gameName="krypton" level={4}>
@@ -31,21 +61,15 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         (modulo 26).
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">P P R O C E E D M E E T I N G A S A G R E E D
-K G O L D G O L D G O L D G O L D G O L D G O</pre>
+    <CodeBlock className="language-text" code={vigenere1} />
 
     <p class="leading-[24px] mb-4">becomes:</p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">P 15 17 14 2 4 4 3 12 4 4 19 8 13 6 0 18 0 6 17 4 4 3
-K 6 14 11 3 6 14 11 3 6 14 11 3 6 14 11 3 6 14 11 3 6 14
-C 21 5 25 5 10 18 14 15 10 18 4 11 19 20 11 21 6 20 2 8 10 17</pre>
+    <CodeBlock className="language-text" code={vigenere2} />
 
     <p class="leading-[24px] mb-4">So, we get a ciphertext of:</p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">VFZFK SOPKS ELTUL VGUCH KR</pre>
+    <CodeBlock className="language-text" code={ciphertext} />
 
     <p class="leading-[24px] mb-4">
         This level is a Vigenère Cipher. You have intercepted two longer,
