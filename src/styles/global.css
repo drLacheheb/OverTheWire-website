@@ -88,10 +88,14 @@
   }
 
   html {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
+  code,
+  kbd,
+  samp,
   pre {
-    @apply bg-background border border-neutral-800 p-4 mb-4 overflow-x-auto text-sm font-mono text-neutral-300;
+    font-family: 'JetBrains Mono', monospace;
+    background-color: transparent !important;
   }
 }
