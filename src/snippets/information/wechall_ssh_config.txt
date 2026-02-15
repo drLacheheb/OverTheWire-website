@@ -1,0 +1,3 @@
+Host *.labs.overthewire.org
+  SendEnv WECHALLTOKEN
+  SendEnv WECHALLUSER

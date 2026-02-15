@@ -1,0 +1,15 @@
+Summary:
+Difficulty:     4/10
+Levels:         10
+Platform:   Linux/x86
+
+Author:
+Kuba and psi
+
+Special Thanks:
+
+Description:
+This is a regular wargame composed of 10 different levels. It's slightly harder than the
+previous wargames in the same genre. Actually, it's a lot harder than Leviathan and a bit
+harder than Behemoth so if you haven't beaten those two you will probably want to do that
+first.

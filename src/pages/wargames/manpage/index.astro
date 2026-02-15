@@ -1,5 +1,18 @@
 ---
 import GameLayout from "../../../layouts/GameLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetDir = path.join(process.cwd(), "src", "snippets", "manpage");
+
+const infoSnippet = fs
+    .readFileSync(path.join(snippetDir, "info.txt"), "utf-8")
+    .trim();
+
+const credsSnippet = fs
+    .readFileSync(path.join(snippetDir, "creds.txt"), "utf-8")
+    .trim();
 ---
 
 <GameLayout title="OverTheWire: Manpage" gameName="manpage" level="index">
@@ -23,21 +36,7 @@ import GameLayout from "../../../layouts/GameLayout.astro";
         intruded.net:
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Summary:
-Difficulty:     x/10
-Levels:         7
-Platform:   Linux/x86
-
-Author:
-adc
-
-Special Thanks:
-
-Description:
-This game is about breaking some common linux c-programming misconceptions. A good
-tactic when beginning to audit code for the first time is to read the manpages for pitfalls and 
-unusual behavior. Many of these levels were inspired by the famous work of Ilja.</pre>
+    <CodeBlock code={infoSnippet} />
 
     <p class="leading-[24px] mb-4">
         Manpage's levels are called <strong>manpage0, manpage1, ... etc.</strong
@@ -47,9 +46,7 @@ unusual behavior. Many of these levels were inspired by the famous work of Ilja.
 
     <p class="leading-[24px] mb-4">To login to the first level use:</p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">Username: manpage0
-Password: manpage0</pre>
+    <CodeBlock code={credsSnippet} />
 
     <p class="leading-[24px] mb-4">
         Data for the levels can be found in <strong>/manpage/</strong>.

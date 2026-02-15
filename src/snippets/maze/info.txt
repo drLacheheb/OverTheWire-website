@@ -1,0 +1,17 @@
+Summary:
+Difficulty:     5/10
+Levels:         9
+Platform:   Linux/x86
+
+Author:
+beng and capsyl
+
+Special Thanks:
+je for doing the primary beta-testing.
+kuba for beta-testing and ideas.
+psi for level9
+
+Description:
+You'll need knowledge of exploitation-techniques, programming (of course) and reverse-
+engineering. We've tried to make the levels tricky and some of them strange, so get ready
+to use gdb.

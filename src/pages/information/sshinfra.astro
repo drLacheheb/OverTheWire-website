@@ -1,7 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
----
+import CodeBlock from "@/components/CodeBlock.astro";
+import fs from "node:fs";
+import path from "node:path";
 
+const snippetDir = path.join(process.cwd(), "src", "snippets", "information");
+const portForwardingSnippet = fs.readFileSync(path.join(snippetDir, "sshinfra_port_forwarding.txt"), "utf-8").trim();
+const warningSnippet = fs.readFileSync(path.join(snippetDir, "sshinfra_warning.txt"), "utf-8").trim();
+const keyscanSnippet = fs.readFileSync(path.join(snippetDir, "sshinfra_keyscan.txt"), "utf-8").trim();
+---
 <BaseLayout title="SSH/infrastructure">
     <div class="prose max-w-none">
         <h1 class="text-3xl font-bold mb-6">SSH and the infrastructure</h1>
@@ -10,7 +17,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             All ssh-based games on OverTheWire run in <a
                 href="https://www.docker.com/"
                 class="text-blue-600 hover:text-blue-800 underline">Docker</a
-            > containers. When you login with SSH to one of the games, a fresh Docker
+        > containers. When you login with SSH to one of the games, a fresh Docker
             container is created just for you. Noone else is logged in into your container,
             nor are there any files from other players lying around. We opted for
             this setup to provide each player with a clean environment to experiment
@@ -37,14 +44,13 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             forwarding. For instance:
         </p>
 
-        <pre
-            class="bg-gray-100 p-4 rounded mb-4 overflow-x-auto text-sm border border-gray-300">ssh -l bandit0 -p 2220 -L 1234:localhost:22 bandit.labs.overthewire.org</pre>
+        <CodeBlock code={portForwardingSnippet}/>
 
         <p class="mb-4">
             With this command, you connect to the <a
                 href="/wargames/bandit"
                 class="text-blue-600 hover:text-blue-800 underline">bandit</a
-            > game on port 2220 with username bandit0, and instruct your SSH client
+        > game on port 2220 with username bandit0, and instruct your SSH client
             to set up port forwarding from port 1234 on your local computer, to port
             22 on "localhost" as seen from the bandit container. What this means is
             that port 1234 on your local computer is forwarded to the SSH server inside
@@ -64,7 +70,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             Also see the help page about persisting <a
                 href="/information/userdata"
                 class="text-blue-600 hover:text-blue-800 underline">User data</a
-            >.
+        >.
         </p>
 
         <h2 class="text-2xl font-bold mt-8 mb-4">SSH keys</h2>
@@ -74,10 +80,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             shell-based games, such as this one:
         </p>
 
-        <pre
-            class="bg-gray-100 p-4 rounded mb-4 overflow-x-auto text-sm border border-gray-300">The authenticity of host '[bandit.labs.overthewire.org]:2220 ([176.9.9.172]:2220)' can't be established.
-ECDSA key fingerprint is SHA256:SCySwNrZFEHArEX1cAlnnaJ5gz2O8VEigY9X80nFWUU.
-Are you sure you want to continue connecting (yes/no)?</pre>
+        <CodeBlock code={warningSnippet}/>
 
         <p class="mb-4">
             Here is the expected output from ssh-keyscan for
@@ -86,14 +89,6 @@ Are you sure you want to continue connecting (yes/no)?</pre>
             are most likely being man-in-the-middled.
         </p>
 
-        <pre
-            class="bg-gray-100 p-4 rounded mb-4 overflow-x-auto text-sm border border-gray-300">$ ssh-keyscan -p 2220 -T 10 bandit.labs.overthewire.org
-
-# bandit.labs.overthewire.org:2220 SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.8
-[bandit.labs.overthewire.org]:2220 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDy5O/3KJT8z1aAC/hAuphG3gha/xVowSwc/066SVrSewHY4ETsCr3EdiClK+uw1OQYSBxHa6jPjEpKIeIMili5p6E4aEiiC3uYFkRCOQUN0bfYKgbHs5n1vEpua0UztLSf3AFGF2Lw2VEYd2Fuv1bPj2bYobpLTfLqjVhu8PWtQbgWBbECZBE7I7hSwvQzAnuaxJg/c2VtjD5vl3EOX6VlrnuDvYtM0q8dMrftBC9nTOzWc1RP8POVkcFdva+DETcQCeuG0rUPRZCzRpIhvxNf6BNkxeEHjkaIeedBPvDLdc9DLvdouzvw6H8EoU0pDJXsHraPWnuUEgwIAuD4auIP
-# bandit.labs.overthewire.org:2220 SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.8
-[bandit.labs.overthewire.org]:2220 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNjKNpXfKljXFVLM9p/6qZqUg8BzGs5wFFQWktFD5H9xXXcnH5yzQqtp7MpTPxBVk+1TRxmb0s5Ej3VewH5GK+E=
-# bandit.labs.overthewire.org:2220 SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.8
-[bandit.labs.overthewire.org]:2220 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBbK+bRnQZW9014ZUy5kubl5hwpgb+2r6Xsyx0xP018o</pre>
+        <CodeBlock code={keyscanSnippet}/>
     </div>
 </BaseLayout>

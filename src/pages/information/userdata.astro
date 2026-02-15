@@ -1,5 +1,18 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetDir = path.join(process.cwd(), "src", "snippets", "information");
+
+const bashrcSnippet = fs
+    .readFileSync(path.join(snippetDir, "userdata_bashrc.txt"), "utf-8")
+    .trim();
+
+const sshConfigSnippet = fs
+    .readFileSync(path.join(snippetDir, "userdata_ssh_config.txt"), "utf-8")
+    .trim();
 ---
 
 <BaseLayout title="User data">
@@ -37,8 +50,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
                 edit your
                 <code>~/.bashrc</code> file and add:
 
-                <pre
-                    class="bg-gray-100 p-4 rounded mt-2 overflow-x-auto text-sm border border-gray-300">export OTWUSERDIR="my-overthewire-secret-user-data-directory"</pre>
+                <CodeBlock code={bashrcSnippet} />
 
                 <p class="mt-2">
                     You may need to logout and login again for these changes to
@@ -50,9 +62,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             <li>
                 Next, edit <code>~/.ssh/config</code> (or create it if it doesn't
                 exist) and add:
-                <pre
-                    class="bg-gray-100 p-4 rounded mt-2 overflow-x-auto text-sm border border-gray-300">Host *.labs.overthewire.org
-  SendEnv OTWUSERDIR</pre>
+                <CodeBlock code={sshConfigSnippet} />
                 <p class="mt-2">
                     This configures your SSH client to transmit the environment
                     variable to your remote session, so it can be used there.

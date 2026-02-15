@@ -1,5 +1,18 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+const snippetDir = path.join(process.cwd(), "src", "snippets", "kishi");
+
+const vagrantSnippet = fs
+    .readFileSync(path.join(snippetDir, "vagrant.txt"), "utf-8")
+    .trim();
+
+const lxcSnippet = fs
+    .readFileSync(path.join(snippetDir, "lxc.txt"), "utf-8")
+    .trim();
 ---
 
 <BaseLayout title="OverTheWire: Kishi">
@@ -31,9 +44,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
         > for VirtualBox by typing:
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">vagrant init StevenVanAcker/kishi
-vagrant up</pre>
+    <CodeBlock code={vagrantSnippet} />
 
     <p class="leading-6 mb-4">
         Kishi listens on ports 22, 80 and 2222, which are forwarded from the VM
@@ -41,8 +52,7 @@ vagrant up</pre>
         LXC containers internally, you can access them from the host VM through
     </p>
 
-    <pre
-        class="bg-[#F5F5F5] p-4 mb-4 font-mono text-sm border border-[#E3E3E3] overflow-auto">virsh -c lxc://</pre>
+    <CodeBlock code={lxcSnippet} />
 
     <p class="leading-6 mb-4">
         The SSH server running on port 2222 can be used to login to kishi itself

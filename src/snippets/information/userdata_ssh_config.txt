@@ -1,0 +1,2 @@
+Host *.labs.overthewire.org
+  SendEnv OTWUSERDIR

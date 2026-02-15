@@ -1,0 +1,1 @@
+export OTWUSERDIR="my-overthewire-secret-user-data-directory"
