@@ -254,6 +254,7 @@ const displayName = capitalize(gameName);
                     levels.map((level) => (
                         <a
                             href={level.url}
+                            data-active={level.active}
                             class={`block rounded-md px-3 py-1.5 text-xs no-underline transition-colors ${
                                 level.active
                                     ? "bg-white/10 text-white"
@@ -331,5 +332,11 @@ const displayName = capitalize(gameName);
             levelsContent.classList.toggle("hidden");
             levelsArrow.classList.toggle("rotate-180");
         });
+    }
+
+    // Auto-scroll to active level
+    const activeLevel = document.querySelector('[data-active="true"]');
+    if (activeLevel) {
+        activeLevel.scrollIntoView({ block: "center", behavior: "instant" });
     }
 </script>
