@@ -35,6 +35,10 @@ const isLandingActive =
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const displayName = capitalize(gameName);
+
+const activeLevelIndex = levels.findIndex((l) => l.active);
+const currentLevel = activeLevelIndex !== -1 ? activeLevelIndex : 0;
+const sshCommand = `ssh ${gameName + currentLevel}@${gameData.host} -p ${gameData.port}`;
 ---
 
 <aside class="w-full shrink-0 md:w-56 lg:w-64">
@@ -170,7 +174,7 @@ const displayName = capitalize(gameName);
                         </button>
                         <button
                             class="ssh-copy group w-full cursor-pointer rounded px-2 py-1.5 text-left transition-colors hover:bg-white/5"
-                            data-copy={`ssh ${gameName}0@${gameData.host} -p ${gameData.port}`}
+                            data-copy={sshCommand}
                             title="Click to copy full SSH command"
                         >
                             <div class="text-neutral-500 text-xs mb-0.5">
@@ -178,8 +182,7 @@ const displayName = capitalize(gameName);
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-neutral-300 truncate flex-1 min-w-0">
-                                    ssh {gameName}0@{gameData.host} -p{" "}
-                                    {gameData.port}
+                                    {sshCommand}
                                 </span>
                                 <svg
                                     class="ml-2 h-3 w-3 shrink-0 text-neutral-600 opacity-0 transition-opacity group-hover:opacity-100"
